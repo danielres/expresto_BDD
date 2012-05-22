@@ -21,7 +21,7 @@ gem "capybara", :group => [:development, :test]
 gem "sass", ">= 3.1.12"
 gem "compass", "~> 0.12.1", :group => [:assets]
 gem "compass-rails", "~> 1.0.0", :group => [:assets]
-gem "guard", ">= 0.6.2", :group => :development  
+gem "guard", ">= 0.6.2", :group => :development
 case HOST_OS
   when /darwin/i
     gem 'rb-fsevent', :group => :development
@@ -39,3 +39,4 @@ gem "guard-rails", ">= 0.0.3", :group => :development
 gem "guard-livereload", ">= 0.3.0", :group => :development
 gem "guard-spork", :group => :development
 gem "guard-rspec", ">= 0.4.3", :group => :development
+gem "mocha", :group => [:development, :test]
