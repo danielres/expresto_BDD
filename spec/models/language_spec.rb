@@ -10,5 +10,14 @@ describe Language do
     FactoryGirl.build(:language, :name => '').should_not be_valid
   end
 
+  it "should have many expressions" do
+    language  = FactoryGirl.build(:language)
+    e1        = FactoryGirl.build(:expression)
+    e2        = FactoryGirl.build(:expression)
+    language.expressions << e1
+    language.expressions << e2
+    language.expressions.should == [ e1, e2 ]
+  end
+
 
 end
