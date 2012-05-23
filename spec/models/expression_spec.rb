@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Expression do
 
-  before(:each) do
-    FactoryGirl.create(:language)
-    FactoryGirl.create(:user)
-  end
+#   before(:each) do
+#     FactoryGirl.create(:language)
+#     FactoryGirl.create(:user)
+#   end
 
   it "should create a new instance given valid attributes" do
     FactoryGirl.create(:expression).should be_valid
@@ -28,10 +28,12 @@ describe Expression do
   end
 
   it "should belong to an author" do
-    FactoryGirl.build(:expression).author.should be_kind_of(User)
+    author = FactoryGirl.build(:user)
+    FactoryGirl.build(:expression, :author => author).author.should be(author)
   end
 
   it "should belong to a language" do
-    FactoryGirl.build(:expression).language.should be_kind_of(Language)
+    language = FactoryGirl.build(:language)
+    FactoryGirl.build(:expression, :language => language).language.should be(language)
   end
 end
