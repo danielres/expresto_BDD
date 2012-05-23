@@ -28,7 +28,7 @@ describe Expression do
   end
 
   it "should belong to an author" do
-    author = FactoryGirl.build(:user)
+    author = FactoryGirl.build(:author)
     FactoryGirl.build(:expression, :author => author).author.should be(author)
   end
 

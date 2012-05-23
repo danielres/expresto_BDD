@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :expression do
     body "MyText"
     meaning "MyText"
-    author, :factory => :user
+    author
     language
   end
 end
