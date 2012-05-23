@@ -15,7 +15,7 @@ gem "devise", ">= 2.1.0.rc"
 gem "inherited_resources"
 gem "simple_form"
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
-gem "factory_girl_rails", ">= 2.0.0.rc", :group => [:development, :test]
+gem "factory_girl_rails", "~> 3.0", :group => [:development, :test]
 gem "email_spec", ">= 1.2.1", :group => :test
 gem "capybara", :group => [:development, :test]
 gem "sass", ">= 3.1.12"
@@ -39,4 +39,4 @@ gem "guard-rails", ">= 0.0.3", :group => :development
 gem "guard-livereload", ">= 0.3.0", :group => :development
 gem "guard-spork", :group => :development
 gem "guard-rspec", ">= 0.4.3", :group => :development
-gem "mocha", :group => [:development, :test]
+gem "mocha", :require => false, :group => [:development, :test]
