@@ -1,4 +1,8 @@
 Expresto::Application.routes.draw do
+  resources :languages
+
+  resources :expressions
+
   resources  :users
   devise_for :users
 
