@@ -44,3 +44,4 @@ gem "guard-livereload", ">= 0.3.0", :group => :development
 gem "guard-spork", :group => :development
 gem "guard-rspec", ">= 0.4.3", :group => :development
 gem "mocha", :require => false, :group => [:development, :test]
+gem 'launchy', '>= 2.1.0', :group => [:development, :test]
