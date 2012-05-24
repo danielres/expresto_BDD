@@ -18,6 +18,10 @@ gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
 gem "factory_girl_rails", "~> 3.0", :group => [:development, :test]
 gem "email_spec", ">= 1.2.1", :group => :test
 gem "capybara", :group => [:development, :test]
+gem "cucumber-rails", :require => false, :group => [:development, :test]
+gem "database_cleaner"
+
+
 gem "sass", ">= 3.1.12"
 gem "compass", "~> 0.12.1", :group => [:assets]
 gem "compass-rails", "~> 1.0.0", :group => [:assets]
