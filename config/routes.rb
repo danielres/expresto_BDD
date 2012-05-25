@@ -1,9 +1,14 @@
 Expresto::Application.routes.draw do
-  resources :languages
 
-  resources :expressions
+  root :to => "home#index", :locale => 'en' # set the default locale here (ex: 'en')
 
-  resources  :users
+  scope "/:locale" do
+    root :to => "home#index"
+    resources :languages
+    resources :expressions
+    resources  :users
+  end
+
   devise_for :users
 
   authenticated :user do
@@ -11,6 +16,5 @@ Expresto::Application.routes.draw do
   end
 
 
-  root :to => "home#index"
 
 end
