@@ -25,7 +25,6 @@ Feature: display recent expressions
   Scenario: Display expressions details
 
     When I go to the homepage
-    And  I set language to english
     And  I click on the first recent expression
     Then I should see the expression page with details
 
