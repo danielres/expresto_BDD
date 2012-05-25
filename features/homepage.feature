@@ -12,8 +12,11 @@ Feature: homepage
     And   3 french  expressions have been added
     When I go to the homepage
     Then I should see language menu with English, French
-    Then I should see "Recent expressions"
+
     When I set language to english
-    Then I should see 2 expressions
+    Then I should see "Recent expressions"
+    And  I should see 2 expressions
+
     When I set language to french
-    Then I should see 3 expressions
+    Then I should see "Expressions récentes"
+    And  I should see 3 expressions
