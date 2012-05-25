@@ -9,3 +9,8 @@ Then /^I should see language menu with (.*)$/ do |arg1|
     find("div.menu.languages ul").should have_content code
   end
 end
+
+When /^I set language to (.*)$/ do |language|
+  click_link language.downcase[0..1]
+end
+
