@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :load_available_languages
+  before_filter :load_available_languages, :set_current_locale
 
 private
+
+  def set_current_locale
+    I18n::locale = params[:locale]
+  end
 
   def load_available_languages
     @available_languages = Language.all
