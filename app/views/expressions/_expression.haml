@@ -6,6 +6,7 @@
     = content_tag_for :div, expression, :lang => expression.language.code do
       .body=    expression.body
       .meaning= expression.meaning
+      .author=  expression.author
 
   - when :list_item
     = content_tag_for :li,  expression, :lang => expression.language.code do

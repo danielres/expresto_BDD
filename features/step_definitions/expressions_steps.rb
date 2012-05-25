@@ -11,3 +11,14 @@ Then /^I should see a link list with (\d+) expressions in (.*)$/ do |amount, lan
     :count => amount
   )
 end
+
+When /^I click on the first recent expression$/ do
+  find('ul.expressions').all('a')[0].click
+end
+
+Then /^I should see the expression page with details$/ do
+  find('div.expression').should have_selector('.body')
+  find('div.expression').should have_selector('.meaning')
+  find('div.expression .author').should have_content('Test User')
+end
+
