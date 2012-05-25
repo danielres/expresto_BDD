@@ -5,8 +5,7 @@ Given /^(\d+) (.*) expressions have been added$/ do |amount, language|
 end
 
 Then /^I should see (\d+) (.*) expressions$/ do |amount, language|
-  find('.expressions').should have_selector('.expression', :count => amount)
-  find('.expressions .expression .language').should have_content(language.downcase[0..1])
+  find('.expressions').should have_selector('.expression .language', :count => amount, :text => language.downcase[0..1])
 end
 
 
