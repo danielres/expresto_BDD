@@ -13,3 +13,7 @@ Feature: homepage
     When I go to the homepage
     Then I should see language menu with English, French
     Then I should see "Recent expressions"
+    When I set language to english
+    Then I should see 2 expressions
+    When I set language to french
+    Then I should see 3 expressions
