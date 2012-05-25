@@ -1,8 +1,8 @@
-Feature: homepage
+Feature: display recent expressions
 
-  In order to see last idiomatic expressions
+  In order to learn cool idiomatic expressions
   As a visitor
-  I want to visit the homepage
+  I want to visit the homepage and read recently added expressions
 
   Background:
     Given languages French, English are available
@@ -23,6 +23,7 @@ Feature: homepage
     And  I should see a link list with 3 expressions in French
 
   Scenario: Display expressions details
+
     When I go to the homepage
     And  I set language to english
     And  I click on the first recent expression
