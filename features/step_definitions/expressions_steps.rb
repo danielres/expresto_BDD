@@ -4,3 +4,9 @@ Given /^(\d+) (.*) expressions have been added$/ do |amount, language|
   end
 end
 
+Then /^I should see (\d+) (.*) expressions$/ do |amount, language|
+  pending "wip"
+  save_and_open_page
+end
+
+

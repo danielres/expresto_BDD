@@ -15,8 +15,8 @@ Feature: homepage
 
     When I set language to english
     Then I should see "Recent expressions"
-    And  I should see 2 expressions
+    And  I should see 2 english expressions
 
     When I set language to french
     Then I should see "Expressions récentes"
-    And  I should see 3 expressions
+    And  I should see 3 french expressions
