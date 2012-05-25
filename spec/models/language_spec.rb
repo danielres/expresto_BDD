@@ -19,7 +19,7 @@ describe Language do
     language.expressions.should == [ e1, e2 ]
   end
 
-  it "fails validation without unique language code and name" do
+  it "should have unique language code and unique language name" do
     language1 = FactoryGirl.create(:language, :code => :en, :name => 'English')
     language2 = FactoryGirl.build( :language, :code => :en, :name => 'English')
     language2.should have(1).error_on(:code)
