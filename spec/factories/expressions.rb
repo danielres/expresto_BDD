@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :expression do
-    body "MyText"
-    meaning "MyText"
-    author
     language
+    author
+    sequence(:body){|n|"Expression #{n} body"}
+    sequence(:meaning){|n|"Expression #{n} meaning"}
   end
 end
