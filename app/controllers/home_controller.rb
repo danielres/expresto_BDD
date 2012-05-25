@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @expressions = Expression.all
+    @expressions = Language.find_by_code(params[:locale]).expressions
   end
 end

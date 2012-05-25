@@ -5,8 +5,8 @@ Given /^(\d+) (.*) expressions have been added$/ do |amount, language|
 end
 
 Then /^I should see (\d+) (.*) expressions$/ do |amount, language|
-  pending "wip"
-  save_and_open_page
+  find('.expressions').should have_selector('.expression', :count => amount)
+  find('.expressions .expression .language').should have_content(language.downcase[0..1])
 end
 
 
