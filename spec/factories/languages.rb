@@ -3,8 +3,8 @@
 FactoryGirl.define do
 
   factory :language do
-    code "en"
-    name "English"
+    sequence(:code){|n|"l#{n}"}
+    sequence(:name){|n|"Language#{n}"}
   end
 
 end
