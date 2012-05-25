@@ -4,7 +4,7 @@ Given /^(\d+) (.*) expressions have been added$/ do |amount, language|
   end
 end
 
-Then /^I should see (\d+) (.*) expressions$/ do |amount, language|
+Then /^I should see (\d+) expressions in (.*)$/ do |amount, language|
   find('.expressions').should have_xpath(
     "*[@class='expression' and @lang='#{language.downcase[0..1]}']",
     :count => amount
