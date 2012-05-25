@@ -12,4 +12,4 @@ Feature: homepage
     And   3 french  expressions have been added
     When I go to the homepage
     Then I should see language menu with English, French
-    Then I should see "recent expressions"
+    Then I should see "Recent expressions"
