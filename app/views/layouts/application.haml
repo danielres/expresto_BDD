@@ -6,4 +6,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    .menu.languages
+      %ul
+        - @available_languages.each do |l|
+          %li= link_to l, l
+
     = yield
