@@ -1,3 +1,12 @@
-= content_tag_for :div, expression, :lang => expression.language.code do
-  .body= expression.body
-  .meaning= expression.meaning
+- state ||= :individual
+
+- case state
+
+  - when :individual
+    = content_tag_for :div, expression, :lang => expression.language.code do
+      .body=    expression.body
+      .meaning= expression.meaning
+
+  - when :list_item
+    = content_tag_for :li,  expression, :lang => expression.language.code do
+      .body=    link_to expression.body, expression

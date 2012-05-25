@@ -1,4 +1,4 @@
 %h2= t('home').capitalize
 %h3= t('recent expressions').capitalize
 
-.expressions= render @expressions
+%ul.expressions= render @expressions, :state => :list_item
