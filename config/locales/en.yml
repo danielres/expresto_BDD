@@ -5,3 +5,4 @@ en:
   hello: "Hello world"
   home: "homepage"
   recent expressions: "recent expressions"
+  expressions_added_by: "expressions added by %{user}"

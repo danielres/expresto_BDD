@@ -5,3 +5,5 @@ fr:
   hello: "Bonjour monde"
   home: "accueil"
   recent expressions: "expressions récentes"
+  expressions_added_by: "expressions ajoutées par %{user}"
+

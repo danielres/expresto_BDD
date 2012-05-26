@@ -9,7 +9,6 @@ Feature: display an authors expressions
     And   3 french  expressions by John
 
   Scenario: See the author's page of an expression
-
     When I go to the homepage
     And  I click on author link within an expression added by John
     Then I should see the page of John
