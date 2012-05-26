@@ -13,3 +13,5 @@ Feature: display an authors expressions
     When I go to the homepage
     And  I click on author link within an expression added by John
     Then I should see the page of John
+    And I should see 2 english expressions added by John
+    And I should see 3 french  expressions added by John
