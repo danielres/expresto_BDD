@@ -6,8 +6,8 @@ Feature: display recent expressions
 
   Background:
     Given languages French, English are available
-    Given 2 english expressions have been added
-    And   3 french  expressions have been added
+    Given 2 english expressions by Mike
+    And   3 french  expressions by Mike
 
   Scenario: See most recent expressions on homepage
 
@@ -26,6 +26,6 @@ Feature: display recent expressions
 
     When I go to the homepage
     And  I click on the first recent expression
-    Then I should see the expression page with details
+    Then I should see the expression page with details and Mike as author
 
 

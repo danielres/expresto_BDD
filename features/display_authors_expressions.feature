@@ -14,3 +14,14 @@ Feature: display an authors expressions
     Then I should see the page of John
     And I should see 2 english expressions added by John
     And I should see 3 french  expressions added by John
+
+  Scenario: See an authors expressions on his page, grouped by language
+    When I go to John's page
+
+    When I set language to english
+    Then I should see "2 expressions added by John in english"
+    Then I should see "3 expressions added by John in french"
+
+    When I set language to french
+    Then I should see "2 expressions en Anglais ajoutées par John"
+    Then I should see "3 expressions en Français ajoutées par John"

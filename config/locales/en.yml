@@ -3,6 +3,9 @@
 
 en:
   hello: "Hello world"
+  english: "english"
+  french: "french"
   home: "homepage"
   recent expressions: "recent expressions"
-  expressions_added_by: "expressions added by %{user}"
+  expressions_added_by_in: "%{count} expressions added by %{user} in %{language}"
+  by_author: "by %{author}"

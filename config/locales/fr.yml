@@ -3,7 +3,10 @@
 
 fr:
   hello: "Bonjour monde"
+  english: "Anglais"
+  french: "Français"
   home: "accueil"
   recent expressions: "expressions récentes"
-  expressions_added_by: "expressions ajoutées par %{user}"
+  expressions_added_by_in: "%{count} expressions en %{language} ajoutées par %{user}"
+  by_author: "par %{author}"
 

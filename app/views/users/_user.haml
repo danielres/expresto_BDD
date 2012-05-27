@@ -5,6 +5,6 @@
   - when :individual
     = content_tag_for :div, user do
       %h2.name= user.name
-      %h3.expressions
-        = t(:expressions_added_by, :user => user.name)
-      %ul.expressions= render user.expressions, :state => :list_item
+      - user.expressions.group_by(&:language).each do |language, expressions|
+        %h3.expressions= t(:expressions_added_by_in, :count => expressions.count, :user => user.name, :language => t(language.name.downcase))
+        %ul.expressions= render expressions, :state => :list_item, :hide => [:author]

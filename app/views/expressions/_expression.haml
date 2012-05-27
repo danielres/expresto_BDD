@@ -1,4 +1,5 @@
 - state ||= :individual
+- hide  ||= []
 
 - case state
 
@@ -6,13 +7,11 @@
     = content_tag_for :div, expression, :lang => expression.language.code do
       .body=    expression.body
       .meaning= expression.meaning
-      .author
-        = t('by')
-        = link_to expression.author, expression.author
+      - unless hide.include?(:author)
+        .author= link_to t('by_author', :author => expression.author ), expression.author
 
   - when :list_item
     = content_tag_for :li,  expression, :lang => expression.language.code do
       .body=    link_to expression.body, expression
-      .author
-        = t('by')
-        = link_to expression.author, expression.author
+      - unless hide.include?(:author)
+        .author= link_to t('by_author', :author => expression.author ), expression.author

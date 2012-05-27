@@ -16,14 +16,14 @@ When /^I click on the first recent expression$/ do
   find('ul.expressions').all('a')[0].click
 end
 
-Then /^I should see the expression page with details$/ do
+Then /^I should see the expression page with details and (.*) as author$/ do |author|
   find('div.expression').should have_selector('.body')
   find('div.expression').should have_selector('.meaning')
-  find('div.expression .author').should have_content('Test User')
+  find('div.expression .author').should have_content(author)
 end
 
 Given /^(\d+) (.*) expressions by (.*)$/ do |qty, language, user|
-    l = FactoryGirl.create(:language, :name => language.downcase, :code => language.downcase[0..1])
+    l = Language.find_by_code(language.downcase[0..1]) || FactoryGirl.create(:language, :name => language.downcase.strip, :code => language.downcase[0..1])
     u = User.find_by_name(user) || FactoryGirl.create(:user, :name => user)
     qty.to_i.times do |n|
       FactoryGirl.create(:expression, :language => l, :author => u)
@@ -32,7 +32,7 @@ end
 
 When /^I click on author link within an expression added by (.*)$/ do |author|
   within ('.expression .author') do
-    click_link(author)
+    click_link('by ' + author.to_s)
   end
 end
 

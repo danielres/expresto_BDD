@@ -7,7 +7,6 @@ Then /^I should see "(.*?)"$/ do |arg1|
 end
 
 Then 'show me the page' do
-#   click_link 'fr'
   save_and_open_page
 end
 
