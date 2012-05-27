@@ -2,9 +2,10 @@ require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
 gem 'rails', '3.2.2'
-gem 'sqlite3'
+gem 'sqlite3', :group => :development
+gem 'pg', :group => :production
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  #gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -22,9 +23,10 @@ gem "cucumber-rails", :require => false, :group => [:development, :test]
 gem "database_cleaner"
 
 
-gem "sass", ">= 3.1.12"
-gem "compass", "~> 0.12.1", :group => [:assets]
-gem "compass-rails", "~> 1.0.0", :group => [:assets]
+# gem "sass", ">= 3.1.12"
+# gem "compass", "~> 0.12.1", :group => [:assets]
+gem "sass-rails"
+gem "compass-rails"#, "~> 1.0.0"#, :group => [:assets]
 gem "guard", ">= 0.6.2", :group => :development
 case HOST_OS
   when /darwin/i
@@ -45,3 +47,4 @@ gem "guard-spork", :group => :development
 gem "guard-rspec", ">= 0.4.3", :group => :development
 gem "mocha", :require => false, :group => [:development, :test]
 gem 'launchy', '>= 2.1.0', :group => [:development, :test]
+gem "thin"
