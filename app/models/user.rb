@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :expressions, :foreign_key => 'author_id'
 
   validates :name, :uniqueness => true
+  validates :name, :presence => true
 
   def to_s
     name

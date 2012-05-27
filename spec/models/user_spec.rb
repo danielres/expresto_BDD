@@ -42,6 +42,11 @@ describe User do
     user_with_duplicate_email.should_not be_valid
   end
 
+  it "should require a name" do
+    User.new(@attr.merge(:name => "")).
+    should_not be_valid
+  end
+
   it "should reject duplicate name attribute" do
     u1 = FactoryGirl.create(:user)
     u2 = FactoryGirl.build( :user, :name => u1.name)
