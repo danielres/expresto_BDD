@@ -36,3 +36,12 @@ When /^I click on author link within an expression added by (.*)$/ do |author|
   end
 end
 
+When /^I click on the link to add an expression$/ do
+  click_link('Add an expression')
+end
+
+Then /^I should see the created expression page$/ do
+  page.should have_content("Expression was successfully created.")
+  page.should have_selector(".expression .body")
+  page.should have_selector(".expression .author")
+end

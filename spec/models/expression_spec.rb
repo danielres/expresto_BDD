@@ -36,4 +36,5 @@ describe Expression do
     language = FactoryGirl.build(:language)
     FactoryGirl.build(:expression, :language => language).language.should be(language)
   end
+
 end

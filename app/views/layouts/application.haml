@@ -6,9 +6,25 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    - flash.each do |name, msg|
+      %div{:class => name}
+        = msg
+
+    .menu.userbox
+      %ul
+        - if signed_in?
+          %li= link_to current_user, current_user
+          %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+        - else
+          %li= link_to t(:sign_in),  new_user_session_path
+
     .menu.languages
       %ul
         - @available_languages.each do |l|
           %li= link_to l, :locale => l.code
+
+    .menu.add_expression
+      %ul
+        %li= link_to t(:add_an_expression), new_expression_path
 
     = yield
