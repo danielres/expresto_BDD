@@ -1,3 +1,4 @@
+- page_name = controller_name + '#' + action_name
 !!!
 %html{:lang => locale}
   %head
@@ -8,7 +9,7 @@
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
+        .menus
           = link_to 'Expresto', root_path, :class => :brand
           .menu.userbox.pull-right
             %ul.nav
@@ -27,8 +28,9 @@
         %div{:class => name}
           = msg
 
-      .menu.add_expression.pull-right
-        %ul
-          %li= link_to t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success'
+      - unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
+        .menu.add_expression.pull-right
+          %ul
+            %li= link_to t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success'
 
       = yield
