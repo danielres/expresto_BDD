@@ -26,6 +26,7 @@ gem "database_cleaner"
 # gem "sass", ">= 3.1.12"
 # gem "compass", "~> 0.12.1", :group => [:assets]
 gem "sass-rails"
+gem 'compass_twitter_bootstrap'
 gem "compass-rails"#, "~> 1.0.0"#, :group => [:assets]
 gem "guard", ">= 0.6.2", :group => :development
 case HOST_OS
