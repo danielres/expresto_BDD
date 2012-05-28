@@ -10,4 +10,4 @@ fr:
   expressions_added_by_in: "%{count} expressions en %{language} ajoutées par %{user}"
   by_author: "par %{author}"
   add_an_expression: "Ajouter une expression"
-
+  time_ago: "Depuis %{time}"

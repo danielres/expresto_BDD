@@ -15,3 +15,4 @@
       .body=    link_to expression.body, expression
       - unless hide.include?(:author)
         .author= link_to t('by_author', :author => expression.author ), expression.author
+      .time= t(:time_ago, :time => time_ago_in_words(expression.created_at))
