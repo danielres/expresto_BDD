@@ -2,12 +2,34 @@
 //= require_tree .
 
 //@import compass
-
 @import compass_twitter_bootstrap
 
-body
-  @extend .container
+/* CLASSES */
+.reset-list
+  &, &>li
+    list-style: none
+    padding: 0
+    margin:  0
 
-div
-  background: #eee
-  @extend .span4
+.default-margin-bottom
+  margin-bottom: 20px
+
+/* STYLING */
+h1, h2, h3, h4, h5, h6
+  @extend .default-margin-bottom
+
+.page
+  @extend .container
+  margin-top: 60px
+
+  .menu ul
+    @extend .reset-list
+
+  ul.expressions
+    @extend .reset-list
+    @extend .default-margin-bottom
+    $col: #888
+    border-top: 1px solid $col
+    li
+      border-bottom: 1px solid $col
+      padding: 10px 0

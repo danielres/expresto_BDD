@@ -6,26 +6,29 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to 'Expresto', root_path, :class => :brand
+          .menu.userbox.pull-right
+            %ul.nav
+              - if signed_in?
+                %li= link_to current_user, current_user
+                %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+              - else
+                %li= link_to t(:sign_in),  new_user_session_path
+          .menu.languages
+            %ul.nav
+              - @available_languages.each do |l|
+                %li= link_to l, :locale => l.code
+
     .page
       - flash.each do |name, msg|
         %div{:class => name}
           = msg
 
-      .menu.userbox
+      .menu.add_expression.pull-right
         %ul
-          - if signed_in?
-            %li= link_to current_user, current_user
-            %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
-          - else
-            %li= link_to t(:sign_in),  new_user_session_path
-
-      .menu.languages
-        %ul
-          - @available_languages.each do |l|
-            %li= link_to l, :locale => l.code
-
-      .menu.add_expression
-        %ul
-          %li= link_to t(:add_an_expression), new_expression_path
+          %li= link_to t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success'
 
       = yield
