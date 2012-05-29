@@ -6,7 +6,7 @@ fr:
   english: "Anglais"
   french: "Français"
   home: "accueil"
-  recent expressions: "expressions récentes"
+  recent_expressions_in: "expressions récentes en %{language}"
   expressions_added_by_in: "%{count} expressions en %{language} ajoutées par %{user}"
   by_author: "par %{author}"
   add_an_expression: "Ajouter une expression"
