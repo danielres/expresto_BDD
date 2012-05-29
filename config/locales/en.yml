@@ -11,3 +11,4 @@ en:
   by_author: "by %{author}"
   add_an_expression: "Add an expression"
   time_ago: "%{time} ago"
+  expressions_index: "All expressions"

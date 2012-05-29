@@ -19,3 +19,14 @@ Then /^I should see a "(.*)" link to the page "(.*)"$/ do |text, page_name|
   action      = page_name.split(' ').last
   should have_selector(".#{text.downcase} a")
 end
+
+When /^I click on the "(.*?)" link$/ do |class_name|
+  find("a.#{class_name}").click
+end
+
+Then /^I should see the "(.*)" page$/ do |page_name|
+  controller, action = page_name.split(' ')
+  find('body')['class'].should == [controller,action].join('-')
+  # note for self:
+  # or maybe use this: current_url.should == foo_url(:param => 'value')
+end
