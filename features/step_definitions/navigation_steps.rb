@@ -14,3 +14,8 @@ Then 'show me the page' do
   save_and_open_page
 end
 
+Then /^I should see a "(.*)" link to the page "(.*)"$/ do |text, page_name|
+  controller  = page_name.split(' ').first
+  action      = page_name.split(' ').last
+  should have_selector(".#{text.downcase} a")
+end

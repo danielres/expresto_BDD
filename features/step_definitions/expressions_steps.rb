@@ -10,7 +10,7 @@ Then /^I should see a link list with (\d+) expressions in (.*) with most recent 
     "li[@class='expression' and @lang='#{code}']//a[contains(@href,'/#{code}/expressions/')]",
     :count => amount
   )
-  find('ul.expressions li:first-child')['id'].scan(/\d/).join().to_i.should > find('ul.expressions li:last-child')['id'].scan(/\d/).join().to_i
+  all(:xpath,"//li[@class='expression']").first['id'].scan(/\d/).join().to_i.should > all(:xpath,"//li[@class='expression']").last['id'].scan(/\d/).join().to_i
 end
 
 When /^I click on the first recent expression$/ do
