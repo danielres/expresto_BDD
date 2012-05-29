@@ -30,3 +30,7 @@ Then /^I should see the "(.*)" page$/ do |page_name|
   # note for self:
   # or maybe use this: current_url.should == foo_url(:param => 'value')
 end
+
+Then /^I should see a paginator$/ do
+  page.should have_selector('div.pagination>ul')
+end

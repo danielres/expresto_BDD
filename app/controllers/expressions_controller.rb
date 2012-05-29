@@ -12,5 +12,8 @@ class ExpressionsController < InheritedResources::Base
     @expression.language = Language.find_by_code(locale)
     create!
   end
-
+  def index
+    @expressions_count = Expression.in(params[:locale]).count
+    @expressions = Expression.in(params[:locale]).page(params[:page]).per(10)
+  end
 end

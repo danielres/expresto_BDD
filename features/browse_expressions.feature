@@ -11,10 +11,12 @@ Feature: browse expressions
     Given 25 english expressions by Jane
     Given 32 french expressions by Françoise
 
-  Scenario: Visit the expressions page
+  Scenario: See all expressions with pagination on expressions page
 
     Given I am not logged in
     When  I go to the homepage
     And   I set language to english
     And   I click on the "expressions_index" link
     Then  I should see the "expressions index" page
+    Then  I should see "40 expressions in english"
+    And   I should see a paginator
