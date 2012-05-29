@@ -14,10 +14,10 @@
           .menu.userbox.pull-right
             %ul.nav
               - if signed_in?
-                %li= link_to current_user, current_user
-                %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+                %li.current_user= link_to current_user, current_user
+                %li.sign_out= link_to t(:sign_out), destroy_user_session_path, :method => :delete
               - else
-                %li= link_to t(:sign_in),  new_user_session_path
+                %li.sign_in= link_to t(:sign_in),  new_user_session_path
           .menu.languages
             %ul.nav
               - @available_languages.each do |l|

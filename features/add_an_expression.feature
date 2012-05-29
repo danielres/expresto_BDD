@@ -26,3 +26,11 @@ Feature: add an expression
     Then  I should see "This is my cool new expression"
     But   I should not see "It means that it's cool"
 
+  Scenario: Add an expression as an anonymous user
+
+    Given I am not logged in
+    When  I go to the homepage
+    And   I set language to english
+    Then  I should see "Sign In"
+    And   I click on the link to add an expression
+    Then  I should see "Please sign in or create an account to add an expression"
