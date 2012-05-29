@@ -6,8 +6,8 @@ Feature: display recent expressions
 
   Background:
     Given languages French, English are available
-    Given 2 english expressions by Mike
-    And   3 french  expressions by Mike
+    Given 12 english expressions by Mike
+    And   13 french  expressions by Mike
 
   Scenario: See most recent expressions on homepage
 
@@ -16,11 +16,11 @@ Feature: display recent expressions
 
     When I set language to english
     Then I should see "Recent expressions"
-    And  I should see a link list with 2 expressions in English
+    And  I should see a link list with 10 expressions in English with most recent on top
 
     When I set language to french
     Then I should see "Expressions récentes"
-    And  I should see a link list with 3 expressions in French
+    And  I should see a link list with 10 expressions in French with most recent on top
 
   Scenario: Display expressions details
 
