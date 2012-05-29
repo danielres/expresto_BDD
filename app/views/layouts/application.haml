@@ -25,7 +25,7 @@
 
     .page
       - flash.each do |name, msg|
-        %div{:class => name}
+        %div{:class => "alert alert-#{name}"}
           = msg
 
       - unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
