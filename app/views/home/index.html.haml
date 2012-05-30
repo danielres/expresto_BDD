@@ -3,4 +3,4 @@
 
 %ul.expressions
   = render @expressions, :state => :list_item
-  %li.more= link_to t(:expressions_index), expressions_path, :class => 'btn btn-primary expressions_index'
+  %li.more= link_to icon(:search)+t(:expressions_index), expressions_path, :class => 'btn btn-primary expressions_index'
