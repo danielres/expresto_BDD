@@ -19,4 +19,4 @@ Feature: browse expressions
     And   I click on the "expressions_index" link
     Then  I should see the "expressions index" page
     Then  I should see "40 expressions in english"
-    And   I should see a paginator
+    And   I should see 1 paginator

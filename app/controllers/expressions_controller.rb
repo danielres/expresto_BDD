@@ -13,7 +13,7 @@ class ExpressionsController < InheritedResources::Base
     create!
   end
   def index
-    @expressions_count = Expression.in(params[:locale]).count
-    @expressions = Expression.in(params[:locale]).page(params[:page]).per(10)
+    @expressions_count = Expression.in(params[:locale]).recent().count
+    @expressions = Expression.in(params[:locale]).recent().page(params[:page]).per(10)
   end
 end

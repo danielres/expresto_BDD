@@ -6,5 +6,8 @@
     = content_tag_for :div, user do
       %h2.name= user.name
       - user.expressions.group_by(&:language).each do |language, expressions|
+        - expressions_paginated = Kaminari.paginate_array(expressions).page(params["page_#{language.code}".to_sym]).per(10)
         %h3.expressions= t(:expressions_added_by_in, :count => expressions.count, :user => user.name, :language => t(language.name.downcase))
-        %ul.expressions= render expressions, :state => :list_item, :hide => [:author]
+        = paginate(expressions_paginated, :param_name => "page_#{language.code}")
+        = raw page_entries_info expressions_paginated
+        %ul.expressions= render expressions_paginated, :state => :list_item, :hide => [:author]

@@ -31,6 +31,6 @@ Then /^I should see the "(.*)" page$/ do |page_name|
   # or maybe use this: current_url.should == foo_url(:param => 'value')
 end
 
-Then /^I should see a paginator$/ do
-  page.should have_selector('div.pagination>ul')
+Then /^I should see (.*) (?:paginator|paginators)$/ do |qty|
+  page.should have_selector('div.pagination>ul', :count => qty)
 end
