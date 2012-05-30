@@ -21,7 +21,8 @@
           .menu.languages
             %ul.nav
               - @available_languages.each do |l|
-                %li= link_to l, :locale => l.code
+                - active = :active if (l.code.to_s == locale.to_s)
+                %li{:class => active}= link_to l, :locale => l.code
 
     .page
       - flash.each do |name, msg|
