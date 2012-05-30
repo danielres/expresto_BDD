@@ -46,3 +46,11 @@ Then /^I should see the created expression page$/ do
   page.should have_selector(".expression .body")
   page.should have_selector(".expression .author")
 end
+
+Then /^I should see the last created expression$/ do
+  page.should have_selector("#expression_#{Expression.unscoped.find(:last).id}")
+end
+
+Then /^I should not see the first created expression$/ do
+  page.should_not have_selector("#expression_#{Expression.unscoped.find(:first).id}")
+end

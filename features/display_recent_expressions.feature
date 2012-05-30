@@ -16,12 +16,12 @@ Feature: display recent expressions
 
     When I set language to english
     Then I should see "Recent expressions"
-    And  I should see a link list with 10 expressions in English with most recent on top
+    And  I should see a link list with 10 expressions in English
     And  I should see a "More" link to the page "expressions index"
 
     When I set language to french
     Then I should see "Expressions récentes"
-    And  I should see a link list with 10 expressions in French with most recent on top
+    And  I should see a link list with 10 expressions in French
     And  I should see a "More" link to the page "expressions index"
 
   Scenario: Display expressions details
