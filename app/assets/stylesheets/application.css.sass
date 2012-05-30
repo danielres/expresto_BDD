@@ -1,8 +1,7 @@
 //= require_self
 //= require_tree .
 
-//@import compass
-
+// @import compass
 @import compass_twitter_bootstrap_awesome
 
 /* CLASSES */
@@ -41,3 +40,7 @@ div.page
         border-bottom: 0
 .alert-notice
   @extend .alert-info
+
+$shadow: -2px 2px 5px #aaa
+.btn, .navbar
+  +bootstrap-box-shadow($shadow)
