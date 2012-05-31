@@ -5,12 +5,6 @@
 @import compass_twitter_bootstrap_awesome
 
 /* CLASSES */
-.reset-list
-  &, &>li
-    list-style: none
-    padding: 0
-    margin:  0
-
 .default-margin-bottom
   margin-bottom: 20px
 
@@ -26,10 +20,10 @@ div.page
   margin-top: 60px
 
   .menu ul
-    @extend .reset-list
+    @extend .unstyled
 
   ul.expressions
-    @extend .reset-list
+    @extend .unstyled
     @extend .default-margin-bottom
     $col: #ddd
     border-top: 1px solid $col
