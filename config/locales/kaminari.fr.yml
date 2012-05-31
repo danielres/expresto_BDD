@@ -6,15 +6,8 @@ fr:
       previous: "&lsaquo; Précédent"
       next: "Suivant &rsaquo;"
       truncate: "..."
-  helpers:
-    page_entries_info:
-      one_page:
-        display_entries:
-          zero: "Aucun(e) %{entry_name} trouvé(e)"
-          one: "Affichage d'<b>1</b> %{entry_name}"
-          other: "Affichage de <b>tou(te)s %{count}</b> les %{entry_name}"
-      more_pages:
-        display_entries: "Affichage de %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> au total"
-
-
-
+  entries_info:
+    no_entries: "Aucun(e) %{entry_name} trouvé(e)"
+    have_1_entry: "Affichage d'<b>1</b> %{entry_name}"
+    have_less_than_2: "Affichage des <b>%{total_count}</b> %{entry_name}"
+    page_of_entries: "Affichage des %{entry_name} <b>%{start}&nbsp;-&nbsp;%{end}</b> d'un total de <b>%{total}</b>"

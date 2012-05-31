@@ -49,4 +49,4 @@ gem "guard-rspec", ">= 0.4.3", :group => :development
 gem "mocha", :require => false, :group => [:development, :test]
 gem 'launchy', '>= 2.1.0', :group => [:development, :test]
 gem "thin"
-gem 'kaminari'
+gem 'kaminari', :git => 'https://github.com/ricardohsd/kaminari.git' , :ref => '0277c92'
