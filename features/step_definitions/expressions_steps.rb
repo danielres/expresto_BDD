@@ -6,11 +6,11 @@ end
 
 Then /^I should see a link list with (\d+) expressions in (.*)$/ do |amount, language|
   code = language.downcase[0..1]
-  find('ul.expressions').should have_xpath(
-    "li[@class='expression' and @lang='#{code}']//a[contains(@href,'/#{code}/expressions/')]",
+  find('ul.expressions').should have_selector(
+    "li.expression[lang='#{code}'] a[href^='/#{code}/expressions/']",
     :count => amount
   )
-  all(:xpath,"//li[@class='expression']").first['id'].scan(/\d/).join().to_i.should > all(:xpath,"//li[@class='expression']").last['id'].scan(/\d/).join().to_i
+  all("li.expression").first['id'].scan(/\d/).join().to_i.should > all("li.expression").last['id'].scan(/\d/).join().to_i
 end
 
 When /^I click on the first recent expression$/ do

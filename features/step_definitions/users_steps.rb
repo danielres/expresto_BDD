@@ -4,7 +4,7 @@ end
 
 Then /^I should see (\d+) (.*) expressions added by (.*)/ do |qty, language, author|
   code = language.downcase[0..1]
-  find('div.user').should have_xpath("ul[@class='expressions']/li[@class='expression' and @lang='#{code}']", :count => qty)
+  find('div.user').should have_selector("ul.expressions>li.expression[lang='#{code}']", :count => qty)
 end
 
 When /^I go to (.*)'s page$/ do |name|
