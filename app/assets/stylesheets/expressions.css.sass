@@ -1,3 +1,28 @@
 // Place all the styles related to the expressions controller here.
 // They will automatically be included in application.css.
 // You can use Sass here: http://sass-lang.com/
+.expression.individual
+  blockquote
+    border-left: 0
+    quotes: "“" "”" "‘" "’"
+    small
+      text-align: right
+    h2
+      margin: 75px 0
+      text-align: center
+      font-weight: normal
+      &:before, &:after
+        font-size: 2.5em
+        line-height: 0.1em
+        vertical-align: -0.6em
+        font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif
+      &:before
+        content: open-quote
+        vertical-align: -0.4em
+        margin-right: 0.5em
+        color: #cddae0
+      &:after
+        content: close-quote
+        color: inherit
+        margin-left: 0.5em
+        color: #cddae0
