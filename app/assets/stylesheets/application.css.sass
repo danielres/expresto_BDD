@@ -1,7 +1,7 @@
 //= require_self
 //= require_tree .
 
-// @import compass
+//@import compass
 @import compass_twitter_bootstrap_awesome
 
 /* CLASSES */
@@ -20,25 +20,22 @@ h1, h2, h3, h4, h5, h6
 div.page
   @extend .container-fluid
   margin-top: 60px
+  div.main
+    overflow: hidden
+    padding-right: 10px
 
   .menu ul
     @extend .unstyled
 
   ul.expressions
     @extend .unstyled
-    @extend .default-margin-bottom
-    $col: #ddd
-    border-top: 1px solid $col
-    li
-      border-bottom: 1px solid $col
-      padding: 10px 0
-      &.more
-        border-bottom: 0
+
 .alert-notice
   @extend .alert-info
 
-$shadow: -2px 2px 5px #aaa
 .btn, .navbar
+  $shadow: -2px 2px 5px #aaa
   +bootstrap-box-shadow($shadow)
+
 .page_entries_info
   @extend .faded

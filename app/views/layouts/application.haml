@@ -33,5 +33,5 @@
         .menu.add_expression.pull-right
           %ul
             %li= link_to icon(:plus_sign)+t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success'
-
-      = yield
+      .main
+        = yield
