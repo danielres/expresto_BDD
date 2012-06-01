@@ -3,6 +3,8 @@
 
 fr:
   hello: "Bonjour monde"
+  sign_in:  "Connexion"
+  sign_out: "Déconnexion"
   english: "Anglais"
   french: "Français"
   home: "accueil"

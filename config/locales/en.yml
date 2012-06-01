@@ -3,6 +3,8 @@
 
 en:
   hello: "Hello world"
+  sign_in:  "Sign in"
+  sign_out: "Sign out"
   english: "english"
   french: "french"
   home: "homepage"
