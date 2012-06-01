@@ -11,6 +11,12 @@ describe Expression do
     FactoryGirl.create(:expression).should be_valid
   end
 
+  it "should properly reformat its body upon save" do
+    f = FactoryGirl.create(:expression, :body => '   body    to clean  ')
+    f.save
+    f.body.should == 'Body to clean.'
+  end
+
   it "should require a body" do
     FactoryGirl.build(:expression, :body => '').should_not be_valid
   end
