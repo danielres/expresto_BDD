@@ -4,7 +4,7 @@
 - case state
 
   - when :individual
-    = content_tag_for :div, expression, :lang => expression.language.code do
+    = content_tag_for :div, expression, :lang => expression.language.code, :class => state do
       %blockquote.body
         %h2= expression.body
         - author_link= link_to(expression.author, expression.author)
@@ -13,7 +13,7 @@
       .meaning= expression.meaning
 
   - when :list_item
-    = content_tag_for :li,  expression, :lang => expression.language.code do
+    = content_tag_for :li,  expression, :lang => expression.language.code, :class => state do
       %blockquote.body
         = link_to expression.body, expression
         - unless hide.include?(:author)
