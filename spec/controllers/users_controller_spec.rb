@@ -8,17 +8,17 @@ describe UsersController do
   end
 
   describe "GET 'show'" do
-    
+
     it "should be successful" do
-      get :show, :id => @user.id
+      visit user_path(@user)
       response.should be_success
     end
-    
+
     it "should find the right user" do
-      get :show, :id => @user.id
+      get :show, :id => @user.id, :locale => :en
       assigns(:user).should == @user
     end
-    
+
   end
 
 end
