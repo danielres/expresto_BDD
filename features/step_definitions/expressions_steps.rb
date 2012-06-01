@@ -33,7 +33,7 @@ end
 
 When /^I click on author link within an expression added by (.*)$/ do |author|
   within ('.expression .author') do
-    click_link('by ' + author.to_s)
+    click_link(author.to_s)
   end
 end
 

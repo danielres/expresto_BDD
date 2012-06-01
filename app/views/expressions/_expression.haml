@@ -5,14 +5,20 @@
 
   - when :individual
     = content_tag_for :div, expression, :lang => expression.language.code do
-      .body=    expression.body
+      %blockquote.body
+        %h2= expression.body
+        - author_link= link_to(expression.author, expression.author)
+        - time_ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
+        %small.author=raw t(:added_ago_by, :author => author_link, :ago => time_ago)
       .meaning= expression.meaning
-      - unless hide.include?(:author)
-        .author= link_to t('by_author', :author => expression.author ), expression.author
 
   - when :list_item
     = content_tag_for :li,  expression, :lang => expression.language.code do
-      .body=    link_to expression.body, expression
-      - unless hide.include?(:author)
-        .author= link_to t('by_author', :author => expression.author ), expression.author
-      .time= t(:time_ago, :time => time_ago_in_words(expression.created_at))
+      %blockquote.body
+        = link_to expression.body, expression
+        - unless hide.include?(:author)
+          - author_link= link_to(expression.author, expression.author)
+          - time_ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
+          %small.author=raw t(:added_ago_by, :author => author_link, :ago => time_ago)
+
+
