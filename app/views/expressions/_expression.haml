@@ -1,5 +1,9 @@
 - state ||= :individual
-- hide  ||= []
+
+- added_by_ago = capture do
+  %small
+    %span.author=raw t(:added_by, :author => link_to_unless(current_page?(user_path(a=expression.author)), a, a))
+    %span.ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
 
 - case state
 
@@ -7,18 +11,11 @@
     = content_tag_for :div, expression, :lang => expression.language.code, :class => state do
       %blockquote.body
         %h2= expression.body
-        - author_link= link_to(expression.author, expression.author)
-        - time_ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
-        %small.author=raw t(:added_ago_by, :author => author_link, :ago => time_ago)
+        = added_by_ago
       .meaning= expression.meaning
 
   - when :list_item
     = content_tag_for :li,  expression, :lang => expression.language.code, :class => state do
       %blockquote.body
         = link_to expression.body, expression
-        - unless hide.include?(:author)
-          - author_link= link_to(expression.author, expression.author)
-          - time_ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
-          %small.author=raw t(:added_ago_by, :author => author_link, :ago => time_ago)
-
-
+        = added_by_ago
