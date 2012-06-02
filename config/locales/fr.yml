@@ -13,6 +13,6 @@ fr:
   qty_expressions_in: "%{qty} expressions en %{language}"
   expressions_added_by_in: "%{count} expressions en %{language} ajoutées par %{user}"
   added_by: "Ajouté par %{author}"
-  add_an_expression: "Ajouter une expression"
+  add_an_idiomatic_expression: "Ajouter une expression idiomatique"
   time_ago: "il y a %{time}"
   expressions_index: "Toutes les expressions"

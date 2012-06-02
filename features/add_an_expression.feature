@@ -13,7 +13,7 @@ Feature: add an expression
     And   I set language to english
     And   I click on the link to add an expression
 
-    When  I fill in "Body" with "This is my cool new expression"
+    When  I fill in "Expression" with "This is my cool new expression"
     And   I fill in "Meaning" with "It means that it's cool"
     And   I click the submit button
 
