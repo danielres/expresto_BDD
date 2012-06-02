@@ -1,13 +1,11 @@
 %h2= t(:add_an_idiomatic_expression)
 
 = simple_form_for expression, :html => {:class => 'form-horizontal' } do |f|
+
   .control-group
     %label.control-label= t(:choose_expression_language)
-    .controls
-      - @available_languages.each do |l|
-        - active = 'active' if locale.to_s == l.code
-        = link_to l.code, :locale=>l.code, :class => active
+    .custom-controls= render 'languages/list', :custom_class => 'nav-pills'
 
-  = f.input :body,    :input_html => { :rows => 4 }
-  = f.input :meaning, :input_html => { :rows => 4 }
+  = f.input :body,    :input_html => { :rows => 4 }, :placeholder => t(:expression_body)
+  = f.input :meaning, :input_html => { :rows => 4 }, :placeholder => t(:expression_meaning)
   .form-actions= f.button :submit

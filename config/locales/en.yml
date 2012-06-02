@@ -16,3 +16,6 @@ en:
   add_an_idiomatic_expression: "Add an idiomatic expression"
   time_ago: "%{time} ago"
   expressions_index: "All expressions"
+  choose_expression_language: "Language of the new expression"
+  expression_body: 'Your idiomatic expression'
+  expression_meaning: 'What does this expression mean ?'
