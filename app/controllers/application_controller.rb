@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
 private
 
   def set_current_locale
-    I18n::locale = params[:locale] || :en
-    redirect_to(:controller => controller_name, :action => action_name) if params[:locale].blank?
+    I18n::locale = params[:locale]
   end
 
   def load_available_languages
