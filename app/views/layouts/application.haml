@@ -10,25 +10,35 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .menus
-          = link_to 'Expresto', root_path, :class => :brand
           .menu.userbox.pull-right
             %ul.nav
               - if signed_in?
                 %li.current_user= link_to icon(:user)+current_user, current_user
                 %li.sign_out= link_to icon(:signout)+t(:sign_out), destroy_user_session_path, :method => :delete
               - else
-                %li.sign_in= link_to icon(:signin)+t(:sign_in),  new_user_session_path
+                %li.sign_in= link_to icon(:signin)+t(:sign_in), new_user_session_path
+
+          = link_to image_tag('expresto-logo.png'), root_path, :class => :brand
+          %h2= t(:tagline, :default => :home).capitalize
           .menu.languages
             = render 'languages/list'
+          -# unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
+          .menu.add_expression.pull-right
+            %ul
+              %li= link_to icon(:plus_sign)+t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success'
 
     .page
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name}"}
           = msg
 
-      - unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
-        .menu.add_expression.pull-right
-          %ul
-            %li= link_to icon(:plus_sign)+t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success'
       .main
         = yield
+    %footer
+      .container
+        %ul.nav
+          -# %li.copyright
+            Copyright &copy; 2012 Pixarea studio
+          %li.last.creation
+            Created by
+            %a{:href => "http://studio.pixarea.com"} Pixarea studio

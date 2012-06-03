@@ -1,6 +1,6 @@
-%h2= t(:home).capitalize
+
 %h3= t(:recent_expressions_in, :language => t(Language.find_by_code(locale).name)).capitalize
 
 %ul.expressions
   = render @expressions, :state => :list_item
-  %li.more= link_to icon(:search)+t(:expressions_index), expressions_path, :class => 'btn btn-primary expressions_index'
+  %li= link_to icon(:search)+t(:all_expressions_in, :language => t(Language.find_by_code(locale).name)), expressions_path, :class => 'btn btn-primary expressions_index'

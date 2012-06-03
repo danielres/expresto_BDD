@@ -8,14 +8,16 @@ en:
   english: "english"
   french: "french"
   home: "homepage"
+  tagline: "Killer idiomatic expressions in all languages"
   expressions: "Expressions"
   recent_expressions_in: "recent expressions in %{language}"
   qty_expressions_in: "%{qty} expressions in %{language}"
   expressions_added_by_in: "%{count} expressions added by %{user} in %{language}"
   added_by: "Added by %{author}"
+  add_an_expression: "Add an expression"
   add_an_idiomatic_expression: "Add an idiomatic expression"
   time_ago: "%{time} ago"
-  expressions_index: "All expressions"
+  all_expressions_in: "All expressions in %{language}"
   choose_expression_language: "Language of the new expression"
   expression_body: 'Your idiomatic expression'
   expression_meaning: 'What does this expression mean ?'

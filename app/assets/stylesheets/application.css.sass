@@ -16,23 +16,41 @@
 
 
 /* STYLING */
+html, body, div.page
+  min-height: 100%
+
+
+div.page
+  padding-bottom: 20px
+  position: relative
+  body.home-index &:after
+    content: '.'
+    display: block
+    width: 250px
+    height: 250px
+    position: absolute
+    right: 0px
+    bottom: -23px
+    background: url('/assets/ggar-characters-x250.png') no-repeat right bottom
+
 h1, h2, h3, h4, h5, h6
   @extend .default-margin-bottom
-h1, h2
+
+h1, h2, h3
   font-weight: normal
 
 .menus
-  @extend .container-fluid
+  @extend .container
+
+.menu ul
+  @extend .unstyled
 
 div.page
-  @extend .container-fluid
-  margin-top: 60px
+  @extend .container
+  margin-top: 150px
   div.main
     overflow: hidden
     padding-right: 10px
-
-  .menu ul
-    @extend .unstyled
 
   ul.expressions
     @extend .unstyled
@@ -40,8 +58,11 @@ div.page
 .alert-notice
   @extend .alert-info
 
-.btn, .navbar
+.navbar, .btn
   $shadow: -2px 2px 5px #aaa
+  +bootstrap-box-shadow($shadow)
+.navbar .btn
+  $shadow: -2px 2px 5px black
   +bootstrap-box-shadow($shadow)
 
 .page_entries_info
@@ -49,3 +70,53 @@ div.page
   @extend .default-margin-bottom
 
 
+.navbar-inner
+  a.brand
+    padding-left: 0
+    padding-bottom: 5px
+    margin-left: -12px
+  h2
+    font-size: 16px
+    margin-top: 20px
+    margin-bottom: 10px
+    line-height: 1
+
+  .menu.languages
+    position: relative
+    top: 3px
+    ul.nav
+      @extend .nav-pills
+
+footer
+  border-top: 1px solid #666
+  padding-top: 15px
+  $c1: #eee
+  $c2: white
+  background: $c1
+  +bootstrap-gradient-vertical($c1, $c2)
+  min-height: 100px
+
+  li.creation
+    a
+      display: inline
+      font-weight: bold
+      &:link,
+      &:visited
+        padding-left: 3px
+        margin-right: 20px
+        color: gray
+      &:hover
+        color: #005580
+      &:after
+        $size: 16px
+        width: $size + 4px
+        content: '.'
+        text-indent: -999px
+        text-decoration: none
+        overflow: hidden
+        background: url('/assets/pixarea-picto-small-24.png') no-repeat right bottom
+        height: $size
+        display: inline-block
+        position: absolute
+      &:hover:after
+        background-position: right top

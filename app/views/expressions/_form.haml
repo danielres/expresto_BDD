@@ -2,10 +2,11 @@
 
 = simple_form_for expression, :html => {:class => 'form-horizontal' } do |f|
 
+  = f.input :body,    :input_html => { :rows => 4 }, :placeholder => t(:expression_body)
+  = f.input :meaning, :input_html => { :rows => 4 }, :placeholder => t(:expression_meaning)
+
   .control-group
     %label.control-label= t(:choose_expression_language)
     .custom-controls= render 'languages/list', :custom_class => 'nav-pills'
 
-  = f.input :body,    :input_html => { :rows => 4 }, :placeholder => t(:expression_body)
-  = f.input :meaning, :input_html => { :rows => 4 }, :placeholder => t(:expression_meaning)
   .form-actions= f.button :submit

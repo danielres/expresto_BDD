@@ -8,14 +8,16 @@ fr:
   english: "Anglais"
   french: "Français"
   home: "accueil"
+  tagline: "Vos expressions qui déchirent, dans toutes les langues"
   expressions: "Expressions"
   recent_expressions_in: "expressions récentes en %{language}"
   qty_expressions_in: "%{qty} expressions en %{language}"
   expressions_added_by_in: "%{count} expressions en %{language} ajoutées par %{user}"
   added_by: "Ajouté par %{author}"
+  add_an_expression: "Ajouter une expression"
   add_an_idiomatic_expression: "Ajouter une expression idiomatique"
   time_ago: "il y a %{time}"
-  expressions_index: "Toutes les expressions"
+  all_expressions_in: "Toutes les expressions en %{language}"
   choose_expression_language: "Langue de l'expression"
   expression_body: 'Votre expression idiomatique'
   expression_meaning: 'Que veut dire cette expression ?"'
