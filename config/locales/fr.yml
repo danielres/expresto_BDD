@@ -10,7 +10,7 @@ fr:
   home: "accueil"
   tagline: "Vos expressions qui déchirent, dans toutes les langues"
   expressions: "Expressions"
-  recent_expressions_in: "expressions récentes en %{language}"
+  recent_expressions_in: "dernières expressions ajoutées en %{language}"
   qty_expressions_in: "%{qty} expressions en %{language}"
   expressions_added_by_in: "%{count} expressions en %{language} ajoutées par %{user}"
   added_by: "Ajouté par %{author}"

@@ -10,7 +10,7 @@ en:
   home: "homepage"
   tagline: "Killer idiomatic expressions in all languages"
   expressions: "Expressions"
-  recent_expressions_in: "recent expressions in %{language}"
+  recent_expressions_in: "last added expressions in %{language}"
   qty_expressions_in: "%{qty} expressions in %{language}"
   expressions_added_by_in: "%{count} expressions added by %{user} in %{language}"
   added_by: "Added by %{author}"
