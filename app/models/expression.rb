@@ -13,7 +13,7 @@ private
   def clean_and_format_body
     self.body = self.body.strip.squeeze(' ')
     self.body = self.body + '.' unless self.body.last == '.'
-    self.body = self.body.sub(/^(\w)/) {|s| s.capitalize}
+    self.body = self.body.sub(/^(\w)/) {|s| s.upcase_international}
   end
 
 end

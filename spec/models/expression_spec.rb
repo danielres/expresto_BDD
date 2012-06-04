@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Expression do
@@ -15,6 +16,9 @@ describe Expression do
     f = FactoryGirl.create(:expression, :body => '   body    to clean  ')
     f.save
     f.body.should == 'Body to clean.'
+    f = FactoryGirl.create(:expression, :body => 'être une expression')
+    f.save
+    f.body.should == 'Être une expression.'
   end
 
   it "should require a body" do
