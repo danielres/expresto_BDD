@@ -16,6 +16,13 @@ fr:
     error_notification:
       default_message: "Des erreurs ont été trouvées:"
     labels:
+      user:
+        email: Email
+        name: Nom
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        remember_me: "Se rappeler de moi"
+
       expression:
         body: 'Expression'
         meaning: 'Signification'

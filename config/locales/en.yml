@@ -5,6 +5,7 @@ en:
   hello: "Hello world"
   sign_in:  "Sign in"
   sign_out: "Sign out"
+  sign_up: "Create an account"
   english: "english"
   french: "french"
   home: "homepage"
@@ -21,3 +22,5 @@ en:
   choose_expression_language: "Language of the new expression"
   expression_body: 'Your idiomatic expression'
   expression_meaning: 'What does this expression mean ?'
+  forgot_your_password_?: "Forgot your password ?"
+  send_me_reset_password_instructions: "Send me reset password instructions"
