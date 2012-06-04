@@ -1,1 +1,15 @@
 = render @expression
+
+= todo do
+  .expressions
+    %h3 Similar expressions
+    %ul.expressions
+      - Expression.limit(5).each do |e|
+        %li= render e, :state => :list_item
+
+= todo do
+  .expressions
+    %h3= "Other expressions by #{@expression.author}"
+    %ul.expressions
+      - Expression.limit(5).each do |e|
+        %li= render e, :state => :list_item
