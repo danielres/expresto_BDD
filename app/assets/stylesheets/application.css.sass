@@ -2,8 +2,18 @@
 //= require_tree .
 
 @import compass_twitter_bootstrap_awesome
+/* DEVELOPMENT HELPERS ********************/
+div.todo
+  margin: 10px 0
+  padding: 4px 10px 10px
+  background: transparentize(#882222, 0.95)
+  &:before
+    content: 'TODO :'
+    color: transparentize(#882222, 0.3)
+    font-size: 10px/10px
 
-/* GLOBAL */
+/* GLOBAL *********************************/
+
 h1, h2, h3, h4, h5, h6
   @extend .default-margin-bottom
 h1, h2, h3
