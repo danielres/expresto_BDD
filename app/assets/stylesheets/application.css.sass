@@ -3,89 +3,107 @@
 
 @import compass_twitter_bootstrap_awesome
 
-/* CLASSES */
+/* GLOBAL */
+h1, h2, h3, h4, h5, h6
+  @extend .default-margin-bottom
+h1, h2, h3
+  font-weight: normal
+
+/* GENERIC & EXTENDABLE CLASSES ***********/
+
 .default-margin-bottom
   margin-bottom: 20px
 .faded
   color: #999999
+.alert-notice
+  @extend .alert-info
 
-/* FORMS CUSTOMIZATION*/
-.custom-controls
-  @extend .controls
-  padding-top: 5px
-
-
-/* STYLING */
-html, body, div.page
-  min-height: 100%
-
-
-div.page
-  padding-bottom: 20px
-  position: relative
-  body.home-index &:after
-    content: '.'
-    display: block
-    width: 250px
-    height: 250px
-    position: absolute
-    right: 0px
-    bottom: -23px
-    background: url('/assets/ggar-characters-x250.png') no-repeat right bottom
-
-h1, h2, h3, h4, h5, h6
-  @extend .default-margin-bottom
-
-h1, h2, h3
-  font-weight: normal
-
-.menus
-  @extend .container
-
-.menu ul
-  @extend .unstyled
+/* PAGE SETUP *****************************/
 
 div.page
   @extend .container
   margin-top: 150px
-  div.main
-    overflow: hidden
-    padding-right: 10px
+  padding-bottom: 20px
+  position: relative
 
-  ul.expressions
-    @extend .unstyled
+/* PAGE COMPONENTS ************************/
 
-.alert-notice
-  @extend .alert-info
-
-.navbar, .btn
-  $shadow: -2px 2px 5px #aaa
-  +bootstrap-box-shadow($shadow)
-.navbar .btn
-  $shadow: -2px 2px 5px black
-  +bootstrap-box-shadow($shadow)
-
+// pagination
 .page_entries_info
   @extend .faded
   @extend .default-margin-bottom
 
+// forms
+.custom-controls
+  @extend .controls
+  padding-top: 5px
+
+/* MENUS **********************************/
+
+.menus
+  @extend .container
+  li
+    margin-right: 7px
+.menu ul
+  @extend .unstyled
+.menu.add_expression
+  clear: right
+.menu.languages
+  li
+    a:link, a:visited
+      background-color: #333
+    a:hover
+      background-color: #444
+  position: relative
+  top: 3px
+  ul.nav
+    @extend .nav-pills
+.menu.pages
+  position: fixed
+  padding-left: 119px
+  margin-top: -64px
+  z-index: 10000
+  .nav-tabs
+    border-bottom: none
+  li
+    margin-right: 7px
+  a
+    padding: 6px 11px 5px
+    background: #333
+    color: gray
+    border: none
+    &:hover
+      background: #444
+      color: white
+  li.active a:link,
+  li.active a:visited
+    color: #333
+    background: white
+    border: none
+    padding-bottom: 9px
+
+/* NAVBAR *********************************/
+
+.navbar
+  $shadow: -2px 2px 3px #aaa
+  +bootstrap-box-shadow($shadow)
 
 .navbar-inner
-  a.brand
-    padding-left: 0
-    padding-bottom: 5px
-    margin-left: -12px
-  h2
+  .tagline
     font-size: 16px
     margin-top: 20px
-    margin-bottom: 10px
+    margin-bottom: 4px
     line-height: 1
+  a.brand
+    padding-left: 0
+    padding-bottom: 0px
+    margin-left: -12px
+  .btn
+    $shadow: -2px 2px 5px black
+    +bootstrap-box-shadow($shadow)
 
-  .menu.languages
-    position: relative
-    top: 3px
-    ul.nav
-      @extend .nav-pills
+
+/* FOOTER *********************************/
 
 footer
   border-top: 1px solid #666
@@ -120,3 +138,21 @@ footer
         position: absolute
       &:hover:after
         background-position: right top
+
+/* SPECIFIC STUFF *************************/
+
+//
+ul.expressions
+  @extend .unstyled
+
+// homepage
+div.page
+  body.home-index &:after
+    content: '.'
+    display: block
+    width: 250px
+    height: 250px
+    position: absolute
+    right: 0px
+    bottom: -23px
+    background: url('/assets/ggar-characters-x250.png') no-repeat right bottom

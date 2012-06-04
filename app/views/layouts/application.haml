@@ -1,4 +1,8 @@
-- page_name = controller_name + '#' + action_name
+:ruby
+  pages = {
+    :home => root_path(:locale => locale),
+    :expressions => expressions_path
+  }
 !!!
 %html{:lang => locale}
   %head
@@ -10,6 +14,7 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .menus
+
           .menu.userbox.pull-right
             %ul.nav
               - if signed_in?
@@ -19,9 +24,12 @@
                 %li.sign_in= link_to icon(:signin)+t(:sign_in), new_user_session_path
 
           = link_to image_tag('expresto-logo.png'), root_path, :class => :brand
-          %h2= t(:tagline, :default => :home).capitalize
+          %h2.tagline= t(:tagline, :default => :home).capitalize
+
           .menu.languages
             = render 'languages/list'
+          -# unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
+
           -# unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
           .menu.add_expression.pull-right
             %ul
@@ -31,6 +39,12 @@
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name}"}
           = msg
+
+      .menu.pages
+        %ul.nav.nav-tabs
+          - pages.each do |name, path|
+            %li{ :class => ( :active if current_page?(path) ) }
+              = link_to t(name).capitalize, path
 
       .main
         = yield
@@ -42,3 +56,4 @@
           %li.last.creation
             Created by
             %a{:href => "http://studio.pixarea.com"} Pixarea studio
+
