@@ -9,7 +9,7 @@ en:
   english: "english"
   french: "french"
   home: "homepage"
-  tagline: "Killer idiomatic expressions in all languages"
+  tagline: "Your killer idiomatic expressions, in all languages"
   expressions: "Expressions"
   recent_expressions_in: "last added expressions in %{language}"
   qty_expressions_in: "%{qty} expressions in %{language}"
