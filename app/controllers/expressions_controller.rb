@@ -3,7 +3,7 @@ class ExpressionsController < InheritedResources::Base
     if signed_in?
       new!
     else
-      redirect_to(new_user_session_path, :notice =>"Please sign in or create an account to add an expression")
+      redirect_to(new_user_session_path, :notice => t(:sign_in_or_sign_up_to_create_expression))
     end
   end
   def create

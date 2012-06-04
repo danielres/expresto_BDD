@@ -6,6 +6,7 @@ en:
   sign_in:  "Sign in"
   sign_out: "Sign out"
   sign_up: "Create an account"
+  sign_in_or_sign_up_to_create_expression: "Please sign in or create an account to add an expression"
   english: "english"
   french: "french"
   home: "homepage"
