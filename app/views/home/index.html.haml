@@ -1,6 +1,32 @@
 
-%h3= t(:recent_expressions_in, :language => t(Language.find_by_code(locale).name)).capitalize
+.row
+  .span6
+    %h3= t(:recent_expressions_in, :language => t(Language.find_by_code(locale).name)).capitalize
 
-%ul.expressions
-  = render @expressions, :state => :list_item
-  %li= link_to icon(:search)+t(:all_expressions_in, :language => t(Language.find_by_code(locale).name)), expressions_path, :class => 'btn btn-primary expressions_index'
+    %ul.expressions
+      = render @expressions, :state => :list_item
+      %li= link_to icon(:search)+t(:all_expressions_in, :language => t(Language.find_by_code(locale).name)), expressions_path, :class => 'btn btn-primary expressions_index'
+
+  .span6
+
+    = todo do
+
+      .tag-cloud
+        %h3 Tag cloud
+        %p [TAG CLOUD]
+
+    = todo do
+      .comments
+        %h3 Recent comments
+        %ul.unstyled
+          - 5.times do |n|
+            %li.comment
+              .body
+                Lorem ipsum dolor sit amet !
+              %small
+                %span.author=raw t(:added_by, :author => link_to(User.first))
+                %span.ago= t(:time_ago, :time => time_ago_in_words(Time.now))
+              %hr
+
+
+

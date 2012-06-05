@@ -1,14 +1,60 @@
+= todo do
+  .share{style: 'text-align: right'}
+    - attributes = { style: 'font-size: 48px; line-height: 48px' }
+    = link_to '#', attributes do
+      %i.icon-facebook-sign
+    = link_to '#', attributes do
+      %i.icon-twitter-sign{ style: 'color: #82e1ff'}
+
+
 = render @expression
 
+
+
 = todo do
+
   .row
-    .span6
+
+    .span4
+      %h3 Meaning
+      %ul.unstyled
+        - 3.times do |n|
+          %li.meaning
+            .body
+              Lorem ipsum dolor sit amet !
+            %small
+              %span.author=raw t(:added_by, :author => link_to(User.first))
+              %span.ago= t(:time_ago, :time => time_ago_in_words(Time.now))
+            %hr
+      =link_to '#modal-tags', :class => 'btn btn-info', :'data-toggle' => :modal do
+        %i.icon-plus
+        contribute a meaning
+
+    .span4
+      %h3 Examples
+      %ul.unstyled
+        - 2.times do |n|
+          %li.example
+            .body
+              blablabla
+              =@expression
+              blablabla.
+            %small
+              %span.author=raw t(:added_by, :author => link_to(User.first))
+              %span.ago= t(:time_ago, :time => time_ago_in_words(Time.now))
+            %hr
+
+      =link_to '#modal-tags', :class => 'btn btn-info', :'data-toggle' => :modal do
+        %i.icon-plus
+        contribute an example
+
+    .span4
       .tags
         %h3 Tags
         %p
           Yours:
           - 5.times do |n|
-            %span.label.label-info= link_to "mytag #{n}", '', :style => 'color: inherit'
+            %span.label.label-info{:style=>'line-height: 2'}= link_to "mytag #{n}", '', :style => 'color: inherit'
         %p
           Others:
           - 15.times do |n|
@@ -17,6 +63,12 @@
           =link_to '#modal-tags', :class => 'btn btn-info', :'data-toggle' => :modal do
             %i.icon-tags
             add some tags
+
+
+
+= todo do
+
+  .row
 
     .span5
       .comments

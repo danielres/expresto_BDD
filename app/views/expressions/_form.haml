@@ -1,12 +1,46 @@
-%h2= t(:add_an_idiomatic_expression)
+.gridSystem
+  .row
+    = simple_form_for expression, :html => {:class => 'form-horizontal' } do |f|
 
-= simple_form_for expression, :html => {:class => 'form-horizontal' } do |f|
+      %h2= t(:add_an_idiomatic_expression)
 
-  = f.input :body,    :input_html => { :rows => 4 }, :placeholder => t(:expression_body)
-  = f.input :meaning, :input_html => { :rows => 4 }, :placeholder => t(:expression_meaning)
+      .row
 
-  .control-group
-    %label.control-label= t(:choose_expression_language)
-    .custom-controls= render 'languages/list', :custom_class => 'nav-pills'
+        .span6
+          = f.input :body,    :input_html => { :rows => 4 }, :placeholder => t(:expression_body)
+          = f.input :meaning, :input_html => { :rows => 4 }, :placeholder => t(:expression_meaning)
 
-  .form-actions= f.button :submit
+          = todo do
+            .control-group
+              %label.control-label Source
+              .custom-controls
+                %ul.nav
+                  %li
+                    %input{:type=>:radio,:name=>:source}= " I am the author"
+                  %li
+                    %input{:type=>:radio,:name=>:source}= " I don't remember"
+                  %li
+                    %input{:type=>:radio,:name=>:source}= " A web page"
+                  %li
+                    %input{:type=>:radio,:name=>:source}= " Other"
+
+
+          .control-group
+            %label.control-label= t(:choose_expression_language)
+            .custom-controls= render 'languages/list', :custom_class => 'nav-pills'
+
+
+        .span6
+          = todo do
+            %h3 Please read these instructions before clicking submit
+            %p An idiomatic expression, or idiom is...
+            %p
+              - 5.times do
+                Lorem Ipsum dolor sit amet
+            %h4 Some examples
+            %p
+              - 5.times do
+                Lorem Ipsum dolor sit amet
+      .row
+        .form-actions= f.button :submit
+

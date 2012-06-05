@@ -42,6 +42,10 @@
             - active = current_page?(path) || (name.to_s == controller_name)
             %li{ :class => ( :active if active ) }
               = link_to t(name).capitalize, path
+          = todo :li do
+            = link_to 'Requests', '#'
+          = todo :li do
+            = link_to 'Tags', '#'
 
       - flash.each do |name, msg|
         %div{:class => "alert alert-#{name}"}

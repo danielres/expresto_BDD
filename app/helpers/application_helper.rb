@@ -1,5 +1,6 @@
 module ApplicationHelper
-  def todo( wrapper=:div, &block )
-    content_tag(wrapper, capture(&block), :class => :todo) if ( Rails.env == 'development' )
+  def todo( wrapper=:div, attributes={}, &block )
+    attributes[:class] = attributes[:class].to_s + ' todo'
+    content_tag(wrapper, capture(&block), attributes) if ( Rails.env == 'development' )
   end
 end
