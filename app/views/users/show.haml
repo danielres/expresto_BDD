@@ -4,7 +4,23 @@
 
   .span6
     = todo do
-      %h3 Badges
-      %p Lorem Ipsum
+      .badges
+        %h3 Badges
+        %span.badge
+          %i.icon-certificate
+          bar
+        %span.badge.badge-success
+          %i.icon.icon-certificate
+          foo
+        %span.badge.badge-warning
+          %i.icon.icon-certificate
+          baz
+        %span.badge.badge-important
+          %i.icon.icon-certificate
+          nono
 
+    = todo do
+      .comments
+        %h3= "Recent comments by #{@user}"
+        = render 'todo/comments_list'
 
