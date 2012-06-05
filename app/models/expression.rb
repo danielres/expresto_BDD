@@ -8,6 +8,10 @@ class Expression < ActiveRecord::Base
   scope :recent, lambda{ |qty=nil|order('created_at DESC').limit(qty) }
   scope :in,     lambda{ |locale| where(:language_id => Language.find_by_code(locale).id) }
 
+  def to_s
+    body
+  end
+
 private
 
   def clean_and_format_body
@@ -15,5 +19,7 @@ private
     self.body = self.body + '.' unless self.body.last == '.'
     self.body = self.body.sub(/^(\w)/) {|s| s.upcase_international}
   end
+
+
 
 end
