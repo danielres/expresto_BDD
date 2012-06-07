@@ -17,7 +17,7 @@ end
 Then /^I should see a "(.*)" link to the page "(.*)"$/ do |text, page_name|
   controller  = page_name.split(' ').first
   action      = page_name.split(' ').last
-  should have_selector(".#{text.downcase} a")
+  should have_selector("a.#{text.downcase}")
 end
 
 When /^I click on the "(.*?)" link$/ do |class_name|
