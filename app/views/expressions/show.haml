@@ -9,7 +9,25 @@
 
 = render @expression
 
+= todo do
 
+  .row
+
+    .span1.offset10
+
+      .manage
+        %ul.unstyled
+          %li
+            = link_to '', :class => 'btn' do
+              %i.icon-pencil
+              Edit
+
+    .span1
+      %ul.unstyled
+        %li
+          = link_to '#modal-flag', :class => 'btn btn-warning', :'data-toggle' => :modal do
+            %i.icon-flag
+            Report
 
 = todo do
 
@@ -18,11 +36,11 @@
     .span4
       %h3 Meaning
       %ul.unstyled
-        - 3.times do |n|
+        - 2.times do |n|
           %li.meaning
             .body
-              Lorem ipsum dolor sit amet !
-            %small
+              Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.
+            %small.muted
               %span.author=raw t(:added_by, :author => link_to(User.first))
               %span.ago= t(:time_ago, :time => time_ago_in_words(Time.now))
             %hr
@@ -39,7 +57,7 @@
               blablabla
               =@expression
               blablabla.
-            %small
+            %small.muted
               %span.author=raw t(:added_by, :author => link_to(User.first))
               %span.ago= t(:time_ago, :time => time_ago_in_words(Time.now))
             %hr
@@ -47,6 +65,14 @@
       =link_to '#modal-tags', :class => 'btn btn-info', :'data-toggle' => :modal do
         %i.icon-plus
         contribute an example
+
+    .span4
+      %h3 Source
+
+
+= todo do
+
+  .row
 
     .span4
       .tags
@@ -64,13 +90,7 @@
             %i.icon-tags
             add some tags
 
-
-
-= todo do
-
-  .row
-
-    .span5
+    .span4
       .comments
         %h3 Comments
         = render 'todo/comments_list'
@@ -79,6 +99,16 @@
             = link_to '', :class => 'btn btn-info' do
               %i.icon-comment
               add comment
+
+    .span4
+      .illustrations
+        %h3 Illustrations
+
+        %ul.unstyled
+          %li
+            = link_to '', :class => 'btn btn-info' do
+              %i.icon-plus
+              contribute with an drawing or a picture
 
 = todo do
 
@@ -114,26 +144,6 @@
       %input{:type=>:button,:value=>:cancel, :'data-dismiss'=> :modal,}
 
 
-  .row
-
-    .span6
-
-
-      .manage
-        %h3 Manage
-        %ul.unstyled
-          %li
-            = link_to '', :class => 'btn btn-inverse' do
-              %i.icon-pencil
-              edit
-
-    .span5
-      %h3 Report
-      %ul.unstyled
-        %li
-          = link_to '#modal-flag', :class => 'btn btn-warning', :'data-toggle' => :modal do
-            %i.icon-flag
-            Report
 = todo do
   .row
 
