@@ -1,6 +1,8 @@
-Given /^languages French, English are available$/ do
-  Language.create code: 'en', name: 'English'
-  Language.create code: 'fr', name: 'French'
+Given /^language[s]? (.*) (?:is|are) available$/ do |languages|
+  languages = languages.split(', ')
+  languages.each do |l|
+      Language.create code: l[0..1].downcase, name: l.strip
+  end
 end
 
 Then /^I should see language menu with (.*)$/ do |arg1|
