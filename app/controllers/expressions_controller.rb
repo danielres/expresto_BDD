@@ -1,13 +1,16 @@
 class ExpressionsController < InheritedResources::Base
   load_and_authorize_resource
 
-  def new
-    if signed_in?
-      new!
-    else
-      redirect_to(new_user_session_path, :notice => t(:sign_in_or_sign_up_to_create_expression))
+  rescue_from CanCan::AccessDenied do |exception|
+    case action_name
+      when 'new'
+        msg = { :notice => t(:sign_in_or_sign_up_to_create_expression) }
+      else
+        msg = { :alert  => exception.message }
     end
+    redirect_to new_user_session_path, msg
   end
+
   def create
     @expression = Expression.new(params[:expression])
     @expression.author = current_user
