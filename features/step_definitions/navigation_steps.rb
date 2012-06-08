@@ -20,8 +20,16 @@ Then /^I should see a "(.*)" link to the page "(.*)"$/ do |text, page_name|
   should have_selector("a.#{text.downcase}")
 end
 
+When /^I should not see a "(.*?)" link$/ do |cssclass|
+  page.should_not have_selector("a.#{cssclass.downcase}")
+end
+
 When /^I click on the "(.*?)" link$/ do |class_name|
   find("a.#{class_name}").click
+end
+
+When /^I click on "(.*)"$/ do |text|
+  click_on text
 end
 
 Then /^I should see the "(.*)" page$/ do |page_name|

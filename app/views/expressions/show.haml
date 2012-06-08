@@ -9,25 +9,21 @@
 
 = render @expression
 
-= todo do
 
-  .row
 
-    .span1.offset10
+.row
 
-      .manage
-        %ul.unstyled
-          %li
-            = link_to '', :class => 'btn' do
-              %i.icon-pencil
-              Edit
+  .span12
+    .pull-right
+      - if (defined? current_user.role) && (current_user.role == 'admin')
+        = link_to expression_path(@expression), :method => :delete, :class => 'destroy-expression btn btn-danger', :confirm => 'Are you sure ?'  do
+          %i.icon-remove-sign
 
-    .span1
-      %ul.unstyled
-        %li
-          = link_to '#modal-flag', :class => 'btn btn-warning', :'data-toggle' => :modal do
-            %i.icon-flag
-            Report
+      = todo :span do
+        = link_to '', :class => 'edit-expression btn' do
+          %i.icon-pencil
+        = link_to '#modal-flag', :class => 'flag-expression btn btn-warning', :'data-toggle' => :modal do
+          %i.icon-flag
 
 = todo do
 

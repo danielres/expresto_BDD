@@ -54,3 +54,8 @@ end
 Then /^I should not see the first created expression$/ do
   page.should_not have_selector("#expression_#{Expression.unscoped.find(:first).id}")
 end
+
+Given /^an expression in (.*) with body "(.*?)"$/ do |language,body|
+  code = language[0..1].downcase
+  FactoryGirl.create(:expression, :body => body, :language => Language.find_by_code(code))
+end

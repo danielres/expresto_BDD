@@ -22,6 +22,19 @@ Given /^I am logged in as '(.*)'$/ do |name|
   find('.userbox').should have_content(name)
 end
 
+Given /^I am logged in as an administrator$/ do
+  name = 'adminuser'
+  email = "#{name.downcase}@test.com"
+  password = "please"
+  u = FactoryGirl.create(:user, :name => name, :email => email, :password => password, :role => 'admin' )
+  visit new_user_session_path
+  click_link 'en'
+  fill_in("Email", :with => email )
+  fill_in("user_password", :with => password )
+  click_button("Sign in")
+  find('.userbox').should have_content(name)
+end
+
 When /^I go to my user page$/ do
   within ".userbox" do
     find("a[@href^='/en/users/']").click

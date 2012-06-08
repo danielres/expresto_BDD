@@ -9,16 +9,23 @@ Feature: manage expressions
 
   Scenario: Remove an expression as an administrator
 
-    Given I am logged in as an administrator
-    Given an expression with body "Appropriate expression."
-    Given an expression with body "Inappropriate expression."
+    Given an expression in english with body "Appropriate expression."
+    Given an expression in english with body "Inappropriate expression."
 
     When  I go to the homepage
-    Then  I should see "Appropriate expression"
-    And   I should see "Inappropriate expression"
+    And   I set language to english
+
+    Then  I should see "Appropriate expression."
+    And   I should see "Inappropriate expression."
     When  I click on "Inappropriate expression."
-    And   I click on "Delete"
-    Then  I should see "Appropriate expression"
-    But   I should not see "Inappropriate expression"
+    Then  I should not see a "destroy-expression" link
+
+    Given I am logged in as an administrator
+    When  I go to the homepage
+    And   I click on "Inappropriate expression."
+    And   I click on the "destroy-expression" link
+    Then  I should see "Appropriate expression."
+    But   I should not see "Inappropriate expression."
+
 
 
