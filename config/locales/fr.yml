@@ -25,3 +25,4 @@ fr:
   expression_meaning: 'Que veut dire cette expression ?"'
   forgot_your_password_?: "Mot de passe oublié ?"
   send_me_reset_password_instructions: "Recevoir les instructions pour changer de mot de passe"
+  are_you_sure: "Êtes-vous sûr(e) de vouloir faire ceci ?"

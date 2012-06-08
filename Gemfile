@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem "haml", ">= 3.1.4"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "devise", ">= 2.1.0.rc"
+gem 'cancan'
 gem "inherited_resources"
 gem "simple_form"
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]

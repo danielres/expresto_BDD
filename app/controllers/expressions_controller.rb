@@ -1,4 +1,6 @@
 class ExpressionsController < InheritedResources::Base
+  load_and_authorize_resource
+
   def new
     if signed_in?
       new!
