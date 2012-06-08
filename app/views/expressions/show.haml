@@ -19,11 +19,12 @@
         = link_to expression_path(@expression), :method => :delete, :class => 'destroy-expression btn btn-danger', :confirm => t(:are_you_sure, :default => 'Are you sure ?')  do
           %i.icon-remove-sign
           %span.hidden Remove this expression
+      - if can? :update, @expression
+        = link_to edit_expression_path(@expression), :class => 'update-expression btn' do
+          %i.icon-pencil
+          %span.hidden Update this expression
 
       = todo :span do
-        = link_to '', :class => 'edit-expression btn' do
-          %i.icon-pencil
-          %span.hidden Edit this expression
         = link_to '#modal-flag', :class => 'flag-expression btn btn-warning', :'data-toggle' => :modal do
           %i.icon-flag
           %span.hidden Flag this expression

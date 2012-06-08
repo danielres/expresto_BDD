@@ -18,6 +18,7 @@ fr:
   added_by: "Ajouté par %{author}"
   add_an_expression: "Ajouter une expression"
   add_an_idiomatic_expression: "Ajouter une expression idiomatique"
+  update_idiomatic_expression: "Corriger cette expression idiomatique"
   time_ago: "il y a %{time}"
   all_expressions_in: "Toutes les expressions en %{language}"
   choose_expression_language: "Langue de l'expression"

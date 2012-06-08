@@ -18,6 +18,7 @@ en:
   added_by: "Added by %{author}"
   add_an_expression: "Add an expression"
   add_an_idiomatic_expression: "Add an idiomatic expression"
+  update_idiomatic_expression: "Update this idiomatic expression"
   time_ago: "%{time} ago"
   all_expressions_in: "All expressions in %{language}"
   choose_expression_language: "Language of the new expression"

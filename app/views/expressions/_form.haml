@@ -2,8 +2,6 @@
   .row
     = simple_form_for expression, :html => {:class => 'form-horizontal' } do |f|
 
-      %h2= t(:add_an_idiomatic_expression)
-
       .row
 
         .span6
@@ -24,10 +22,10 @@
                   %li
                     %input{:type=>:radio,:name=>:source}= " Other"
 
-
-          .control-group
-            %label.control-label= t(:choose_expression_language)
-            .custom-controls= render 'languages/list', :custom_class => 'nav-pills'
+          - if action_name == 'new'
+            .control-group
+              %label.control-label= t(:choose_expression_language)
+              .custom-controls= render 'languages/list', :custom_class => 'nav-pills'
 
 
         .span6

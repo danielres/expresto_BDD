@@ -12,6 +12,7 @@ class Ability
         can :read, :all
       end
 
+
       unless user.new_record?
         can :create, Expression
       end
