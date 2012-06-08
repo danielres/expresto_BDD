@@ -1,5 +1,5 @@
 When /^I go to the homepage$/ do
-  visit root_path
+  visit '/en'
 end
 
 Then /^I should see "(.*?)"$/ do |arg1|
