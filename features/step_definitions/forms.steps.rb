@@ -5,3 +5,7 @@ end
 When /^I click the submit button$/ do
   find("input[type=submit]").click
 end
+
+When /^I choose "(.*?)"$/ do |target|
+  choose(target)
+end

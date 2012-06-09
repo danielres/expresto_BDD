@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608114240) do
+ActiveRecord::Schema.define(:version => 20120609134405) do
 
   create_table "expressions", :force => true do |t|
-    t.text      "body"
-    t.text      "meaning"
-    t.integer   "author_id"
-    t.integer   "language_id"
-    t.timestamp "created_at",  :null => false
-    t.timestamp "updated_at",  :null => false
+    t.text     "body"
+    t.text     "meaning"
+    t.integer  "author_id"
+    t.integer  "language_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "source_type"
+    t.text     "source_info"
   end
 
   create_table "languages", :force => true do |t|

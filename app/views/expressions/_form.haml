@@ -5,30 +5,10 @@
       .row
 
         .span6
-          = f.input :body,    :input_html => { :rows => 4 }, :placeholder => t(:expression_body)
-          = f.input :meaning, :input_html => { :rows => 4 }, :placeholder => t(:expression_meaning)
-
-          = todo do
-            .control-group
-              %label.control-label Source
-              .custom-controls
-                %ul.nav
-                  %li
-                    %input{:type=>:radio,:name=>:source}= "I am the author"
-                  %li
-                    %input{:type=>:radio,:name=>:source}= "Someone I know"
-                  %li
-                    %input{:type=>:radio,:name=>:source}= "A fiction (film, book, video game, ...)"
-                  %li
-                    %input{:type=>:radio,:name=>:source}= "Internet (web page, forum, ...)"
-                  %li
-                    %input{:type=>:radio,:name=>:source}= "I can't remember"
-                  %li
-                    %input{:type=>:radio,:name=>:source}= "Other"
-            .control-group
-              %label.control-label Source info
-              .controls
-                %textarea#expression_source_info.text.optional{ name: "expression[source_info]", cols: 40, rows: 4}
+          = f.input :body,        :input_html => { :rows => 4 }, :placeholder => t(:expression_body)
+          = f.input :meaning,     :input_html => { :rows => 4 }, :placeholder => t(:expression_meaning)
+          = f.input :source_type, :collection => Expression::SOURCE_TYPES, :as => :radio_buttons, :label => :source
+          = f.input :source_info, :input_html => { :rows => 4 }, :placeholder => t(:source_info, :default=>'')
 
           - if action_name == 'new'
             .control-group
