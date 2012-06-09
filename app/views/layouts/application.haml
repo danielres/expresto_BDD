@@ -55,10 +55,12 @@
         = yield
     %footer
       .container
-        %ul.nav
+        %ul
           -# %li.copyright
             Copyright &copy; 2012 Pixarea studio
-          %li.last.creation
+          = todo :li, :class => :about do
+            = link_to t(:about), ''
+          %li.creation
             Created by
             %a{:href => "http://studio.pixarea.com"} Pixarea studio
 

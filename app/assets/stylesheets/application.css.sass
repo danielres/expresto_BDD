@@ -129,6 +129,16 @@ footer
   +bootstrap-gradient-vertical($c1, $c2)
   min-height: 100px
 
+  ul
+    +horizontal-list
+    +float(right)
+  li
+    &:after
+      content: '|'
+      padding: 0 20px
+    &:last-child:after
+      content: ''
+      padding: 0
   li.creation
     a
       display: inline
