@@ -14,13 +14,21 @@
               .custom-controls
                 %ul.nav
                   %li
-                    %input{:type=>:radio,:name=>:source}= " I am the author"
+                    %input{:type=>:radio,:name=>:source}= "I am the author"
                   %li
-                    %input{:type=>:radio,:name=>:source}= " I don't remember"
+                    %input{:type=>:radio,:name=>:source}= "Someone I know"
                   %li
-                    %input{:type=>:radio,:name=>:source}= " A web page"
+                    %input{:type=>:radio,:name=>:source}= "A fiction (film, book, video game, ...)"
                   %li
-                    %input{:type=>:radio,:name=>:source}= " Other"
+                    %input{:type=>:radio,:name=>:source}= "Internet (web page, forum, ...)"
+                  %li
+                    %input{:type=>:radio,:name=>:source}= "I can't remember"
+                  %li
+                    %input{:type=>:radio,:name=>:source}= "Other"
+            .control-group
+              %label.control-label Source info
+              .controls
+                %textarea#expression_source_info.text.optional{ name: "expression[source_info]", cols: 40, rows: 4}
 
           - if action_name == 'new'
             .control-group
