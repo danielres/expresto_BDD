@@ -15,6 +15,14 @@ class Ability
 
       unless user.new_record?
         can :create, Expression
+        can :update, Expression do |expression|
+          ( expression.author_id == user.id ) &&
+          ( expression.created_at > Time.now - 30.minutes)
+        end
+        can :destroy,Expression do |expression|
+          ( expression.author_id == user.id ) &&
+          ( expression.created_at > Time.now - 10.minutes)
+        end
       end
 
     #

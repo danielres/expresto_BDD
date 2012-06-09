@@ -55,7 +55,13 @@ Then /^I should not see the first created expression$/ do
   page.should_not have_selector("#expression_#{Expression.unscoped.find(:first).id}")
 end
 
-Given /^an expression in (.*) with body "(.*?)"$/ do |language,body|
+Given /^an expression in (.*) by (.*) with body "(.*?)"$/ do |language,author,body|
+  code = language[0..1].downcase
+  author = User.find_by_name(author) || FactoryGirl.create(:user, :name => author)
+  FactoryGirl.create(:expression, :body => body, :language => Language.find_by_code(code), :author => author)
+end
+
+Given /^an expression in ([a-zA-Z]*) with body "(.*?)"$/ do |language,body|
   code = language[0..1].downcase
   FactoryGirl.create(:expression, :body => body, :language => Language.find_by_code(code))
 end
