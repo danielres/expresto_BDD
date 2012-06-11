@@ -12,7 +12,8 @@
       %blockquote.body
         %h2= expression.body
         = added_by_ago
-      .meaning= expression.meaning
+
+
 
   - when :list_item
     = content_tag_for :li,  expression, :lang => expression.language.code, :class => state do

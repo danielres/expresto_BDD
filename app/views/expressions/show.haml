@@ -1,16 +1,3 @@
-= todo do
-  .share{style: 'text-align: right'}
-    - attributes = { style: 'font-size: 48px; line-height: 48px' }
-    = link_to '#', attributes do
-      %i.icon-facebook-sign
-    = link_to '#', attributes do
-      %i.icon-twitter-sign{ style: 'color: #82e1ff'}
-
-
-= render @expression
-
-
-
 .row
 
   .span12
@@ -23,30 +10,51 @@
         = link_to edit_expression_path(@expression), :class => 'update-expression btn' do
           %i.icon-pencil
           %span.hidden Update this expression
-
       = todo :span do
         = link_to '#modal-flag', :class => 'flag-expression btn btn-warning', :'data-toggle' => :modal do
           %i.icon-flag
           %span.hidden Flag this expression
 
+    = todo do
+      .share
+        - attributes = { style: 'font-size: 48px; line-height: 48px' }
+        = link_to '#', attributes do
+          %i.icon-facebook-sign
+        = link_to '#', attributes do
+          %i.icon-twitter-sign{ style: 'color: #82e1ff'}
+
+
+= render @expression
+
+
+
+
+.row
+
+  .span4
+    .meaning
+      %h3= t('activerecord.attributes.expression.meaning').capitalize
+      = simple_format @expression.meaning
+
+  .span4
+    .source
+      %h3= t('activerecord.attributes.expression.source_type').capitalize
+      = t("expression.source_type.#{@expression.source_type}") unless @expression.source_type == 'other'
+      = simple_format @expression.source_info unless @expression.source_info.blank?
+
+  .span4
+    .expressions
+      %h3= t(:other_expressions_by, :author => link_to(a=@expression.author,a), :default => "Other expressions by #{@expression.author}").html_safe
+      %ul.expressions
+        - Expression.where(:author_id => @expression.author.id).limit(3).each do |e|
+          %li= render e, :state => :list_item
+
+
 = todo do
 
   .row
 
-    .span4
-      %h3 Meaning
-      %ul.unstyled
-        - 2.times do |n|
-          %li.meaning
-            .body
-              Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.
-            %small.muted
-              %span.author=raw t(:added_by, :author => link_to(User.first))
-              %span.ago= t(:time_ago, :time => time_ago_in_words(Time.now))
-            %hr
-      =link_to '#modal-tags', :class => 'btn btn-info', :'data-toggle' => :modal do
-        %i.icon-plus
-        contribute a meaning
+
 
     .span4
       %h3 Examples
@@ -66,8 +74,6 @@
         %i.icon-plus
         contribute an example
 
-    .span4
-      %h3 Source
 
 
 = todo do
@@ -154,9 +160,3 @@
           - Expression.limit(5).each do |e|
             %li= render e, :state => :list_item
 
-    .span5
-      .expressions
-        %h3= "Other expressions by #{@expression.author}"
-        %ul.expressions
-          - Expression.where(:author_id => @expression.author.id).limit(3).each do |e|
-            %li= render e, :state => :list_item

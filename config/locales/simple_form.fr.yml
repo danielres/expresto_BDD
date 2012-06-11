@@ -15,6 +15,7 @@ fr:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Des erreurs ont été trouvées:"
+
     labels:
       user:
         email: Email
@@ -23,20 +24,28 @@ fr:
         password_confirmation: Confirmation du mot de passe
         remember_me: "Se rappeler de moi"
 
-      expression:
-        body: 'Expression'
-        meaning: 'Signification'
     buttons:
-      create: 'Ajouter cette expression'
+      create: Ajouter cette expression
 
-    # Labels and hints examples
-    # labels:
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
+    options:
+      expression:
+        source_type:
+          me: "Je suis l'auteur de cette expression"
+          someone: "Quelqu'un que je connais personnellement"
+          fiction: "Une fiction: un film, livre, jeu, BD, …"
+          internet: "Le net: un site web, forum, …"
+          celebrity: "Une personne connue, une célébrité"
+          private_joke: "Une plaisanterie entre amis"
+          forgotten: "Je ne m'en souviens pas"
+          other: "Autre"
+
+    placeholders:
+      expression:
+        body: Votre expression idiomatique
+        meaning: Que veut dire cette expression ?
+        source_info: Comment est apparue cette expression, ou comment l'avez-vous découverte  ?
+
+    hints:
+      expression:
+        source_info: Faits historiques et anecdotes bienvenus !
+        meaning: En mots très simples

@@ -5,10 +5,10 @@
       .row
 
         .span6
-          = f.input :body,        :input_html => { :rows => 4 }, :placeholder => t(:expression_body)
-          = f.input :meaning,     :input_html => { :rows => 4 }, :placeholder => t(:expression_meaning)
-          = f.input :source_type, :collection => Expression::SOURCE_TYPES, :as => :radio_buttons, :label => :source
-          = f.input :source_info, :input_html => { :rows => 4 }, :placeholder => t(:source_info, :default=>'')
+          = f.input :body,        :as => :string
+          = f.input :meaning,     :as => :string
+          = f.input :source_type, :as => :radio_buttons, :collection => Expression::SOURCE_TYPES
+          = f.input :source_info, :input_html => { :rows => 6, :cols => 40 }
 
           - if action_name == 'new'
             .control-group
@@ -16,7 +16,7 @@
               .custom-controls= render 'languages/list', :custom_class => 'nav-pills'
 
 
-        .span6
+        .span5.offset1
           = todo do
             %h3 Please read these instructions before clicking submit
             %p An idiomatic expression, or idiom is...
@@ -28,5 +28,5 @@
               - 5.times do
                 Lorem Ipsum dolor sit amet
       .row
-        .form-actions= f.button :submit
+        .form-actions= f.button :submit, :class => 'btn btn-primary'
 

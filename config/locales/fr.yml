@@ -22,8 +22,15 @@ fr:
   time_ago: "il y a %{time}"
   all_expressions_in: "Toutes les expressions en %{language}"
   choose_expression_language: "Langue de l'expression"
-  expression_body: 'Votre expression idiomatique'
-  expression_meaning: 'Que veut dire cette expression ?"'
   forgot_your_password_?: "Mot de passe oublié ?"
   send_me_reset_password_instructions: "Recevoir les instructions pour changer de mot de passe"
   are_you_sure: "Êtes-vous sûr(e) de vouloir faire ceci ?"
+  other_expressions_by: "Autres expressions de %{author}"
+
+  activerecord:
+    attributes:
+      expression:
+        body: Expression
+        meaning: Signification
+        source_type: Source
+        source_info: Détails liés à la source

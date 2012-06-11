@@ -25,8 +25,8 @@ describe Expression do
     FactoryGirl.build(:expression, :body => '').should_not be_valid
   end
 
-  it "should not require a meaning" do
-    FactoryGirl.build(:expression, :meaning => '').should be_valid
+  it "should require a meaning" do
+    FactoryGirl.build(:expression, :meaning => '').should_not be_valid
   end
 
    it "should require an author" do

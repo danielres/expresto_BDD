@@ -15,20 +15,37 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Some errors were found, please take a look:"
+
     labels:
+      user:
+        email: Email
+        name: Name
+        password: Password
+        password_confirmation: Password confirmation
+        remember_me: Remember me
+
+    buttons:
+      create: Add this expression
+
+    options:
       expression:
-        body: 'Expression'
-        meaning: 'Meaning'
+        source_type:
+          me: "I'm the author of this expression"
+          someone: "Someone I know"
+          fiction: "A fiction: a film, book, game, comic, …"
+          internet: "Internet: a website, forum, …"
+          celebrity: "A celebrity, a public person"
+          private_joke: "A private joke with friends"
+          forgotten: "I can't remember"
+          other: Other
 
-    # Labels and hints examples
-    # labels:
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
+    placeholders:
+      expression:
+        source_info: How did you discover this expression ?
+        body: Your idiomatic expression
+        meaning: What does this expression mean ?
 
+    hints:
+      expression:
+        source_info: Historic facts and anecdotes are welcome !
+        meaning: With very simple words
