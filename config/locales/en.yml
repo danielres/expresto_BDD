@@ -33,7 +33,8 @@ en:
   send_me_reset_password_instructions: "Send me reset password instructions"
   are_you_sure: "Are you sure ?"
   other_expressions_by: "Other expressions by %{author}"
-
+  pages:
+    about: About
   activerecord:
     attributes:
       expression:

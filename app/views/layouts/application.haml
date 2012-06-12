@@ -56,10 +56,9 @@
     %footer
       .container
         %ul
-          -# %li.copyright
-            Copyright &copy; 2012 Pixarea studio
-          = todo :li, :class => :about do
-            = link_to t(:about), ''
+
+          %li.about
+            = link_to_unless current_page?(about_path), t('pages.about'), about_path
           %li.creation
             Created by
             %a{:href => "http://studio.pixarea.com"} Pixarea studio

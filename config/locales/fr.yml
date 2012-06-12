@@ -33,7 +33,8 @@ fr:
   send_me_reset_password_instructions: "Recevoir les instructions pour changer de mot de passe"
   are_you_sure: "Êtes-vous sûr(e) de vouloir faire ceci ?"
   other_expressions_by: "Autres expressions de %{author}"
-
+  pages:
+    about: À propos
   activerecord:
     attributes:
       expression:

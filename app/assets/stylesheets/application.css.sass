@@ -15,12 +15,18 @@ div.todo
 /* GLOBAL *********************************/
 
 h1, h2, h3, h4, h5, h6
-  @extend .default-margin-bottom
-h1, h2, h3
+  margin-top:    1.2em
+  margin-bottom: 1.2em
+  &.first
+    margin-top: 0
+h1, h2, h3, h4
   font-weight: normal
-
+b,dt
+  color: #666
 /* GENERIC & EXTENDABLE CLASSES ***********/
 
+.default-margin-top
+  margin-bottom: 20px
 .default-margin-bottom
   margin-bottom: 20px
 .faded
