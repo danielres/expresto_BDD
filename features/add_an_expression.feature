@@ -15,8 +15,8 @@ Feature: add an expression
 
     When  I fill in "Expression" with "This is my cool new expression"
     And   I fill in "Meaning" with "It means that it's cool"
-    And   I choose "expression_source_type_other"
-    And   I fill in "Source info" with "A smoking caterpillar said it in my last night's dream."
+    And   I choose "expression_created_by_author_true"
+    And   I fill in "expression_source_info" with "A smoking caterpillar said it in my last night's dream."
     And   I click the submit button
 
     Then  I should see the created expression page
