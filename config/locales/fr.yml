@@ -14,8 +14,15 @@ fr:
   expressions: "Expressions"
   recent_expressions_in: "dernières expressions ajoutées en %{language}"
   qty_expressions_in: "%{qty} expressions en %{language}"
-  expressions_added_by_in: "%{count} expressions en %{language} ajoutées par %{user}"
-  added_by: "Ajouté par %{author}"
+  expressions_added_by_in:
+    one: "%{count} expression en %{language} ajoutée par %{user}"
+    other: "%{count} expressions en %{language} ajoutées par %{user}"
+  info_not_provided_yet: Information non fournie
+  added_by: "Ajoutée par %{author}"
+  created_by: "Créée par %{author}"
+  created_and_added_by: "Créée et ajoutée par %{author}"
+  recently_added_by: "Ajouts récents par %{author}"
+  all_expressions_by: "Toutes les expressions de %{author}"
   add_an_expression: "Ajouter une expression"
   add_an_idiomatic_expression: "Ajouter une expression idiomatique"
   update_idiomatic_expression: "Corriger cette expression idiomatique"

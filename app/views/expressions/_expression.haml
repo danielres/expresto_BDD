@@ -4,6 +4,10 @@
   %small
     %span.author=raw t(:added_by, :author => link_to_unless(current_page?(user_path(a=expression.author)), a, a))
     %span.ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
+- created_and_added_by_ago = capture do
+  %small
+    %span.author=raw t(:created_and_added_by, :author => link_to_unless(current_page?(user_path(a=expression.author)), a, a))
+    %span.ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
 
 - case state
 
@@ -11,7 +15,7 @@
     = content_tag_for :div, expression, :lang => expression.language.code, :class => state do
       %blockquote.body
         %h2= expression.body
-        = added_by_ago
+        = expression.created_by_author == true ? created_and_added_by_ago : added_by_ago
 
 
 
@@ -19,7 +23,7 @@
     = content_tag_for :li,  expression, :lang => expression.language.code, :class => state do
       %blockquote.body
         = link_to expression.body, expression
-        = added_by_ago
+        = expression.created_by_author == true ? created_and_added_by_ago : added_by_ago
         =todo :span, {:class => :muted} do
           %i.icon-comment
           3 comments

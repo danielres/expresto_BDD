@@ -38,16 +38,23 @@
 
   .span4
     .source
-      %h3= t('activerecord.attributes.expression.source_type').capitalize
-      = t("expression.source_type.#{@expression.source_type}") unless @expression.source_type == 'other'
-      = simple_format @expression.source_info unless @expression.source_info.blank?
+      %h3= t('activerecord.attributes.expression.source_info').capitalize
+      - source_contents = capture do
+        - if @expression.created_by_author
+          %p= t(:created_by, :author => link_to(a=@expression.author,a)).html_safe
+          %hr/
+        - if @expression.source_info.present?
+          = simple_format @expression.source_info
+      = source_contents.presence || content_tag(:span, t(:info_not_provided_yet, :default => 'Information not provided yet'), :class => :muted)
 
   .span4
     .expressions
-      %h3= t(:other_expressions_by, :author => link_to(a=@expression.author,a), :default => "Other expressions by #{@expression.author}").html_safe
+      %h3= t(:recently_added_by, :author => link_to(a=@expression.author,a), :default => "Recently added by #{link_to(a=@expression.author,a)}").html_safe
       %ul.expressions
-        - Expression.where(:author_id => @expression.author.id).limit(3).each do |e|
+        - Expression.where(:author_id => @expression.author.id).limit(5).each do |e|
           %li= render e, :state => :list_item
+        %li= link_to icon(:search)+t(:all_expressions_by, :author => @expression.author), @expression.author, :class => 'btn'
+
 
 
 = todo do
