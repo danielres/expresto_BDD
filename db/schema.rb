@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120612113050) do
+ActiveRecord::Schema.define(:version => 20120612210922) do
 
   create_table "expressions", :force => true do |t|
-    t.text     "body"
-    t.text     "meaning"
-    t.integer  "author_id"
-    t.integer  "language_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.string   "source_type"
-    t.text     "source_info"
-    t.boolean  "created_by_author"
+    t.text      "body"
+    t.text      "meaning"
+    t.integer   "author_id"
+    t.integer   "language_id"
+    t.timestamp "created_at",        :null => false
+    t.timestamp "updated_at",        :null => false
+    t.string    "source_type"
+    t.text      "source_info"
+    t.boolean   "created_by_author"
   end
 
   create_table "languages", :force => true do |t|
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20120612113050) do
     t.timestamp "confirmation_sent_at"
     t.string    "unconfirmed_email"
     t.string    "role"
+    t.string    "avatar_type"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

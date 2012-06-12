@@ -23,6 +23,10 @@ class Ability
           ( expression.author_id == user.id ) &&
           ( expression.created_at > Time.now - 10.minutes)
         end
+        can :update,User do |u|
+          user.id == u.id
+        end
+
       end
 
     #

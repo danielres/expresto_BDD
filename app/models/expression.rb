@@ -4,7 +4,7 @@ class Expression < ActiveRecord::Base
 
 #  SOURCE_TYPES = [:me, :someone, :fiction, :celebrity, :private_joke, :internet, :forgotten, :other]
 #   validates_inclusion_of :source_type, :in => SOURCE_TYPES
-
+  AVATAR_TYPES = ['', :identicon, :monsterid, :wavatar, :retro]#, :mm ]
   belongs_to :author, :class_name => 'User'
   belongs_to :language
   default_scope order('created_at DESC')

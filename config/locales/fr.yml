@@ -45,3 +45,8 @@ fr:
   users:
     user:
       user_has_not_added_expressions_yet: "%{user} n'a pas encore ajouté d'expressions."
+      choose_your_avatar: Choisissez votre avatar
+      how_to_add_your_own_photo: "Astuce: comment ajouter votre propre photo"
+      just_create_an_account_at_gravatar: 'Créez simplement un compte sur <a href="http://www.gravatar.com/">Gravatar</a> pour pouvoir associer une image de votre choix à votre adresse mail.'
+      then_come_back_here_and_it_will_be_shown: 'Ensuite revenez ici, et votre image sera disponible dans la liste ci-dessus.'
+      apply: Appliquer

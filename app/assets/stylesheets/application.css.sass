@@ -194,3 +194,16 @@ div.page
     right: 0px
     bottom: -23px
     background: url('/assets/ggar-characters-x250.png') no-repeat right bottom
+
+// avatar
+.avatar
+  +bootstrap-box-shadow(0 0 4px #aaa)
+  border: 0 solid white
+  border-width: 4px 4px 13px
+  margin-left: 20px
+  margin-bottom: 20px
+  +bootstrap-rotate(2deg)
+.avatar-small
+  @extend .avatar
+  border-width: 2px 2px 6px
+  margin-left: 10px

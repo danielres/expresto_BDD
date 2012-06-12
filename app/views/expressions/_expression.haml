@@ -15,6 +15,7 @@
     = content_tag_for :div, expression, :lang => expression.language.code, :class => state do
       %blockquote.body
         %h2= expression.body
+        .pull-right.avatar-small= link_to(avatar_image_for(expression.author, :size => 48 ), expression.author)
         = expression.created_by_author == true ? created_and_added_by_ago : added_by_ago
 
 

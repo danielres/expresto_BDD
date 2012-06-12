@@ -33,6 +33,8 @@ en:
   send_me_reset_password_instructions: "Send me reset password instructions"
   are_you_sure: "Are you sure ?"
   other_expressions_by: "Other expressions by %{author}"
+  apply: Apply
+
   pages:
     about: About
   activerecord:
@@ -45,3 +47,8 @@ en:
   users:
     user:
       user_has_not_added_expressions_yet: "%{user} hasn't contributed any expression yet."
+      choose_your_avatar: Choose your avatar
+      how_to_add_your_own_photo: "Tip: how to add your own photo"
+      just_create_an_account_at_gravatar: 'Just create an account at <a href="http://www.gravatar.com/">Gravatar</a> to associate a picture with your email address.'
+      then_come_back_here_and_it_will_be_shown: 'Then come back here, and it will be shown in the list above.'
+      apply: Apply
