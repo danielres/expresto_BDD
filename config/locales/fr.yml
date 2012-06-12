@@ -42,3 +42,6 @@ fr:
         meaning: Signification
         source_type: Source
         source_info: Source
+  users:
+    user:
+      user_has_not_added_expressions_yet: "%{user} n'a pas encore ajouté d'expressions."
