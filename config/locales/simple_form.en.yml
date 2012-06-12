@@ -17,6 +17,8 @@ en:
       default_message: "Some errors were found, please take a look:"
 
     labels:
+      expression:
+        created_by_author: Are you the author of this expression ?
       user:
         email: Email
         name: Name

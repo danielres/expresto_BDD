@@ -5,9 +5,10 @@
       .row
 
         .span6
-          = f.input :body,        :as => :string
-          = f.input :meaning,     :as => :string
-          = f.input :source_type, :as => :radio_buttons, :collection => Expression::SOURCE_TYPES
+          = f.input :body,              :as => :string
+          = f.input :meaning,           :as => :string
+          -# f.input :source_type,      :as => :radio_buttons, :collection => Expression::SOURCE_TYPES
+          = f.input :created_by_author, :as => :radio_buttons
           = f.input :source_info, :input_html => { :rows => 6, :cols => 40 }
 
           - if action_name == 'new'

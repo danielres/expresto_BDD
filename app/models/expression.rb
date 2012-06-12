@@ -1,8 +1,8 @@
 class Expression < ActiveRecord::Base
   before_save :clean_and_format_body
-  validates :body, :meaning, :author_id, :language_id, :source_type, :presence => true
+  validates :body, :meaning, :author_id, :created_by_author, :language_id, :presence => true
 
-  SOURCE_TYPES = [:me, :someone, :fiction, :celebrity, :private_joke, :internet, :forgotten, :other]
+#  SOURCE_TYPES = [:me, :someone, :fiction, :celebrity, :private_joke, :internet, :forgotten, :other]
 #   validates_inclusion_of :source_type, :in => SOURCE_TYPES
 
   belongs_to :author, :class_name => 'User'

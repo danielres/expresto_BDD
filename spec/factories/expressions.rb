@@ -6,6 +6,7 @@ FactoryGirl.define do
     author
     sequence(:body){|n|"Expression #{n} body"}
     sequence(:meaning){|n|"Expression #{n} meaning"}
-    source_type Expression::SOURCE_TYPES.first
+    #source_type Expression::SOURCE_TYPES.first
+    created_by_author true
   end
 end

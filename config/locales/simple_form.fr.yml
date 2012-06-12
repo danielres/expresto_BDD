@@ -17,6 +17,8 @@ fr:
       default_message: "Des erreurs ont été trouvées:"
 
     labels:
+      expression:
+        created_by_author: Êtes-vous l'auteur de cette expression ?
       user:
         email: Email
         name: Nom
