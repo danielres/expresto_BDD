@@ -9,11 +9,26 @@
 
   .span6
 
+
+    = todo do
+      .news
+        %h3= "What's new ?"
+        %ul.unstyled
+          - 5.times do |n|
+            %li.new
+              %small
+                %span.ago.muted= t(:time_ago, :time => time_ago_in_words(Time.now))
+              .body
+                Lorem ipsum dolor sit amet !
+              %hr
+
+
     = todo do
 
       .tag-cloud
         %h3 Tag cloud
         %p [TAG CLOUD]
+
 
     = todo do
       .comments
