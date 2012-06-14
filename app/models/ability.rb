@@ -10,6 +10,7 @@ class Ability
         can :manage, :all
       else
         can :read, :all
+        cannot :escape_analytics
       end
 
 

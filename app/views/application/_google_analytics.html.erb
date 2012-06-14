@@ -1,4 +1,4 @@
-<% if ENV['RAILS_ENV'] == 'production'  %>
+<% if (ENV['RAILS_ENV'] == 'production') && (cannot? :escape_analytics, current_user)  %>
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
