@@ -19,7 +19,7 @@ end
 
 Then /^I should see the expression page with details and (.*) as author$/ do |author|
   find('div.expression').should have_selector('.body')
-  find('div.expression').should have_selector('.meaning')
+  page.should have_selector('.meaning')
   find('div.expression .author').should have_content(author)
 end
 
