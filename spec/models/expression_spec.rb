@@ -29,9 +29,9 @@ describe Expression do
     FactoryGirl.build(:expression, :meaning => '').should_not be_valid
   end
 
-  it "should require the response to 'created by author'" do
-    FactoryGirl.build(:expression, :created_by_author => '').should_not be_valid
-  end
+#   it "should require the response to 'created by author'" do
+#     FactoryGirl.build(:expression, :created_by_author => '').should_not be_valid
+#   end
 
    it "should require an author" do
      FactoryGirl.build(:expression, :author => nil).should_not be_valid

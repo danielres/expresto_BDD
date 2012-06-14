@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Expression < ActiveRecord::Base
   before_save :clean_and_format_body
   validates :body, :meaning, :author_id,  :language_id, :presence => true
@@ -20,7 +21,7 @@ private
   def clean_and_format_body
     self.body = self.body.strip.squeeze(' ')
     self.body = self.body + '.' unless self.body.last == '.'
-    self.body = self.body.sub(/^(\w)/) {|s| s.upcase_international}
+    self.body = self.body[0].upcase_international + self.body[1..-1]
   end
 
 
