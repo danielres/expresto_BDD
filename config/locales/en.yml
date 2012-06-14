@@ -34,9 +34,13 @@ en:
   are_you_sure: "Are you sure ?"
   other_expressions_by: "Other expressions by %{author}"
   apply: Apply
-
+  news:
+    published_ago: "Since %{time}"
   pages:
     about: About
+    home:
+      news:
+        title: "What's new on Expresto ?"
   activerecord:
     attributes:
       expression:

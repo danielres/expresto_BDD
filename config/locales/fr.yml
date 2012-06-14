@@ -33,8 +33,14 @@ fr:
   send_me_reset_password_instructions: "Recevoir les instructions pour changer de mot de passe"
   are_you_sure: "Êtes-vous sûr(e) de vouloir faire ceci ?"
   other_expressions_by: "Autres expressions de %{author}"
+  apply: Appliquer
+  news:
+    published_ago: "Depuis %{time}"
   pages:
     about: À propos
+    home:
+      news:
+        title: "Quoi de neuf sur Expresto ?"
   activerecord:
     attributes:
       expression:

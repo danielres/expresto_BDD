@@ -9,17 +9,16 @@
 
   .span6
 
-
-    = todo do
+    - if @news.any?
       .news
-        %h3= "What's new ?"
+        %h3= t('pages.home.news.title', :default => "Latest news")
         %ul.unstyled
-          - 5.times do |n|
+          - @news.each do |n|
             %li.new
-              %small
-                %span.ago.muted= t(:time_ago, :time => time_ago_in_words(Time.now))
+            %small
+              %span.published_ago.muted=raw t('news.published_ago', :time => time_ago_in_words(n.published_at))
               .body
-                Lorem ipsum dolor sit amet !
+                = simple_format n.body(locale)
               %hr
 
 

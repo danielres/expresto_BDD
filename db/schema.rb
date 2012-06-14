@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120612210922) do
+ActiveRecord::Schema.define(:version => 20120614222649) do
 
   create_table "expressions", :force => true do |t|
     t.text      "body"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20120612210922) do
     t.string    "name"
     t.timestamp "created_at", :null => false
     t.timestamp "updated_at", :null => false
+  end
+
+  create_table "news", :force => true do |t|
+    t.text     "body_en"
+    t.text     "body_fr"
+    t.integer  "author_id"
+    t.datetime "published_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|
