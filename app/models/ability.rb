@@ -27,7 +27,11 @@ class Ability
         can :update,User do |u|
           user.id == u.id
         end
-
+        can :create, Comment
+        can :destroy,Comment do |comment|
+          ( comment.user_id == user.id ) &&
+          ( comment.created_at > Time.now - 3.minutes)
+        end
       end
 
     #
