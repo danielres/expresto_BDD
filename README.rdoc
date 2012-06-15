@@ -42,7 +42,7 @@ Just make a fork, make your changes, then send me a pull request.
   - Admin interface / edit in place for news (writing news in the console isn't very comfy).
 
 - Monitoring / Perfs
-  - Implement New Relic perf monitoring
+  - V Implement New Relic perf monitoring
   - Implement caching
   - use a CDN
   - js+css: remove unused twitter bootstrap modules
