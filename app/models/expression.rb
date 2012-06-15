@@ -1,5 +1,9 @@
 # encoding: utf-8
 class Expression < ActiveRecord::Base
+
+  extend FriendlyId
+  friendly_id :body, use: :slugged
+
   before_save :clean_and_format_body
   validates :body, :meaning, :author_id,  :language_id, :presence => true
 

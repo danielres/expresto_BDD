@@ -101,6 +101,7 @@ GEM
       factory_girl (~> 3.0.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
+    friendly_id (4.0.7)
     fssm (0.2.8.1)
     gherkin (2.10.0)
       json (>= 1.4.6)
@@ -250,6 +251,7 @@ DEPENDENCIES
   devise (>= 2.1.0.rc)
   email_spec (>= 1.2.1)
   factory_girl_rails (~> 3.0)
+  friendly_id (~> 4.0.1)
   gravatar_image_tag
   guard (>= 0.6.2)
   guard-bundler (>= 0.1.3)

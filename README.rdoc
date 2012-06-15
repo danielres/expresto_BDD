@@ -18,7 +18,7 @@ Just make a fork, make your changes, then send me a pull request.
   - Litteral & semantic translations for any expression, in any language.
   - Comments for: news, expressions, user pages.
   - Polish language + some expressions
-  - friendly id / slugs
+  - V friendly id / slugs
   - Users page
   - Users preferences with language filters
   - Ratings for expression: ok/adult/offensive

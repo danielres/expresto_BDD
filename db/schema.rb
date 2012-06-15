@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614222649) do
+ActiveRecord::Schema.define(:version => 20120615215239) do
 
   create_table "expressions", :force => true do |t|
     t.text      "body"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(:version => 20120614222649) do
     t.string    "source_type"
     t.text      "source_info"
     t.boolean   "created_by_author"
+    t.string    "slug"
   end
+
+  add_index "expressions", ["slug"], :name => "index_expressions_on_slug", :unique => true
 
   create_table "languages", :force => true do |t|
     t.string    "code"
@@ -33,12 +36,12 @@ ActiveRecord::Schema.define(:version => 20120614222649) do
   end
 
   create_table "news", :force => true do |t|
-    t.text     "body_en"
-    t.text     "body_fr"
-    t.integer  "author_id"
-    t.datetime "published_at"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.text      "body_en"
+    t.text      "body_fr"
+    t.integer   "author_id"
+    t.timestamp "published_at"
+    t.timestamp "created_at",   :null => false
+    t.timestamp "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -61,9 +64,11 @@ ActiveRecord::Schema.define(:version => 20120614222649) do
     t.string    "unconfirmed_email"
     t.string    "role"
     t.string    "avatar_type"
+    t.string    "slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
 end

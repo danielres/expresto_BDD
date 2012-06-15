@@ -53,3 +53,4 @@ gem "thin"
 gem 'kaminari', :git => 'https://github.com/ricardohsd/kaminari.git' , :ref => '0277c92'
 gem 'gravatar_image_tag'
 gem 'newrelic_rpm', :group => :production
+gem "friendly_id", "~> 4.0.1"
