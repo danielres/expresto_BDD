@@ -1,0 +1,18 @@
+- state ||= :individual
+
+- case state
+
+  - when :individual
+    ':individual' state not yet implemented, use ':list_item'
+
+  - when :list_item
+    = content_tag_for :li, comment do
+      - if can? :destroy, comment
+        .actions.pull-right
+          = link_to( [comment.commentable, comment], :method => :delete, :title=>:delete, :remote => true, :confirm => t(:are_you_sure)) do
+            %i.icon-remove-sign
+      .body= comment.body
+      %small.muted
+        %span.author=raw t(:added_by, :author => link_to(comment.user))
+        %span.ago= t(:time_ago, :time => time_ago_in_words(comment.created_at))
+      %hr

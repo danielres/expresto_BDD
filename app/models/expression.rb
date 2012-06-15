@@ -4,6 +4,8 @@ class Expression < ActiveRecord::Base
   extend FriendlyId
   friendly_id :body, use: :slugged
 
+  acts_as_commentable
+
   before_save :clean_and_format_body
   validates :body, :meaning, :author_id,  :language_id, :presence => true
 
@@ -19,7 +21,9 @@ class Expression < ActiveRecord::Base
   def to_s
     body
   end
-
+  def comments
+    root_comments
+  end
 private
 
   def clean_and_format_body

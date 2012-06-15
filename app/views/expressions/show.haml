@@ -26,17 +26,23 @@
 .row
   = render @expression
 
-
-
-
 .row
+
+  .span4
+    %h3= t('activerecord.attributes.expression.comments', :default => 'Comments')
+    - comments_contents = capture do
+      - if @expression.root_comments.any?
+        %ul#comments.unstyled= render @expression.root_comments, :state => :list_item
+    = comments_contents.presence || content_tag(:p, t(:no_comments_yet, :default => 'No comments yet'), :class => :muted)
+    =link_to '#modal-comment', :class => 'btn btn-info add_comment', :'data-toggle' => :modal do
+      %i.icon-comment
+      =t('.comment.add', :default => 'Add your comment')
 
   .span4
     .meaning
       %h3= t('activerecord.attributes.expression.meaning').capitalize
       = simple_format @expression.meaning
-
-  .span4
+      %hr
     .source
       %h3= t('activerecord.attributes.expression.source_info').capitalize
       - source_contents = capture do
@@ -56,6 +62,7 @@
         %li= link_to icon(:search)+t(:all_expressions_by, :author => @expression.author), @expression.author, :class => 'btn'
 
 
+= render 'modals/add_comment', :parent => @expression
 
 = todo do
 
@@ -104,16 +111,6 @@
             add some tags
 
     .span4
-      .comments
-        %h3 Comments
-        = render 'todo/comments_list'
-        %ul.unstyled
-          %li
-            = link_to '', :class => 'btn btn-info' do
-              %i.icon-comment
-              add comment
-
-    .span4
       .illustrations
         %h3 Illustrations
 
@@ -123,39 +120,11 @@
               %i.icon-plus
               contribute with an drawing or a picture
 
+
 = todo do
 
-  #modal-flag.modal.hide.fade
-    .modal-header
-      %button.close{:'data-dismiss'=>:modal, :type=>:button} x
-      %h2
-        Report this expression
-        %br/
-        %small Please flag this expression to report any problem.
-    .modal-body
-      %h3 What is the problem with this expression ?
-      %p{:style=>'text-align: center'}= @expression.body
-      %form
-        %input{:type=>:radio, :name=>:flag_type,}= t(:not_an_idiomatic_expression)
-        %br/
-        %input{:type=>:radio, :name=>:flag_type,}= t(:wrong_language)
-        %br/
-        %input{:type=>:radio, :name=>:flag_type,}= t(:orthograph)
-        %br/
-        %input{:type=>:radio, :name=>:flag_type,}= t(:other)
-    .modal-footer
-      %input{:type=>:button,:value=>:submit}
-      %input{:type=>:button,:value=>:cancel, :'data-dismiss'=> :modal,}
-
-  #modal-tags.modal.hide.fade
-    .modal-header
-      %button.close{:'data-dismiss'=>:modal, :type=>:button} x
-      %h2 Tag this expression
-    .modal-body
-    .modal-footer
-      %input{:type=>:button,:value=>:submit}
-      %input{:type=>:button,:value=>:cancel, :'data-dismiss'=> :modal,}
-
+  = render 'modals/flag_expression'
+  = render 'modals/tag_expression'
 
 = todo do
   .row

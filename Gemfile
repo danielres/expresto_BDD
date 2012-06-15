@@ -54,3 +54,4 @@ gem 'kaminari', :git => 'https://github.com/ricardohsd/kaminari.git' , :ref => '
 gem 'gravatar_image_tag'
 gem 'newrelic_rpm', :group => :production
 gem "friendly_id", "~> 4.0.1"
+gem 'acts_as_commentable_with_threading'
