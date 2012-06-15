@@ -18,7 +18,7 @@
             %small
               %span.published_ago.muted=raw t('news.published_ago', :time => time_ago_in_words(n.published_at))
               .body
-                = simple_format n.body(locale)
+                = advanced_format n.body(locale)
               %hr
 
 
