@@ -1,46 +1,37 @@
 
 .row
-  .span6
+  .span4
     %h3= t(:recent_expressions_in, :language => t(Language.find_by_code(locale).name)).capitalize
 
     %ul.expressions
       = render @expressions, :state => :list_item
       %li= link_to icon(:search)+t(:all_expressions_in, :language => t(Language.find_by_code(locale).name)), expressions_path, :class => 'btn btn-primary expressions_index'
 
-  .span6
 
+  .span4
+    .comments
+      %h3= t('.comments', :user => @user, :default => "Recent comments")
+      %ul.unstyled= render @comments, :state => :list_item
+
+  .span4
     - if @news.any?
       .news
         %h3= t('pages.home.news.title', :default => "Latest news")
         %ul.unstyled
           - @news.each do |n|
             %li.new
-            %small
-              %span.published_ago.muted=raw t('news.published_ago', :time => time_ago_in_words(n.published_at))
+              %small
+                %span.published_ago.muted=raw t('news.published_ago', :time => time_ago_in_words(n.published_at))
               .body
                 = advanced_format n.body(locale)
               %hr
 
-
     = todo do
-
       .tag-cloud
         %h3 Tag cloud
         %p [TAG CLOUD]
 
 
-    = todo do
-      .comments
-        %h3 Recent comments
-        %ul.unstyled
-          - 5.times do |n|
-            %li.comment
-              .body
-                Lorem ipsum dolor sit amet !
-              %small
-                %span.author=raw t(:added_by, :author => link_to(User.first))
-                %span.ago= t(:time_ago, :time => time_ago_in_words(Time.now))
-              %hr
 
 
 

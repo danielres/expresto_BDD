@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   def index
     @expressions = Expression.in(params[:locale]).recent(10)
     @news = News.published
+    @comments = Comment.recent(10)
   end
 
   def redirect_to_locale
