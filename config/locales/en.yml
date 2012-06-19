@@ -18,6 +18,8 @@ en:
   comments:
     one: "%{count} comment"
     other: "%{count} comments"
+    comment:
+      to_expression: "to expression"
   expressions_added_by_in:
     one: "%{count} expression added by %{user} in %{language}"
     other:  "%{count} expressions added by %{user} in %{language}"
