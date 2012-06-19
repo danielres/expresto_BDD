@@ -1,17 +1,11 @@
 
 .row
-  .span4
+  .span5
     %h3= t(:recent_expressions_in, :language => t(Language.find_by_code(locale).name)).capitalize
 
     %ul.expressions
       = render @expressions, :state => :list_item
       %li= link_to icon(:search)+t(:all_expressions_in, :language => t(Language.find_by_code(locale).name)), expressions_path, :class => 'btn btn-primary expressions_index'
-
-
-  .span4
-    .comments
-      %h3= t('.comments', :user => @user, :default => "Recent comments")
-      %ul.unstyled= render @comments, :state => :list_item
 
   .span4
     - if @news.any?
@@ -22,9 +16,14 @@
             %li.new
               %small
                 %span.published_ago.muted=raw t('news.published_ago', :time => time_ago_in_words(n.published_at))
-              .body
+              .body.secundary-text
                 = advanced_format n.body(locale)
               %hr
+
+  .span3
+    .comments
+      %h3= t('.comments', :user => @user, :default => "Recent comments")
+      %ul.unstyled.secundary-text= render @comments, :state => :list_item
 
     = todo do
       .tag-cloud
