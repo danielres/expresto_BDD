@@ -15,6 +15,9 @@ fr:
   tagline: "Vos expressions qui déchirent, dans toutes les langues"
   recent_expressions_in: "dernières expressions ajoutées en %{language}"
   qty_expressions_in: "%{qty} expressions en %{language}"
+  comments:
+    one: "%{count} commentaire"
+    other: "%{count} commentaires"
   expressions_added_by_in:
     one: "%{count} expression en %{language} ajoutée par %{user}"
     other: "%{count} expressions en %{language} ajoutées par %{user}"
@@ -36,6 +39,9 @@ fr:
   other_expressions_by: "Autres expressions de %{author}"
   apply: Appliquer
   no_comments_yet: Pas encore de commentaires
+  home:
+    index:
+      comments: Derniers commentaires
   news:
     published_ago: "Depuis %{time}"
   pages:

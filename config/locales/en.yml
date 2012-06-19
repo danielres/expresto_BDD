@@ -13,8 +13,11 @@ en:
     home: "Home"
     expressions: "Expressions"
   tagline: "Your killer idiomatic expressions, in all languages"
-  recent_expressions_in: "last added expressions in %{language}"
+  recent_expressions_in: "Most recent expressions in %{language}"
   qty_expressions_in: "%{qty} expressions in %{language}"
+  comments:
+    one: "%{count} comment"
+    other: "%{count} comments"
   expressions_added_by_in:
     one: "%{count} expression added by %{user} in %{language}"
     other:  "%{count} expressions added by %{user} in %{language}"
@@ -36,6 +39,9 @@ en:
   other_expressions_by: "Other expressions by %{author}"
   apply: Apply
   no_comments_yet: No comments yet
+  home:
+    index:
+      comments: Most recent comments
   news:
     published_ago: "Since %{time}"
   pages:
