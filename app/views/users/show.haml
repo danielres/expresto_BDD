@@ -3,6 +3,11 @@
     = render @user
 
   .span5.offset1
+
+    .comments
+      %h3= t('.comments', :user => @user, :default => "Recent comments by #{@user}")
+      %ul.unstyled= render @user.comments.recent(10), :state => :list_item
+
     = todo do
       .badges
         %h3 Badges
@@ -19,8 +24,4 @@
           %i.icon.icon-certificate
           nono
 
-    = todo do
-      .comments
-        %h3= "Recent comments by #{@user}"
-        = render 'todo/comments_list'
 
