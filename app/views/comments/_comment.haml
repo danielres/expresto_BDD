@@ -10,14 +10,21 @@
       - if can? :destroy, comment
         .actions.pull-right
           = link_to( [comment.commentable, comment], :method => :delete, :title=>:delete, :remote => true, :confirm => t(:are_you_sure)) do
-            %i.icon-remove-sign
+            %i.icon-remove-sign.icon-muted
       .body= comment.body
       - unless current_page?(comment.commentable)
-        .small.muted.expression.pull-right= "#{link_to truncate(comment.commentable.to_s), comment.commentable}".html_safe
+        .small.muted.commentable
+          -#˒
+            ‹
+            ›
+            →
+          ‣
+          = link_to comment.commentable do
+            = truncate(comment.commentable.to_s, :length => 30, :separator => ' ')
 
       %small.muted
         - unless current_page?(comment.user)
-          %span.author=raw t(:added_by, :author => link_to(comment.user))
+          %span.author=raw t(:added_by, :author => link_to(comment.user,comment.user))
         %span.ago= t(:time_ago, :time => time_ago_in_words(comment.created_at))
 
       %hr
