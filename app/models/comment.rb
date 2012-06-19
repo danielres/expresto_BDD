@@ -14,6 +14,8 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
+  scope :recent, lambda{ |qty=nil|order('created_at DESC').limit(qty) }
+
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
   # example in readme
