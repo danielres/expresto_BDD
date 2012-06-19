@@ -5,9 +5,9 @@ Feature: add comments
 
   Background:
     Given language English is available
-    Given 2 english expressions by John
+    Given 1 english expressions by John
 
-  Scenario: Add a comment as a logged user
+  Scenario: Add a comment to an expression as a logged user, and see it on the expression page, the homepage and the user's page
 
     Given I am logged in as 'Talky'
     When  I go to the homepage
@@ -15,5 +15,12 @@ Feature: add comments
     And   I click on the first recent expression
     And   I click on the "add_comment" link
     And   I fill in "comment_body" with "Supa cool !!"
-    And   I click on "Create Comment"
+    And   I click on "Add"
+    Then  I should see "Supa cool !!"
+
+    When  I go to the homepage
+    Then  I should see "Supa cool !!"
+    And   I should see "Added by Talky less than a minute ago"
+    And   I should see "1 comment"
+    When  I click on "Talky"
     Then  I should see "Supa cool !!"
