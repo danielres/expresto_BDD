@@ -41,7 +41,7 @@
           - pages.each do |name, path|
             - active = current_page?(path) || (name.to_s == controller_name)
             %li{ :class => ( :active if active ) }
-              = link_to t(name).capitalize, path
+              = link_to t("menu.#{name}").to_s.capitalize, path
           = todo :li do
             = link_to 'Requests', '#'
           = todo :li do
