@@ -9,16 +9,17 @@ fr:
   sign_in_or_sign_up_to_create_expression: "Veuillez d'abord vous connecter ou créer un compte pour ajouter une expression."
   english: "Anglais"
   french: "Français"
-  home: "accueil"
+  menu:
+    home: "accueil"
+    expressions: "Expressions"
   tagline: "Vos expressions qui déchirent, dans toutes les langues"
-  expressions: "Expressions"
   recent_expressions_in: "dernières expressions ajoutées en %{language}"
   qty_expressions_in: "%{qty} expressions en %{language}"
   expressions_added_by_in:
     one: "%{count} expression en %{language} ajoutée par %{user}"
     other: "%{count} expressions en %{language} ajoutées par %{user}"
   info_not_provided_yet: Information non fournie
-  added_by: "Ajoutée par %{author}"
+  added_by: "Ajouté par %{author}"
   created_by: "Créée par %{author}"
   created_and_added_by: "Créée et ajoutée par %{author}"
   recently_added_by: "Ajouts récents par %{author}"
@@ -34,6 +35,7 @@ fr:
   are_you_sure: "Êtes-vous sûr(e) de vouloir faire ceci ?"
   other_expressions_by: "Autres expressions de %{author}"
   apply: Appliquer
+  no_comments_yet: Pas encore de commentaires
   news:
     published_ago: "Depuis %{time}"
   pages:
@@ -48,6 +50,11 @@ fr:
         meaning: Signification
         source_type: Source
         source_info: Source
+        comments: Commentaires
+  expressions:
+    show:
+      comment:
+        add: Ajouter un commentaire
   users:
     user:
       user_has_not_added_expressions_yet: "%{user} n'a pas encore ajouté d'expressions."
@@ -56,3 +63,6 @@ fr:
       just_create_an_account_at_gravatar: 'Créez simplement un compte sur <a href="http://www.gravatar.com/">Gravatar</a> pour pouvoir associer une image de votre choix à votre adresse mail.'
       then_come_back_here_and_it_will_be_shown: 'Ensuite revenez ici, et votre image sera disponible dans la liste ci-dessus.'
       apply: Appliquer
+  modals:
+    add_comment:
+      header: Ajouter un commentaire

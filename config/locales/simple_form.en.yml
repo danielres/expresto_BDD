@@ -3,6 +3,8 @@ en:
     submit:
       expression:
         create: "Add this %{model}"
+      comment:
+        create: "Add"
 
   simple_form:
     "yes": 'Yes'
@@ -25,6 +27,8 @@ en:
         password: Password
         password_confirmation: Password confirmation
         remember_me: Remember me
+      comment:
+        body: Your comment
 
     buttons:
       create: Add this expression

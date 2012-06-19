@@ -3,6 +3,8 @@ fr:
     submit:
       expression:
         create: "Ajouter cette %{model}"
+      comment:
+        create: "Ajouter"
 
   simple_form:
     "yes": 'Oui'
@@ -25,6 +27,8 @@ fr:
         password: Mot de passe
         password_confirmation: Confirmation du mot de passe
         remember_me: "Se rappeler de moi"
+      comment:
+        body: Votre commentaire
 
     buttons:
       create: Ajouter cette expression
