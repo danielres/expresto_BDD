@@ -62,6 +62,8 @@ fr:
       comment:
         add: Ajouter un commentaire
   users:
+    show:
+      comments: "Derniers commentaires de %{user}"
     user:
       user_has_not_added_expressions_yet: "%{user} n'a pas encore ajouté d'expressions."
       choose_your_avatar: Choisissez votre avatar

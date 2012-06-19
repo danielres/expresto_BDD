@@ -62,6 +62,8 @@ en:
       comment:
         add: Add a comment
   users:
+    show:
+      comments: "Last comments by %{user}"
     user:
       user_has_not_added_expressions_yet: "%{user} hasn't contributed any expression yet."
       choose_your_avatar: Choose your avatar
