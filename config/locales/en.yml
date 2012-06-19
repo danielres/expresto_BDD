@@ -9,9 +9,10 @@ en:
   sign_in_or_sign_up_to_create_expression: "Please sign in or create an account to add an expression"
   english: "english"
   french: "french"
-  home: "homepage"
+  menu:
+    home: "Home"
+    expressions: "Expressions"
   tagline: "Your killer idiomatic expressions, in all languages"
-  expressions: "Expressions"
   recent_expressions_in: "last added expressions in %{language}"
   qty_expressions_in: "%{qty} expressions in %{language}"
   expressions_added_by_in:
@@ -34,6 +35,7 @@ en:
   are_you_sure: "Are you sure ?"
   other_expressions_by: "Other expressions by %{author}"
   apply: Apply
+  no_comments_yet: No comments yet
   news:
     published_ago: "Since %{time}"
   pages:
@@ -48,6 +50,11 @@ en:
         meaning: Meaning
         source_type: Source
         source_info: Source
+        comments: Comments
+  expressions:
+    show:
+      comment:
+        add: Add a comment
   users:
     user:
       user_has_not_added_expressions_yet: "%{user} hasn't contributed any expression yet."
@@ -56,3 +63,6 @@ en:
       just_create_an_account_at_gravatar: 'Just create an account at <a href="http://www.gravatar.com/">Gravatar</a> to associate a picture with your email address.'
       then_come_back_here_and_it_will_be_shown: 'Then come back here, and it will be shown in the list above.'
       apply: Apply
+  modals:
+    add_comment:
+      header: Add your comment
