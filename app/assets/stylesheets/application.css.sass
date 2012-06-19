@@ -23,10 +23,14 @@ h1, h2, h3, h4
   font-weight: normal
 b,dt
   color: #666
-small
+small, .small
   font-size: 82%
 li hr
   margin: 5px 0
+.muted a
+  &:link,
+  &:visited
+    color: desaturate(#0088CC, 50%)
 /* GENERIC & EXTENDABLE CLASSES ***********/
 
 .default-margin-top
