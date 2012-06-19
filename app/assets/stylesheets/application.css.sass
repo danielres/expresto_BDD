@@ -21,16 +21,20 @@ h1, h2, h3, h4, h5, h6
     margin-top: 0
 h1, h2, h3, h4
   font-weight: normal
-b,dt
+b,dt, h1, h2, h3
   color: #666
 small, .small
-  font-size: 82%
+  font-size: 10px
+  line-height: 1.2
 li hr
   margin: 5px 0
 .muted a
   &:link,
   &:visited
     color: desaturate(#0088CC, 50%)
+.icon-muted
+  color: #ccc
+
 /* GENERIC & EXTENDABLE CLASSES ***********/
 
 .default-margin-top
@@ -216,3 +220,10 @@ div.page
   border-width: 2px 2px 6px
   margin-left: 10px
   margin-bottom: 0px
+
+// news
+.secundary-text,
+.secundary-text p
+  font-size: 11px
+  line-height: 1.4
+  color: #444
