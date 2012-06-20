@@ -63,6 +63,7 @@ fr:
     show:
       comment:
         add: Ajouter un commentaire
+      sign_in_to_comment: Pour ajouter vos commentaires vous devez d'abord vous identifier.
   users:
     show:
       comments: "Derniers commentaires de %{user}"

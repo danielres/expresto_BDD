@@ -63,6 +63,7 @@ en:
     show:
       comment:
         add: Add a comment
+      sign_in_to_comment: You have to sign in first to add your comments.
   users:
     show:
       comments: "Last comments by %{user}"
