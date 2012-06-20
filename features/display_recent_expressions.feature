@@ -15,7 +15,7 @@ Feature: display recent expressions
     Then I should see language menu with English, French
 
     When I set language to english
-    Then I should see "Last added expressions in"
+    Then I should see "Most recent expressions in"
     And  I should see a link list with 10 expressions in English
     And  I should see a "expressions_index" link to the page "expressions index"
 
