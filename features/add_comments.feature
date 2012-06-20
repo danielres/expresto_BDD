@@ -24,3 +24,8 @@ Feature: add comments
     And   I should see "1 comment"
     When  I click on "Talky"
     Then  I should see "Supa cool !!"
+
+  Scenario: Attempt to add a comment to an expression as an anonymous user
+    When  I go to the homepage
+    And   I click on the first recent expression
+    Then  I should see "You have to sign in first to add your comments"
