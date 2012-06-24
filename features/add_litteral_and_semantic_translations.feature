@@ -1,4 +1,5 @@
-Feature: Litteral and semantic translations
+@translations
+Feature: Add litteral and semantic translations
 
   In order allow people to learn about idiomatic expressions in various languages
   As a member of expresto
@@ -14,10 +15,11 @@ Feature: Litteral and semantic translations
     Then  I should see "C'est le bouquet"
 
     When  I set language to english
-    And   I click on "Add english translation"
+    And   I click on "Add your translation"
     And   I fill in "Litteral translation" with "That's the bouquet"
     And   I fill in "Semantic translation" with "That's the limit"
-    And   I click on "Add my translation"
+    And   I select "English" from "Language"
+    And   I click on "Create Translation"
 
     Then I should see "C'est le bouquet"
     And  I should see "That's the bouquet"
