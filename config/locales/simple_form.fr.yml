@@ -19,6 +19,9 @@ fr:
       default_message: "Des erreurs ont été trouvées:"
 
     labels:
+      translation:
+        body_litteral: Traduction littérale
+        body_semantic: Traduction sémantique
       expression:
         created_by_author: Êtes-vous l'auteur de cette expression ?
       user:

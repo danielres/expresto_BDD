@@ -16,6 +16,14 @@ describe User do
     User.create!(@attr)
   end
 
+  it "should have many translations" do
+    user  = FactoryGirl.build(:user)
+    user.save
+    translation = FactoryGirl.build(:translation, :author => user)
+    translation.save
+    user.translations.should include(translation)
+  end
+
   it "should require an email address" do
     no_email_user = User.new(@attr.merge(:email => ""))
     no_email_user.should_not be_valid

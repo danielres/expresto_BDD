@@ -32,6 +32,7 @@ class Ability
           ( comment.user_id == user.id ) &&
           ( comment.created_at > Time.now - 3.minutes)
         end
+        can :create, Translation
       end
 
     #

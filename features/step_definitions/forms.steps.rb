@@ -9,3 +9,7 @@ end
 When /^I choose "(.*?)"$/ do |target|
   choose(target)
 end
+
+When /^I select "(.*?)" from "(.*?)"$/ do |option, group|
+  select(option, :from => group)
+end

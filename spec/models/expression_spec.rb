@@ -51,4 +51,11 @@ describe Expression do
     FactoryGirl.build(:expression, :language => language).language.should be(language)
   end
 
+  it "should have many translations" do
+    expression  = FactoryGirl.build(:expression)
+    expression.save
+    translation = FactoryGirl.build(:translation, :expression => expression)
+    translation.save
+    expression.translations.should include(translation)
+  end
 end

@@ -65,3 +65,9 @@ Given /^an expression in ([a-zA-Z]*) with body "(.*?)"$/ do |language,body|
   code = language[0..1].downcase
   FactoryGirl.create(:expression, :body => body, :language => Language.find_by_code(code))
 end
+
+When /^I go to the last expression page$/ do
+#   pending # express the regexp above with the code you wish you had
+  e=Expression.find(:last)
+  visit expression_path(e, :locale => :en)
+end

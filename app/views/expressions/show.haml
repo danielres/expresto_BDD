@@ -28,18 +28,6 @@
 
 .row
 
-  .span4
-    %h3= t('activerecord.attributes.expression.comments', :default => 'Comments')
-    - comments_contents = capture do
-      - if @expression.root_comments.any?
-        %ul#comments.unstyled= render @expression.root_comments, :state => :list_item
-    = comments_contents.presence || content_tag(:p, t(:no_comments_yet, :default => 'No comments yet'), :class => :muted)
-    - if can?(:create, Comment)
-      =link_to '#modal-comment', :class => 'btn btn-info add_comment', :'data-toggle' => :modal do
-        %i.icon-comment
-        =t('.comment.add', :default => 'Add your comment')
-    -else
-      %p.muted.small= t('.sign_in_to_comment', :default => 'You have to sign in first to add your comments')
 
   .span4
     .meaning
@@ -55,8 +43,6 @@
         - if @expression.source_info.present?
           = simple_format @expression.source_info
       = source_contents.presence || content_tag(:span, t(:info_not_provided_yet, :default => 'Information not provided yet'), :class => :muted)
-
-  .span4
     .expressions
       %h3= t(:recently_added_by, :author => link_to(a=@expression.author,a), :default => "Recently added by #{link_to(a=@expression.author,a)}").html_safe
       %ul.expressions
@@ -64,15 +50,41 @@
           %li= render e, :state => :list_item
         %li= link_to icon(:search)+t(:all_expressions_by, :author => @expression.author), @expression.author, :class => 'btn'
 
+  .span4
+    .translations
+      %h3 Translations
+      %ul.unstyled
+        - for translation in @expression.translations
+          %li= render translation, :state => :list_item
 
-= render 'modals/add_comment', :parent => @expression
+
+        %li
+      - if can?(:create, Translation)
+        =link_to '#modal-translation', :class => 'btn btn-info add_translation', :'data-toggle' => :modal do
+          %i.icon-flag
+          =t('.translation.add', :default => 'Add your translation')
+      -else
+        %p.muted.small= t('.sign_in_to_translate', :default => 'You have to sign in first to add your translations')
+
+  .span4
+    %h3= t('activerecord.attributes.expression.comments', :default => 'Comments')
+    - comments_contents = capture do
+      - if @expression.root_comments.any?
+        %ul#comments.unstyled= render @expression.root_comments, :state => :list_item
+    = comments_contents.presence || content_tag(:p, t(:no_comments_yet, :default => 'No comments yet'), :class => :muted)
+    - if can?(:create, Comment)
+      =link_to '#modal-comment', :class => 'btn btn-info add_comment', :'data-toggle' => :modal do
+        %i.icon-comment
+        =t('.comment.add', :default => 'Add your comment')
+    -else
+      %p.muted.small= t('.sign_in_to_comment', :default => 'You have to sign in first to add your comments')
+
+
+
+
 
 = todo do
-
   .row
-
-
-
     .span4
       %h3 Examples
       %ul.unstyled
@@ -138,4 +150,7 @@
         %ul.expressions
           - Expression.limit(5).each do |e|
             %li= render e, :state => :list_item
+
+= render 'modals/add_comment', :parent => @expression
+= render 'modals/add_translation', :parent => @expression
 

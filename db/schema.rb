@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120615225704) do
+ActiveRecord::Schema.define(:version => 20120624155359) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(:version => 20120615225704) do
     t.timestamp "published_at"
     t.timestamp "created_at",   :null => false
     t.timestamp "updated_at",   :null => false
+  end
+
+  create_table "translations", :force => true do |t|
+    t.integer  "expression_id"
+    t.integer  "language_id"
+    t.string   "body_litteral"
+    t.string   "body_semantic"
+    t.integer  "author_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|

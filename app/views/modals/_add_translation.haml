@@ -1,0 +1,14 @@
+#modal-translation.modal.hide.fade
+  =simple_form_for [parent, Translation.new], :remote => false do |f|
+    .modal-header
+      %button.close{:'data-dismiss'=>:modal, :type=>:button} x
+      %h2= t('.header', :default => 'Add Translation')
+    .modal-body
+      %h3 Expression to translate
+      %p{:style=>'text-align: center'}= parent.body
+      = f.input :body_litteral
+      = f.input :body_semantic
+      = f.association :language
+
+    .modal-footer
+      = f.button :submit

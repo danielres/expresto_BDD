@@ -1,4 +1,5 @@
 Expresto::Application.routes.draw do
+
   root :to => "home#redirect_to_locale"
   scope "(:locale)" do
     match 'about' => 'pages#about', :as => :about
@@ -8,8 +9,8 @@ Expresto::Application.routes.draw do
     resources   :languages
     resources   :expressions do
       resources   :comments
+      resources   :translations
     end
   end
-
 
 end
