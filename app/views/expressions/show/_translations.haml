@@ -1,6 +1,6 @@
 %h3= t '.title', :default => 'Translations'
 %ul.unstyled
-  - for translation in @expression.translations
+  - for translation in parent.translations
     %li= render translation, :state => :list_item
 - if can?(:create, Translation)
   =link_to '#modal-translation', :class => 'btn btn-info add_translation', :'data-toggle' => :modal do

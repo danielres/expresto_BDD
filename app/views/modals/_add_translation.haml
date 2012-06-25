@@ -1,14 +1,8 @@
 #modal-translation.modal.hide.fade
-  =simple_form_for [parent, Translation.new], :remote => false do |f|
-    .modal-header
-      %button.close{:'data-dismiss'=>:modal, :type=>:button} x
-      %h2= t('.header', :default => 'Add Translation')
-    .modal-body
-      %blockquote.body
-        %h3= parent.to_s
-      = f.input :body_litteral
-      = f.input :body_semantic
-      = f.association :language
-
-    .modal-footer
-      = f.button :submit
+  .modal-header
+    %button.close{:'data-dismiss'=>:modal, :type=>:button} x
+    %h2= t('.header', :default => 'Add Translation')
+  .modal-body
+    %blockquote.body
+      %h3= parent.to_s
+    = render 'translations/form', :translation => [parent, Translation.new]

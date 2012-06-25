@@ -6,7 +6,7 @@ class TranslationsController < ApplicationController
   def create
     @translation.author     = current_user
     @translation.expression = Expression.find(params[:expression_id])
-    respond_with(@translation.tap(&:save), :location => @translation.expression)
+    respond_with(@translation.tap(&:save), :location => @translation.expression, :layout => !request.xhr?)
   end
 
   def destroy
