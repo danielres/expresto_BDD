@@ -11,6 +11,7 @@ Expresto::Application.routes.draw do
       resources   :comments
       resources   :translations
     end
+    resources   :news
   end
 
 end

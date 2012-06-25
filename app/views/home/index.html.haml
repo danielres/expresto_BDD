@@ -16,10 +16,10 @@
             %li.new
               %small
                 %span.published_ago.muted=raw t('news.published_ago', :time => time_ago_in_words(n.published_at))
-              .body.secundary-text
-                = advanced_format n.body(locale)
+              .body.secundary-text{ :class => ('rest-in-place' if can?(:update, n)),'data-url'=> news_path(n), 'data-object' => :news, 'data-attribute' => "body_#{locale}", 'data-formtype' => 'textarea'}
+                = raw n.body(locale)
               %hr
-
+        = javascript_include_tag 'rest_in_place' if can?(:update, :news)
   .span3
     .comments
       %h3= t('.comments', :user => @user, :default => "Recent comments")
