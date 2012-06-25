@@ -5,7 +5,7 @@
       %h2= t('.header', :default => 'Add Translation')
     .modal-body
       %blockquote.body
-        %h3 To see the moon in spite of the sun.
+        %h3= parent.to_s
       = f.input :body_litteral
       = f.input :body_semantic
       = f.association :language
