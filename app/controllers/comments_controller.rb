@@ -5,6 +5,7 @@ class CommentsController < InheritedResources::Base
   def create
     @comment.user         = current_user
     @comment.commentable  = Expression.find(params[:expression_id]) if params[:expression_id]
+    UserMailer.comment_added_to_commentable_email(@comment).deliver if current_user.role=='admin'
     create! do |format|
       format.html { redirect_to :back }
       format.js   { render :layout => false }
