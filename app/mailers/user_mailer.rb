@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 
-  default from: "noreply@expresto.net"
+  default from: '"Expresto" <noreply@expresto.net>'
 
   def comment_added_to_commentable_email(comment)
     @comment          = comment
