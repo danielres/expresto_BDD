@@ -63,6 +63,10 @@ fr:
     show:
       comment:
         add: Ajouter un commentaire
+      translations:
+        title: Traductions
+        sign_in_required: Pour ajouter une traduction, vous devez d'abord vous identifier.
+        add: Ajouter une traduction
       sign_in_to_comment: Pour ajouter vos commentaires vous devez d'abord vous identifier.
   users:
     show:
@@ -77,3 +81,4 @@ fr:
   modals:
     add_comment:
       header: Ajouter un commentaire
+

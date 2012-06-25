@@ -5,6 +5,8 @@ en:
         create: "Add this %{model}"
       comment:
         create: "Add"
+      translation:
+        create: Add this translation
 
   simple_form:
     "yes": 'Yes'
@@ -22,6 +24,8 @@ en:
       translation:
         body_litteral: Litteral translation
         body_semantic: Semantic translation
+        language: Language of this translation
+
       expression:
         created_by_author: Are you the author of this expression ?
       user:
@@ -58,3 +62,6 @@ en:
       expression:
         source_info: Historic facts and anecdotes are welcome !
         meaning: With very simple words
+      translation:
+        body_litteral: This expression translated, word for word
+        body_litteral: The meaning of this expression

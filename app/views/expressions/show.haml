@@ -2,84 +2,34 @@
 
   .span12
     .pull-right
-      - if can? :destroy, @expression
-        = link_to expression_path(@expression), :method => :delete, :class => 'destroy-expression btn btn-danger', :confirm => t(:are_you_sure, :default => 'Are you sure ?')  do
-          %i.icon-remove-sign
-          %span.hidden Remove this expression
-      - if can? :update, @expression
-        = link_to edit_expression_path(@expression), :class => 'update-expression btn' do
-          %i.icon-pencil
-          %span.hidden Update this expression
+      = render 'expressions/ui/destroy'
+      = render 'expressions/ui/edit'
       = todo :span do
-        = link_to '#modal-flag', :class => 'flag-expression btn btn-warning', :'data-toggle' => :modal do
-          %i.icon-flag
-          %span.hidden Flag this expression
+        = render 'expressions/ui/flag'
 
     = todo do
-      .share
-        - attributes = { style: 'font-size: 48px; line-height: 48px' }
-        = link_to '#', attributes do
-          %i.icon-facebook-sign
-        = link_to '#', attributes do
-          %i.icon-twitter-sign{ style: 'color: #82e1ff'}
+      .share.pull-left
+        = render 'expressions/ui/share'
 
 .row
   = render @expression
 
 .row
 
-
   .span4
     .meaning
-      %h3= t('activerecord.attributes.expression.meaning').capitalize
-      = simple_format @expression.meaning
+      = render 'expressions/show/meaning'
       %hr
     .source
-      %h3= t('activerecord.attributes.expression.source_info').capitalize
-      - source_contents = capture do
-        - if @expression.created_by_author
-          %p= t(:created_by, :author => link_to(a=@expression.author,a)).html_safe
-          %hr/
-        - if @expression.source_info.present?
-          = simple_format @expression.source_info
-      = source_contents.presence || content_tag(:span, t(:info_not_provided_yet, :default => 'Information not provided yet'), :class => :muted)
-    .expressions
-      %h3= t(:recently_added_by, :author => link_to(a=@expression.author,a), :default => "Recently added by #{link_to(a=@expression.author,a)}").html_safe
-      %ul.expressions
-        - Expression.where(:author_id => @expression.author.id).limit(5).each do |e|
-          %li= render e, :state => :list_item
-        %li= link_to icon(:search)+t(:all_expressions_by, :author => @expression.author), @expression.author, :class => 'btn'
-
+      = render 'expressions/show/source'
+      %hr
+    .author_expressions
+      = render 'expressions/show/author_expressions'
+      %hr
   .span4
-    .translations
-      %h3 Translations
-      %ul.unstyled
-        - for translation in @expression.translations
-          %li= render translation, :state => :list_item
-
-
-        %li
-      - if can?(:create, Translation)
-        =link_to '#modal-translation', :class => 'btn btn-info add_translation', :'data-toggle' => :modal do
-          %i.icon-flag
-          =t('.translation.add', :default => 'Add your translation')
-      -else
-        %p.muted.small= t('.sign_in_to_translate', :default => 'You have to sign in first to add your translations')
-
+    .translations=  render 'expressions/show/translations'
   .span4
-    %h3= t('activerecord.attributes.expression.comments', :default => 'Comments')
-    - comments_contents = capture do
-      - if @expression.root_comments.any?
-        %ul#comments.unstyled= render @expression.root_comments, :state => :list_item
-    = comments_contents.presence || content_tag(:p, t(:no_comments_yet, :default => 'No comments yet'), :class => :muted)
-    - if can?(:create, Comment)
-      =link_to '#modal-comment', :class => 'btn btn-info add_comment', :'data-toggle' => :modal do
-        %i.icon-comment
-        =t('.comment.add', :default => 'Add your comment')
-    -else
-      %p.muted.small= t('.sign_in_to_comment', :default => 'You have to sign in first to add your comments')
-
-
+    .comments=      render 'expressions/show/comments'
 
 
 

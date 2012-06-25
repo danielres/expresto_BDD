@@ -5,6 +5,8 @@ fr:
         create: "Ajouter cette %{model}"
       comment:
         create: "Ajouter"
+      translation:
+        create: Ajouter cette traduction
 
   simple_form:
     "yes": 'Oui'
@@ -22,6 +24,7 @@ fr:
       translation:
         body_litteral: Traduction littérale
         body_semantic: Traduction sémantique
+        language: Langue de cette traduction
       expression:
         created_by_author: Êtes-vous l'auteur de cette expression ?
       user:
@@ -58,3 +61,6 @@ fr:
       expression:
         source_info: Faits historiques et anecdotes bienvenus !
         meaning: En mots très simples
+      translation:
+        body_litteral: La traduction mot-pour-mot de l'expression
+        body_litteral: L'expression traduite au niveau de son sens

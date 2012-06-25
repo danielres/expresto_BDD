@@ -4,8 +4,8 @@
       %button.close{:'data-dismiss'=>:modal, :type=>:button} x
       %h2= t('.header', :default => 'Add Translation')
     .modal-body
-      %h3 Expression to translate
-      %p{:style=>'text-align: center'}= parent.body
+      %blockquote.body
+        %h3 To see the moon in spite of the sun.
       = f.input :body_litteral
       = f.input :body_semantic
       = f.association :language

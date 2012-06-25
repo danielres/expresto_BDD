@@ -63,6 +63,10 @@ en:
     show:
       comment:
         add: Add a comment
+      translations:
+        title: Translations
+        sign_in_required: You have to sign in first to add your translations.
+        add: Add a translation
       sign_in_to_comment: You have to sign in first to add your comments.
   users:
     show:

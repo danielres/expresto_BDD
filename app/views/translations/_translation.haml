@@ -13,16 +13,17 @@
           = link_to( [translation.expression, translation], :method => :delete, :title=>:delete, :remote => true, :confirm => t(:are_you_sure)) do
             %i.icon-remove-sign.icon-muted
 
-      %small.muted= translation.language.name
-      %dl
-        %dt.litteral= translation.body_litteral
-        %dd.semantic.small
-          = translation.body_semantic
+      %small.pull-left{:style => 'font-variant: small-caps; font-weight: bold; background: #f9e2c1; color: #D96F00; display: inline-block; padding: 2px 5px; border-radius: 5px; margin-right: 10px'}= translation.language.code.capitalize
+      %blockquote{:style => 'overflow: hidden'}
+        %dl
+          %dt.litteral= translation.body_litteral
+          %dd.semantic.small
+            = translation.body_semantic
 
-      %small.muted
-        - unless current_page?(translation.author)
-          %span.author=raw t(:added_by, :author => link_to(translation.author,translation.author))
-        %span.ago= t(:time_ago, :time => time_ago_in_words(translation.created_at))
+        %small.muted
+          - unless current_page?(translation.author)
+            %span.author=raw t(:added_by, :author => link_to(translation.author,translation.author))
+          %span.ago= t(:time_ago, :time => time_ago_in_words(translation.created_at))
 
       - unless current_page?(translation.expression)
         .small.muted.expression
