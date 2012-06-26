@@ -1,11 +1,13 @@
 
 .row
   .span5
-    %h3= t(:recent_expressions_in, :language => t(Language.find_by_code(locale).name)).capitalize
+    %h3= t(:recent_expressions_in, :language => t(l=Language.find_by_code(locale).name, :default => l),
+      :default => "Recent expressions in #{Language.find_by_code(locale).name}",
+      ).capitalize
 
     %ul.expressions
       = render @expressions, :state => :list_item
-      %li= link_to icon(:search)+t(:all_expressions_in, :language => t(Language.find_by_code(locale).name)), expressions_path, :class => 'btn btn-primary expressions_index'
+      %li= link_to icon(:search)+t(:all_expressions_in, :language => t(l=Language.find_by_code(locale).name, :default => l)), expressions_path, :class => 'btn btn-primary expressions_index'
 
   .span4
     - if @news.any?
