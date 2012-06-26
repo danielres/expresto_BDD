@@ -16,9 +16,11 @@ Just make a fork, make your changes, then send me a pull request.
   - x Ajaxify paginations to avoid full page refresh & focus loss
 
 - New features
-  - x Litteral & semantic translations for any expression, in any language.
-  - x Comments for: news, expressions, user pages.
-  - x Polish language + some expressions
+  - V Litteral & semantic translations for any expression, in any language.
+  - x Comments for: news
+  - V Comments for: expressions
+  - x Comments for: user pages.
+  - V Polish language + some expressions
   - V friendly id / slugs
   - x Users page
   - x Users preferences with language filters
@@ -35,7 +37,8 @@ Just make a fork, make your changes, then send me a pull request.
   - x Like/Dislike buttons
   - x Flag / report abuse
   - x Custom expression request
-  - x Notify user for all interactions (comments, favs, likes, ...) related to him and his contributions.
+  - V Notify user for comments under his expressions
+  - x Notify user for various interactions (comments, favs, likes, ...) related to him and his contributions.
   - x Badges & reputation system, so moderation & community management can be delagated.
 
 
