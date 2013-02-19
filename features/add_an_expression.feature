@@ -1,38 +1,26 @@
+@wip
 Feature: add an expression
 
-  In order to contribute to the expressions database
-  I want to add a new expression I know
+  In order to contribute to Expresto
+  I want to add one of my expressions
 
   Background:
-    Given languages French, English are available
+    Given language English is available
 
   Scenario: Add an expression as a logged user
 
-    Given I am logged in as 'Charlie'
-    When  I go to the homepage
-    And   I set language to english
-    And   I click on the link to add an expression
+    Given I am logged in
 
-    When  I fill in "Expression" with "This is my cool new expression"
-    And   I fill in "Meaning" with "It means that it's cool"
-    And   I choose "expression_created_by_author_true"
-    And   I fill in "expression_source_info" with "A smoking caterpillar said it in my last night's dream."
-    And   I click the submit button
+    When  I add my expression
+    Then  I should see my expression with its details
 
-    Then  I should see the created expression page
-    And   I should see "This is my cool new expression"
-    And   I should see "It means that it's cool"
-    And   I should see "by Charlie"
+    When  I visit my public profile
+    Then  I should see my expression listed
 
-    When  I go to my user page
-    Then  I should see "This is my cool new expression"
-    But   I should not see "It means that it's cool"
+  Scenario: Attempt to add an expression as an anonymous user
 
-  Scenario: Add an expression as an anonymous user
+    Given I am a not logged in
+    Then  I should see a way to log in
 
-    Given I am not logged in
-    When  I go to the homepage
-    And   I set language to english
-    Then  I should see "Sign in"
-    And   I click on the link to add an expression
-    Then  I should see "Please sign in or create an account to add an expression"
+    When  I attempt to ad an expression
+    Then  I should be offered an obvious way to log in
