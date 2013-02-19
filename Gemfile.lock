@@ -1,13 +1,3 @@
-GIT
-  remote: https://github.com/ricardohsd/kaminari.git
-  revision: 0277c92d967911ba995d26cd0b68c3e4da3e5615
-  ref: 0277c92
-  specs:
-    kaminari (0.13.0)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      railties (>= 3.0.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -146,6 +136,9 @@ GEM
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.6.6)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.1.0)
       addressable (~> 2.2.6)
     libnotify (0.7.2)
@@ -272,7 +265,7 @@ DEPENDENCIES
   haml-rails (>= 0.3.4)
   inherited_resources
   jquery-rails
-  kaminari!
+  kaminari
   launchy (>= 2.1.0)
   libnotify
   mocha

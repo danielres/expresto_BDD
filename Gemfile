@@ -50,7 +50,7 @@ gem "guard-rspec", ">= 0.4.3", :group => :development
 gem "mocha", :require => false, :group => [:development, :test]
 gem 'launchy', '>= 2.1.0', :group => [:development, :test]
 gem "thin"
-gem 'kaminari', :git => 'https://github.com/ricardohsd/kaminari.git' , :ref => '0277c92'
+gem 'kaminari'
 gem 'gravatar_image_tag'
 gem 'newrelic_rpm', :group => :production
 gem "friendly_id", "~> 4.0.1"
