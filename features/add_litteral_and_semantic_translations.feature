@@ -1,4 +1,4 @@
-@translations
+@translations @wip
 Feature: Add litteral and semantic translations
 
   In order allow people to learn about idiomatic expressions in various languages
