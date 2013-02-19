@@ -14,6 +14,7 @@ Just make a fork, make your changes, then send me a pull request.
   - x Rules, help & advices alongside forms
   - x info tooltips on edit/remove expression buttons
   - x Ajaxify paginations to avoid full page refresh & focus loss
+  - x Prevent accidental double post (translatiions)
 
 - New features
   - V Litteral & semantic translations for any expression, in any language.
