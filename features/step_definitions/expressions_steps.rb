@@ -1,3 +1,17 @@
+When /^I add my expression$/ do
+  find( "[rel='add-expression']" ).click
+  fill_in "expression_body",        with: "Brushing girafes"
+  fill_in "expression_meaning",     with: "Spending time on things that have no utility"
+  find("#expression_created_by_author_true").click
+  fill_in "expression_source_info", with: "While talking about social relationships with geeks"
+  find("[data-purpose='submit-expression']").click
+  # save_and_open_page
+end
+
+
+
+############## old steps:
+
 Given /^(\d+) (.*) expressions have been added$/ do |amount, language|
   amount.to_i.times do |n|
     FactoryGirl.create(:expression, :language => Language.find_by_code(language[0..1].downcase) )

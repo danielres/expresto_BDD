@@ -33,7 +33,7 @@
           -# unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
           .menu.add_expression.pull-right
             %ul
-              %li= link_to icon(:plus_sign)+t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success'
+              %li= link_to icon(:plus_sign)+t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success', rel: 'add-expression'
 
     .page
       .menu.pages
