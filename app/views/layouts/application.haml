@@ -15,7 +15,7 @@
       .navbar-inner
         .menus
 
-          .menu.userbox.pull-right
+          .menu.userbox.pull-right{ data: { purpose: "userbox" } }
             %ul.nav
               - if signed_in?
                 %li.current_user= link_to icon(:user)+current_user, current_user
