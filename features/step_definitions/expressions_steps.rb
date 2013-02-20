@@ -1,13 +1,59 @@
+
 When /^I add my expression$/ do
+
+  @my_expression_attrs = {
+    body:              "Brushing girafes",
+    meaning:           "Spending time on things that have no utility",
+    created_by_author:  true,
+    source_info:       "While talking about social relationships with geeks",
+  }
+
   find( "[rel='add-expression']" ).click
-  fill_in "expression_body",        with: "Brushing girafes"
-  fill_in "expression_meaning",     with: "Spending time on things that have no utility"
-  find("#expression_created_by_author_true").click
-  fill_in "expression_source_info", with: "While talking about social relationships with geeks"
-  find("[data-purpose='submit-expression']").click
-  # save_and_open_page
+
+  fill_in "expression_body",         with: @my_expression_attrs[:body]
+  fill_in "expression_meaning",      with: @my_expression_attrs[:meaning]
+  fill_in "expression_source_info",  with: @my_expression_attrs[:source_info]
+  find(   "#expression_created_by_author_#{@my_expression_attrs[:created_by_author]}" ).click
+  find(   "[data-purpose='submit-expression']" ).click
 end
 
+Then /^I should see my expression with its details$/ do
+  @my_expression_attrs.select{ |a| a.class == String }.each do |value|
+    page.should have_content value
+  end
+  if @my_expression_attrs[:created_by_author]
+    page.should have_content "Added by Test User 1"
+  end
+end
+
+When /^I visit my public profile$/ do
+  pending
+end
+
+Then /^I should see my expression listed$/ do
+  pending
+end
+
+Given /^I am a not logged in$/ do
+  pending
+end
+
+Then /^I should see a way to log in$/ do
+  pending
+end
+
+When /^I attempt to ad an expression$/ do
+  pending
+end
+
+Then /^I should be offered an obvious way to log in$/ do
+  pending
+end
+
+
+
+
+  # save_and_open_page
 
 
 ############## old steps:
