@@ -1,29 +1,21 @@
 
 When /^I add my expression$/ do
-
-  @my_expression_attrs = {
-    body:              "Brushing girafes",
-    meaning:           "Spending time on things that have no utility",
-    created_by_author:  true,
-    source_info:       "While talking about social relationships with geeks",
-  }
+  @my_expression  = FactoryGirl.build :expression, author: @logged_user
 
   find( "[rel='add-expression']" ).click
 
-  fill_in "expression_body",         with: @my_expression_attrs[:body]
-  fill_in "expression_meaning",      with: @my_expression_attrs[:meaning]
-  fill_in "expression_source_info",  with: @my_expression_attrs[:source_info]
-  find(   "#expression_created_by_author_#{@my_expression_attrs[:created_by_author]}" ).click
+  fill_in "expression_body",         with:  @my_expression.body
+  fill_in "expression_meaning",      with:  @my_expression.meaning
+  fill_in "expression_source_info",  with:  @my_expression.source_info
+  find(   "#expression_created_by_author_true" ).click
   find(   "[data-purpose='submit-expression']" ).click
 end
 
-Then /^I should see my expression with its details$/ do
-  @my_expression_attrs.select{ |a| a.class == String }.each do |value|
-    page.should have_content value
-  end
-  if @my_expression_attrs[:created_by_author]
-    page.should have_content "Added by Test User 1"
-  end
+Then /^I should see my expression with its details and a link to my public profile$/ do
+  e       = @my_expression
+  details = [ e.body, e.meaning, e.source_info ]
+  details.each{ |detail| page.should have_content detail }
+  page.should have_css "a", text: @my_expression.author.name
 end
 
 When /^I visit my public profile$/ do

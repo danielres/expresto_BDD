@@ -1,4 +1,4 @@
-@wip
+@current_wip
 Feature: add an expression
 
   In order to contribute to Expresto
@@ -12,7 +12,7 @@ Feature: add an expression
     Given I am logged in
 
     When  I add my expression
-    Then  I should see my expression with its details
+    Then  I should see my expression with its details and a link to my public profile
 
     When  I visit my public profile
     Then  I should see my expression listed
