@@ -15,7 +15,7 @@ Feature: add an expression
     Then  I should see my expression with its details and a link to my public profile
 
     When  I visit my public profile
-    Then  I should see my expression listed
+    Then  I should see a link to my expression
 
   Scenario: Attempt to add an expression as an anonymous user
 

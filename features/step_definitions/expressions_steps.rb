@@ -18,12 +18,13 @@ Then /^I should see my expression with its details and a link to my public profi
   page.should have_css "a", text: @my_expression.author.name
 end
 
-When /^I visit my public profile$/ do
-  pending
+def dom_id object
+  "#{object.class.name.underscore}_#{object.id}"
 end
 
-Then /^I should see my expression listed$/ do
-  pending
+Then /^I should see a link to my expression$/ do
+  e = @my_expression
+  page.should have_css "a", text: e.body
 end
 
 Given /^I am a not logged in$/ do
