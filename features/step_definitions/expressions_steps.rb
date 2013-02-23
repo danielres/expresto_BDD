@@ -1,21 +1,20 @@
 
 When /^I add my expression$/ do
-  @my_expression  = FactoryGirl.build :expression, author: @logged_user
 
   find( "[rel='add-expression']" ).click
 
-  fill_in "expression_body",         with:  @my_expression.body
-  fill_in "expression_meaning",      with:  @my_expression.meaning
-  fill_in "expression_source_info",  with:  @my_expression.source_info
+  fill_in "expression_body",         with:  my_expression.body
+  fill_in "expression_meaning",      with:  my_expression.meaning
+  fill_in "expression_source_info",  with:  my_expression.source_info
   find(   "#expression_created_by_author_true" ).click
   find(   "[data-purpose='submit-expression']" ).click
 end
 
 Then /^I should see my expression with its details and a link to my public profile$/ do
-  e       = @my_expression
+  e       = my_expression
   details = [ e.body, e.meaning, e.source_info ]
   details.each{ |detail| page.should have_content detail }
-  page.should have_css "a", text: @my_expression.author.name
+  page.should have_css "a", text: my_expression.author.name
 end
 
 def dom_id object
@@ -23,7 +22,7 @@ def dom_id object
 end
 
 Then /^I should see a link to my expression$/ do
-  e = @my_expression
+  e = my_expression
   page.should have_css "a", text: e.body
 end
 

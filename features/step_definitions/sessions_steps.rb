@@ -1,9 +1,9 @@
+
 Given /^I am logged in$/ do
-  @logged_user = FactoryGirl.create :user
   visit new_user_session_path
-  fill_in "user_email"   , with: @logged_user.email
-  fill_in "user_password", with: @logged_user.password
+  fill_in "user_email"   , with: logged_user.email
+  fill_in "user_password", with: logged_user.password
   find( "[data-purpose='sign-in']" ).click
 
-  find( "[data-purpose='userbox']" ).should have_content @logged_user.name
+  find( "[data-purpose='userbox']" ).should have_content logged_user.name
 end
