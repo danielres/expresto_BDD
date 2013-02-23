@@ -22,14 +22,14 @@ gem "compass-rails"#, "~> 1.0.0"#, group: [:assets]
 
 group :development do
   gem 'sqlite3'
-  gem "guard", ">= 0.6.2"
+  gem 'guard'
   gem 'libnotify'
   gem 'rb-inotify'
-  gem "guard-bundler", ">= 0.1.3"
-  gem "guard-rails", ">= 0.0.3"
-  gem "guard-livereload", ">= 0.3.0"
-  gem "guard-spork"
-  gem "guard-rspec", ">= 0.4.3"
+  # gem "guard-bundler", ">= 0.1.3"
+  # gem "guard-rails", ">= 0.0.3"
+  # gem "guard-livereload", ">= 0.3.0"
+  # gem "guard-spork"
+  # gem "guard-rspec", ">= 0.4.3"
 end
 
 group :development, :test do
