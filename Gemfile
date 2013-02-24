@@ -41,8 +41,10 @@ group :development, :test do
   gem "factory_girl_rails", "~> 3.0"
   gem "capybara"
   gem "cucumber-rails", require: false
+  gem 'zeus'
 
 end
+
 
 group :production do
   gem 'newrelic_rpm'
