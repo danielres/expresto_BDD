@@ -12,7 +12,7 @@
         = f.input :password, required: false
         = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
       .actions
-        = submit_button t :sign_in
+      = f.submit_button t :sign_in
 
     %ul.nav
       %li
