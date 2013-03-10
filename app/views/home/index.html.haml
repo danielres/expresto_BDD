@@ -7,7 +7,11 @@
 
     %ul.expressions
       = render @expressions, :state => :list_item
-      %li= link_to icon(:search)+t(:all_expressions_in, :language => t(l=Language.find_by_code(locale).name, :default => l)), expressions_path, :class => 'btn btn-primary expressions_index'
+      %li= link_to  icon(:search)+t(:all_expressions_in, :language => t(l=Language.find_by_code(locale).name,
+                    :default => l)),
+                    expressions_path,
+                    :class => 'btn btn-primary expressions_index',
+                    data: { purpose: 'expressions-index' }
 
   .span4
     - if @news.any?

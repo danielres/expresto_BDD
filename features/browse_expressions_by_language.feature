@@ -12,9 +12,11 @@ Feature: browse expressions by language
     And 3 french expressions by Françoise
     And 5 french expressions by John
 
-  Scenario: visit the english expressions
+  Scenario: browse to the english expressions page
 
-    When I go to the homepage
-    And  I set language to english
-    And  I click on the "expressions_index" link
+    When I visit the english homepage
+    Then I should see "Most recent expressions in english"
+
+    When I click the "expressions-index" link
+    Then show me the page
     Then I should see "3 expressions in english"

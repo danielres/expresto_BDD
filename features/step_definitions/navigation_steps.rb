@@ -1,6 +1,11 @@
-When /^I go to the homepage$/ do
+# When /^I go to the homepage$/ do
+#   visit '/en'
+# end
+
+When /^I visit the english homepage$/ do
   visit '/en'
 end
+
 
 Then /^I should see "(.*?)"$/ do |arg1|
   page.should have_content(arg1)
@@ -22,6 +27,10 @@ end
 
 When /^I should not see a "(.*?)" link$/ do |cssclass|
   page.should_not have_selector("a.#{cssclass.downcase}")
+end
+
+When /^I click the "(.*?)" link$/ do |name|
+  find("a[data-purpose='#{name}']").click
 end
 
 When /^I click on the "(.*?)" link$/ do |class_name|
