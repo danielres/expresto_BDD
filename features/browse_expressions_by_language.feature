@@ -18,5 +18,4 @@ Feature: browse expressions by language
     Then I should see "Most recent expressions in english"
 
     When I click the "expressions-index" link
-    Then show me the page
     Then I should see "3 expressions in english"
