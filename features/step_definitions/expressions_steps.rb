@@ -1,7 +1,7 @@
 
 When /^I add my expression$/ do
 
-  find( "[rel='add-expression']" ).click
+  click the "add-expression-button"
 
   fill_in "expression_body",         with:  my_expression.body
   fill_in "expression_meaning",      with:  my_expression.meaning
@@ -28,7 +28,7 @@ end
 
 
 When /^I attempt to add an expression$/ do
-  find( "[rel='add-expression']" ).click
+  click the "add-expression-button"
 end
 
 
