@@ -1,5 +1,5 @@
 
-Given /^I am logged in$/ do
+Given /^I logged in$/ do
   visit new_user_session_path
   within the 'sign-in-form' do
     fill_in "user_email"   , with: logged_user.email
@@ -9,7 +9,7 @@ Given /^I am logged in$/ do
   find( the 'userbox' ).should have_content logged_user.name
 end
 
-Given /^I am not logged in$/ do
+When /^I log out$/ do
   visit destroy_user_session_path
   within the 'userbox' do
     find the 'sign-in-button'

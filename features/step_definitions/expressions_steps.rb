@@ -66,7 +66,7 @@ Then /^I should see the expression page with details and (.*) as author$/ do |au
   find('div.expression .author').should have_content(author)
 end
 
-Given /^(\d+) (.*) expressions by (.*)$/ do |qty, language, user|
+Given /^(\d+) (.*) expressions? by (.*)$/ do |qty, language, user|
     l = Language.find_by_code(language.downcase[0..1]) || FactoryGirl.create(:language, :name => language.downcase.strip, :code => language.downcase[0..1])
     u = User.find_by_name(user) || FactoryGirl.create(:user, :name => user)
     qty.to_i.times do |n|

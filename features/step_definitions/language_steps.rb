@@ -1,4 +1,4 @@
-Given /^language[s]? (.*) (?:is|are) available$/ do |languages|
+Given /^available languages?: (.*)$/ do |languages|
   languages = languages.split(', ')
   languages.each do |l|
       Language.create code: l[0..1].downcase, name: l.strip
