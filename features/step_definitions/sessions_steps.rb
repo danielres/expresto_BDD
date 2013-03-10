@@ -16,12 +16,12 @@ Given /^I am not logged in$/ do
   end
 end
 
-Then /^I should see a way to log in$/ do
+Then /^I should see how to log in$/ do
   href = new_user_session_path locale: 'en'
   find the 'sign-in-button'
 end
 
-Then /^I should be offered an obvious way to authenticate$/ do
+Then /^I should see in an obvious way how to log in$/ do
   within the 'main-content' do
     find the 'sign-in-form'
     find the 'sign-up-form'

@@ -1,7 +1,7 @@
 Feature: add an expression
 
-  In order to contribute to Expresto
-  I want to add one of my expressions
+  In order to share an idiomatic expression
+  I want to add one of my expressions on Expresto
 
   Background:
     Given language English is available
@@ -19,7 +19,7 @@ Feature: add an expression
   Scenario: Attempt to add an expression as an anonymous user
 
     Given I am not logged in
-    Then  I should see a way to log in
+    Then  I should see how to log in
 
     When  I attempt to add an expression
-    Then  I should be offered an obvious way to authenticate
+    Then  I should see in an obvious way how to log in
