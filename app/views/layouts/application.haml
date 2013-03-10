@@ -1,16 +1,16 @@
 :ruby
   pages = {
-    :home => root_path(:locale => locale),
-    :expressions => expressions_path
+    home: root_path(locale: locale),
+    expressions: expressions_path
   }
 !!!
-%html{:lang => locale}
+%html{lang: locale}
   %head
     %title Expresto
-    = stylesheet_link_tag    "application", :media => "all"
+    = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body{:class => [controller_name, action_name].join('-')}
+  %body{class: [controller_name, action_name].join('-')}
     .navbar.navbar-fixed-top
       .navbar-inner
         .menus
@@ -23,8 +23,8 @@
               - else
                 %li.sign_in= sign_in_button
 
-          = link_to image_tag('expresto-logo.png'), root_path, :class => :brand
-          %h2.tagline= t(:tagline, :default => :home).capitalize
+          = link_to image_tag('expresto-logo.png'), root_path, class: :brand
+          %h2.tagline= t(:tagline, default: :home).capitalize
 
           .menu.languages
             = render 'languages/list'
@@ -33,14 +33,14 @@
           -# unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
           .menu.add_expression.pull-right
             %ul
-              %li= link_to icon(:plus_sign)+t(:add_an_expression), new_expression_path, :class => 'btn btn-large btn-success', rel: 'add-expression'
+              %li= link_to icon(:plus_sign)+t(:add_an_expression), new_expression_path, class: 'btn btn-large btn-success', rel: 'add-expression'
 
     .page
       .menu.pages
         %ul.nav.nav-tabs
           - pages.each do |name, path|
             - active = current_page?(path) || (name.to_s == controller_name)
-            %li{ :class => ( :active if active ) }
+            %li{ class: ( :active if active ) }
               = link_to t("menu.#{name}").to_s.capitalize, path
           = todo :li do
             = link_to 'Requests', '#'
@@ -48,7 +48,7 @@
             = link_to 'Tags', '#'
 
       - flash.each do |name, msg|
-        %div{:class => "alert alert-#{name}"}
+        %div{class: "alert alert-#{name}"}
           = msg
 
       .main{ data: { purpose: 'main-content' } }
@@ -60,8 +60,8 @@
           %li.about
             = link_to_unless current_page?(about_path), t('pages.about'), about_path
           %li.contact
-            = link_to t('contact', :default => 'Contact'), 'http://studio.pixarea.com/future'
+            = link_to t('contact', default: 'Contact'), 'http://studio.pixarea.com/future'
           %li.creation
             Created by
-            %a{:href => "http://studio.pixarea.com"} Pixarea studio
+            %a{href: "http://studio.pixarea.com"} Pixarea studio
     = render 'google_analytics'
