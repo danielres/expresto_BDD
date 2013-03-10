@@ -21,7 +21,7 @@ Then /^I should see a way to log in$/ do
 end
 
 Then /^I should be offered an obvious way to authenticate$/ do
-  within ".main" do
+  within "[data-purpose='main-content']" do
     page.should have_css "form#new_user_session"
     page.should have_css "form#new_user"
   end

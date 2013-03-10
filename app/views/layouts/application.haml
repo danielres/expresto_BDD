@@ -51,7 +51,7 @@
         %div{:class => "alert alert-#{name}"}
           = msg
 
-      .main
+      .main{ data: { purpose: 'main-content' } }
         = yield
     %footer
       .container
