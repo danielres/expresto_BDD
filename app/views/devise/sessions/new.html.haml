@@ -2,7 +2,8 @@
 
   .span4
     %h2= t(:sign_in)
-    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = resource_name
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { id: "new_#{resource_name}_session", class: "new_#{resource_name}_session" }  ) do |f|
       .inputs
         = f.input :email, :required => false, :autofocus => true
         = f.input :password, :required => false
