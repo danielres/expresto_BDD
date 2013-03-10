@@ -26,22 +26,10 @@ Then /^I should see a link to my expression$/ do
   page.should have_css "a", text: e.body
 end
 
-Given /^I am a not logged in$/ do
-  pending
-end
 
-Then /^I should see a way to log in$/ do
-  pending
+When /^I attempt to add an expression$/ do
+  find( "[rel='add-expression']" ).click
 end
-
-When /^I attempt to ad an expression$/ do
-  pending
-end
-
-Then /^I should be offered an obvious way to log in$/ do
-  pending
-end
-
 
 
 

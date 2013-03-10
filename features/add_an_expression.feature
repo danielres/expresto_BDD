@@ -1,4 +1,3 @@
-@current_wip
 Feature: add an expression
 
   In order to contribute to Expresto
@@ -19,8 +18,8 @@ Feature: add an expression
 
   Scenario: Attempt to add an expression as an anonymous user
 
-    Given I am a not logged in
+    Given I am not logged in
     Then  I should see a way to log in
 
-    When  I attempt to ad an expression
-    Then  I should be offered an obvious way to log in
+    When  I attempt to add an expression
+    Then  I should be offered an obvious way to authenticate

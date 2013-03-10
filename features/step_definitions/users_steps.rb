@@ -40,7 +40,3 @@ When /^I go to my user page$/ do
     find("a[@href^='/en/users/']").click
   end
 end
-
-Given /^I am not logged in$/ do
-  visit(destroy_user_session_path)
-end
