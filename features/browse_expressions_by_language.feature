@@ -9,8 +9,7 @@ Feature: browse expressions by language
     Given available languages: French, English
     And 1 english expression by John
     And 2 english expressions by Jane
-    And 3 french expressions by Françoise
-    And 5 french expressions by John
+    And 4 french expressions by Françoise
 
   Scenario: browse to the english expressions page
 
