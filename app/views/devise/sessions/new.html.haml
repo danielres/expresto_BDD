@@ -2,13 +2,17 @@
 
   .span4
     %h2= t :sign_in
-    = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { id: "new_#{resource_name}_session", class: "new_#{resource_name}_session" } do |f|
+    - form_id    = "new_#{resource_name}_session"
+    - form_class = "new_#{resource_name}_session"
+    = simple_form_for resource,   as:   resource_name,
+                                 url:   session_path(resource_name),
+                                html: { id: form_id, class: form_class, data: { purpose: 'sign-in-form' } } do |f|
       .inputs
         = f.input :email, required: false, autofocus: true
         = f.input :password, required: false
         = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
       .actions
-        = f.button :submit, t(:sign_in), data: { purpose: 'sign-in' }
+        = submit_button t :sign_in
 
     %ul.nav
       %li

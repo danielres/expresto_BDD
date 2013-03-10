@@ -1,29 +1,29 @@
 
 Given /^I am logged in$/ do
   visit new_user_session_path
-  fill_in "user_email"   , with: logged_user.email
-  fill_in "user_password", with: logged_user.password
-
-  click the 'sign-in'
+  within the 'sign-in-form' do
+    fill_in "user_email"   , with: logged_user.email
+    fill_in "user_password", with: logged_user.password
+    click the 'submit-button'
+  end
   find( the 'userbox' ).should have_content logged_user.name
-
 end
 
 Given /^I am not logged in$/ do
-  visit(destroy_user_session_path)
+  visit destroy_user_session_path
   within the 'userbox' do
-    page.should_not have_css ".sign_out a"
+    find the 'sign-in-button'
   end
 end
 
 Then /^I should see a way to log in$/ do
   href = new_user_session_path locale: 'en'
-  page.should have_css ".sign_in a[href='#{href}']"
+  find the 'sign-in-button'
 end
 
 Then /^I should be offered an obvious way to authenticate$/ do
   within the 'main-content' do
-    page.should have_css "form#new_user_session"
-    page.should have_css "form#new_user"
+    find the 'sign-in-form'
+    find the 'sign-up-form'
   end
 end
