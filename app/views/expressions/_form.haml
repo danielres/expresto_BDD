@@ -1,6 +1,6 @@
 .gridSystem
   .row
-    = simple_form_for expression, :html => {:class => 'form-horizontal' } do |f|
+    = simple_form_for expression, :html => {:class => 'form-horizontal', data: { purpose: 'add-expression-form' } } do |f|
 
       .row
 
@@ -30,4 +30,5 @@
 
 
       .row
-        .form-actions= f.button :submit, :class => 'btn btn-primary', data: { purpose: "submit-expression"}
+        .form-actions
+          = f.submit_button
