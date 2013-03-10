@@ -19,9 +19,9 @@
             %ul.nav
               - if signed_in?
                 %li.current_user= link_to icon(:user)+current_user, current_user
-                %li.sign_out= link_to icon(:signout)+t(:sign_out), destroy_user_session_path, :method => :delete
+                %li.sign_out= sign_out_button
               - else
-                %li.sign_in= link_to icon(:signin)+t(:sign_in), new_user_session_path
+                %li.sign_in= sign_in_button
 
           = link_to image_tag('expresto-logo.png'), root_path, :class => :brand
           %h2.tagline= t(:tagline, :default => :home).capitalize
