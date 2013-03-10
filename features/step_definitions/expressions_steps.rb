@@ -3,11 +3,14 @@ When /^I add my expression$/ do
 
   click the "add-expression-button"
 
-  fill_in "expression_body",         with:  my_expression.body
-  fill_in "expression_meaning",      with:  my_expression.meaning
-  fill_in "expression_source_info",  with:  my_expression.source_info
-  find(   "#expression_created_by_author_true" ).click
-  find(   "[data-purpose='submit-expression']" ).click
+  within the "add-expression-form" do
+    fill_in "expression_body",         with:  my_expression.body
+    fill_in "expression_meaning",      with:  my_expression.meaning
+    fill_in "expression_source_info",  with:  my_expression.source_info
+    find(   "#expression_created_by_author_true" ).click
+    click the "submit-button"
+  end
+
 end
 
 Then /^I should see my expression with its details and a link to my public profile$/ do
