@@ -22,4 +22,4 @@ Feature: add an expression
     Then  I should see how to log in
 
     When  I attempt to add an expression
-    Then  I should see in an obvious way how to log in
+    Then  I should see an obvious way to log in
