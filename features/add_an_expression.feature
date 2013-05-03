@@ -1,7 +1,8 @@
 Feature: add an expression
 
-  In order to share an idiomatic expression
-  I want to add one of my expressions on Expresto
+  As a registered user
+  I want to add an idiomatic expression
+  In order to share it with the world
 
   Background:
     Given language English is available
@@ -11,7 +12,8 @@ Feature: add an expression
     Given I am logged in
 
     When  I add my expression
-    Then  I should see my expression with its details and a link to my public profile
+    Then  I should see my expression and its details
+    And   I should see a link to my public profile
 
     When  I visit my public profile
     Then  I should see a link to my expression

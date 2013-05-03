@@ -13,10 +13,13 @@ When /^I add my expression$/ do
 
 end
 
-Then /^I should see my expression with its details and a link to my public profile$/ do
+Then /^I should see my expression and its details$/ do
   e       = my_expression
   details = [ e.body, e.meaning, e.source_info ]
   details.each{ |detail| page.should have_content detail }
+end
+
+Then /^I should see a link to my public profile$/ do
   page.should have_css "a", text: my_expression.author.name
 end
 
