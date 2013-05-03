@@ -16,9 +16,9 @@ gem 'cancan'
 gem "inherited_resources"
 gem "simple_form"
 gem "email_spec", ">= 1.2.1", group: :test
-gem "sass-rails"
-gem 'compass_twitter_bootstrap'
-gem "compass-rails"#, "~> 1.0.0"#, group: [:assets]
+gem "sass-rails", "= 3.2.5"
+gem 'compass_twitter_bootstrap', "2.0.3"
+gem "compass-rails", "1.0.3" #, "~> 1.0.0"#, group: [:assets]
 
 group :development do
   gem 'sqlite3'
