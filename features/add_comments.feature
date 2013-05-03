@@ -1,7 +1,8 @@
 Feature: add comments
 
-  In order to interact with other members
-  I want to add comments expressions
+  As a registered user of expresto
+  I want to add comments to expressions
+  In order to interact with other registered users
 
   Background:
     Given language English is available
