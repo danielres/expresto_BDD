@@ -3,11 +3,11 @@ require 'spec_helper'
 describe Language do
 
   it "should require a language code" do
-    FactoryGirl.build(:language, :code => '').should_not be_valid
+    FactoryGirl.build(:language, code: '').should_not be_valid
   end
 
   it "should require a language name" do
-    FactoryGirl.build(:language, :name => '').should_not be_valid
+    FactoryGirl.build(:language, name: '').should_not be_valid
   end
 
   it "should have many expressions" do
@@ -20,8 +20,8 @@ describe Language do
   end
 
   it "should have unique language code and unique language name" do
-    language1 = FactoryGirl.create(:language, :code => :en, :name => 'English')
-    language2 = FactoryGirl.build( :language, :code => :en, :name => 'English')
+    language1 = FactoryGirl.create(:language, code: :en, name: 'English')
+    language2 = FactoryGirl.build( :language, code: :en, name: 'English')
     language2.should have(1).error_on(:code)
     language2.should have(1).error_on(:name)
   end
