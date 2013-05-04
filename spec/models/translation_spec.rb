@@ -1,25 +1,52 @@
 require 'spec_helper'
 
 describe Translation do
-  it "should create a new instance given valid attributes" do
-    FactoryGirl.create(:translation).should be_valid
+
+  let( :translation      ) { Translation.new valid_attributes }
+  let( :language         ) { mock_model 'Language'            }
+  let( :expression       ) { mock_model 'Expression'          }
+  let( :author           ) { mock_model 'User'                }
+
+  let( :valid_attributes ) {
+    {
+      expression:    expression,
+      language:      language,
+      body_litteral: 'Litteral translation',
+      body_semantic: 'Semantic translation',
+      author:        author,
+    }
+  }
+
+
+  describe '#new' do
+    it( 'creates a new instance given valid attributes' ){ translation.should be_valid   }
   end
-  it "should require a litteral translation" do
-    FactoryGirl.build(:translation, body_litteral: '').should_not be_valid
+
+
+  describe 'validations' do
+    it 'requires a litteral translation' do
+      translation.tap{ |t| t.body_litteral = '' }.should_not be_valid
+    end
+    it 'requires a semantic translation' do
+      translation.tap{ |t| t.body_semantic = '' }.should_not be_valid
+    end
   end
-  it "should require a semantic translation" do
-    FactoryGirl.build(:translation, body_semantic: '').should_not be_valid
+
+
+  describe 'associations' do
+
+    describe '#expression' do
+      it( 'returns its expression' ){ translation.expression.should eq expression }
+    end
+
+    describe '#author' do
+      it( 'returns its author'     ){ translation.author.should     eq author     }
+    end
+
+    describe '#language' do
+      it( 'returns its language'   ){ translation.language.should   eq language   }
+    end
+
   end
-  it "should belong to an expression" do
-    expression = FactoryGirl.build(:expression)
-    FactoryGirl.build(:translation, expression: expression).expression.should be(expression)
-  end
-  it "should belong to an author" do
-    author = FactoryGirl.build(:author)
-    FactoryGirl.build(:translation, author: author).author.should be(author)
-  end
-  it "should belong to a language" do
-    language = FactoryGirl.build(:language)
-    FactoryGirl.build(:translation, language: language).language.should be(language)
-  end
+
 end
