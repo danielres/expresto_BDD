@@ -16,12 +16,12 @@ describe Language do
     it( 'requires a code'  ){ language.tap{ |l| l.code = '' }.should_not be_valid }
     it( 'requires a name'  ){ language.tap{ |l| l.name = '' }.should_not be_valid }
 
-    its( 'code is unique') do
+    it( 'has unique code') do
       language.save
       Language.new( valid_attributes ).should have(1).error_on :code
     end
 
-    its( 'name is unique') do
+    it( 'has unique name') do
       language.save
       Language.new( valid_attributes ).should have(1).error_on :name
     end
