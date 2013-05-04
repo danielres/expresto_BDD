@@ -2,18 +2,21 @@ require 'spec_helper'
 
 describe News do
 
-  before(:each) do
-    @attr = {
-      body_en: "Body (en)",
-      body_fr: "Body (fr)",
-      author_id: 1,
-      published_at: Time.now
+  let( :news             ) { News.new valid_attributes }
+  let( :valid_attributes ) {
+    {
+      body_en:      'Body (en)',
+      body_fr:      'Body (fr)',
+      author_id:    1,
+      published_at: Time.now,
     }
+  }
+
+
+  describe '#new' do
+    it( 'creates a new instance given valid attributes' ){ news.should be_valid   }
   end
 
-  it "should create a new instance given a valid attribute" do
-    News.create!(@attr)
-  end
 
 #   it "should require at least a body in French or in English" do
 #
