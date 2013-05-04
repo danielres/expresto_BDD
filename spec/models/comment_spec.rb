@@ -4,13 +4,20 @@ require 'spec_helper'
 describe Comment do
 
   let( :comment          ) { Comment.new valid_attributes                            }
-  let( :valid_attributes ) { { user: user, commentable: commentable, body: 'Lorem' } }
   let( :user             ) { mock_model 'User'                                       }
-  let( :commentable      ) { mock_model 'Expression'                                 }
+  let( :commentable      ) { mock_model 'Expression'
+                           }
+  let( :valid_attributes ) {
+    {
+      user:        user,
+      commentable: commentable,
+      body:        'Lorem',
+    }
+  }
 
 
   describe '#new' do
-    it( 'creates a new instance given valid attributes' ){ comment.should be_valid   }
+    it( 'creates a new instance given valid attributes' ){ comment.should be_valid }
   end
 
 
@@ -24,9 +31,7 @@ describe Comment do
 
   describe 'associations' do
     describe '#user' do
-      it 'returns the author of the expression' do
-        comment.user.should eq user
-      end
+      it( 'returns its author'        ){ comment.user.should eq user }
     end
   end
 
