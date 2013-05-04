@@ -3,29 +3,32 @@ require 'spec_helper'
 
 describe Comment do
 
-  it "should create a new instance given valid attributes" do
-    FactoryGirl.create(:comment).should be_valid
+  let( :comment          ) { Comment.new valid_attributes                            }
+  let( :valid_attributes ) { { user: user, commentable: commentable, body: 'Lorem' } }
+  let( :user             ) { mock_model 'User'                                       }
+  let( :commentable      ) { mock_model 'Expression'                                 }
+
+
+  describe '#new' do
+    it( 'creates a new instance given valid attributes' ){ comment.should be_valid   }
   end
 
-  it "should require a body" do
-    FactoryGirl.build(:comment, body: '').should_not be_valid
+
+  describe 'validations' do
+    it( 'requires a body'             ){ comment.tap{ |c| c.body             = ''  }.should_not be_valid }
+    it( 'requires a commentable_type' ){ comment.tap{ |c| c.commentable_type = ''  }.should_not be_valid }
+    it( 'requires a commentable_id'   ){ comment.tap{ |c| c.commentable_id   = nil }.should_not be_valid }
+    it( 'requires a user_id'          ){ comment.tap{ |c| c.user_id          = nil }.should_not be_valid }
   end
 
-  it "should require a commentable_type" do
-    FactoryGirl.build(:comment, commentable_type: '').should_not be_valid
+
+  describe 'associations' do
+    describe '#user' do
+      it 'returns the author of the expression' do
+        comment.user.should eq user
+      end
+    end
   end
 
-  it "should require a commentable_id" do
-    FactoryGirl.build(:comment, commentable_id: nil).should_not be_valid
-  end
-
-  it "should belong to an user" do
-    user = FactoryGirl.build(:user)
-    FactoryGirl.build(:comment, user: user).user.should be(user)
-
-  end
-  it "should require an user_id" do
-    FactoryGirl.build(:comment, user_id: nil).should_not be_valid
-  end
 
 end
