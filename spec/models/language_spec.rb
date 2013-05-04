@@ -2,28 +2,46 @@ require 'spec_helper'
 
 describe Language do
 
-  it "should require a language code" do
-    FactoryGirl.build(:language, code: '').should_not be_valid
+  let( :language       ) { Language.new valid_attributes }
+  let( :valid_attributes ) {
+    {
+      code: 'en',
+      name: 'English',
+    }
+  }
+
+
+  describe 'validations' do
+
+    it( 'requires a code'  ){ language.tap{ |l| l.code = '' }.should_not be_valid }
+    it( 'requires a name'  ){ language.tap{ |l| l.name = '' }.should_not be_valid }
+
+    its( 'code is unique') do
+      language.save
+      Language.new( valid_attributes ).should have(1).error_on :code
+    end
+
+    its( 'name is unique') do
+      language.save
+      Language.new( valid_attributes ).should have(1).error_on :name
+    end
+
   end
 
-  it "should require a language name" do
-    FactoryGirl.build(:language, name: '').should_not be_valid
-  end
 
-  it "should have many expressions" do
-    language  = FactoryGirl.build(:language)
-    e1        = FactoryGirl.build(:expression)
-    e2        = FactoryGirl.build(:expression)
-    language.expressions << e1
-    language.expressions << e2
-    language.expressions.should == [ e1, e2 ]
-  end
+  describe 'associations' do
 
-  it "should have unique language code and unique language name" do
-    language1 = FactoryGirl.create(:language, code: :en, name: 'English')
-    language2 = FactoryGirl.build( :language, code: :en, name: 'English')
-    language2.should have(1).error_on(:code)
-    language2.should have(1).error_on(:name)
+    describe '#expressions' do
+      let( :expression1 ){ mock_model 'Expression'       }
+      let( :expression2 ){ mock_model 'Expression'       }
+      let( :expressions ){ [ expression1, expression2 ] }
+      it 'returns its expressions' do
+        language.expressions        << expression1
+        language.expressions        << expression2
+        language.expressions.should =~ expressions
+      end
+    end
+
   end
 
 end
