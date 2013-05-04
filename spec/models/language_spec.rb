@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Language do
 
-  let( :language       ) { Language.new valid_attributes }
+  let( :language         ) { Language.new valid_attributes }
   let( :valid_attributes ) {
     {
       code: 'en',
@@ -10,6 +10,10 @@ describe Language do
     }
   }
 
+
+  describe '#new' do
+    it( 'creates a new instance given valid attributes' ){ language.should be_valid   }
+  end
 
   describe 'validations' do
 
