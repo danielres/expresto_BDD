@@ -3,59 +3,76 @@ require 'spec_helper'
 
 describe Expression do
 
-#   before(:each) do
-#     FactoryGirl.create(:language)
-#     FactoryGirl.create(:user)
-#   end
+  let( :expression       ) { Expression.new valid_attributes }
+  let( :language         ) { mock_model 'Language'           }
+  let( :author           ) { mock_model 'User'               }
 
-  it "should create a new instance given valid attributes" do
-    FactoryGirl.create(:expression).should be_valid
+  let( :valid_attributes ) {
+    {
+      language:          language,
+      author:            author,
+      body:              'Lorem',
+      meaning:           'Meaning',
+      source_info:       'Source info',
+      created_by_author: true,
+    }
+  }
+
+
+  describe '#new' do
+    it( 'creates a new instance given valid attributes' ){ expression.should be_valid   }
   end
 
-  it "should properly reformat its body upon save" do
-    f = FactoryGirl.create(:expression, body: '   body    to clean  ')
-    f.save
-    f.body.should == 'Body to clean.'
-    f = FactoryGirl.create(:expression, body: 'être une expression')
-    f.save
-    f.body.should == 'Être une expression.'
+  describe 'validations' do
+    it( 'requires a body'        ){ expression.tap{ |e| e.body        = ''  }.should_not be_valid }
+    it( 'requires a meaning'     ){ expression.tap{ |e| e.meaning     = ''  }.should_not be_valid }
+    it( 'requires an author_id'  ){ expression.tap{ |e| e.author_id   = nil }.should_not be_valid }
+    it( 'requires a language_id' ){ expression.tap{ |e| e.language_id = nil }.should_not be_valid }
   end
 
-  it "should require a body" do
-    FactoryGirl.build(:expression, body: '').should_not be_valid
+
+  describe 'associations' do
+
+    describe '#author' do
+      it( 'returns its author'   ){ expression.author.should   eq author   }
+    end
+
+    describe '#language' do
+      it( 'returns its language' ){ expression.language.should eq language }
+    end
+
+    describe '#translations' do
+      let( :translation1 ){ mock_model 'Translation'       }
+      let( :translation2 ){ mock_model 'Translation'       }
+      let( :translations ){ [ translation1, translation2 ] }
+
+      it( 'returns its translations' ) do
+        expression.translations        << translation1
+        expression.translations        << translation2
+        expression.translations.should =~ translations
+      end
+    end
+
   end
 
-  it "should require a meaning" do
-    FactoryGirl.build(:expression, meaning: '').should_not be_valid
+
+  describe 'before_save' do
+
+    describe 'clean_and_format_body' do
+      it 'removes extra spaces' do
+        expression.body                           = '   Body    to clean.  '
+        expression.tap{ |e| e.save }.body.should == 'Body to clean.'
+      end
+      it 'capitalizes the first letter' do
+        expression.body                           = 'être à jeun.'
+        expression.tap{ |e| e.save }.body.should == 'Être à jeun.'
+      end
+      it 'adds a final dot' do
+        expression.body                           = 'Lorem'
+        expression.tap{ |e| e.save }.body.should == 'Lorem.'
+      end
+    end
+
   end
 
-#   it "should require the response to 'created by author'" do
-#     FactoryGirl.build(:expression, created_by_author: '').should_not be_valid
-#   end
-
-   it "should require an author" do
-     FactoryGirl.build(:expression, author: nil).should_not be_valid
-   end
-
-  it "should require a language" do
-    FactoryGirl.build(:expression, language: nil).should_not be_valid
-  end
-
-  it "should belong to an author" do
-    author = FactoryGirl.build(:author)
-    FactoryGirl.build(:expression, author: author).author.should be(author)
-  end
-
-  it "should belong to a language" do
-    language = FactoryGirl.build(:language)
-    FactoryGirl.build(:expression, language: language).language.should be(language)
-  end
-
-  it "should have many translations" do
-    expression  = FactoryGirl.build(:expression)
-    expression.save
-    translation = FactoryGirl.build(:translation, expression: expression)
-    translation.save
-    expression.translations.should include(translation)
-  end
 end
