@@ -7,6 +7,7 @@ Feature: add an expression
   Background:
     Given language English is available
 
+
   Scenario: Add an expression as a logged user
 
     Given I am logged in
@@ -18,7 +19,8 @@ Feature: add an expression
     When  I visit my public profile
     Then  I should see a link to my expression
 
-  Scenario: Attempt to add an expression as an anonymous user
+
+  Scenario: Attempt to add an expression when not logged in
 
     Given I am not logged in
     Then  I should see how to log in
