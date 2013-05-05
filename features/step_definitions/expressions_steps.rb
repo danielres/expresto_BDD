@@ -1,4 +1,8 @@
 
+When /^I visit the expression$/ do
+  visit expression_path Expression.last, locale: Language.last.code
+end
+
 When /^I add my expression$/ do
 
   click the "add-expression-button"
@@ -37,6 +41,12 @@ When /^I attempt to add an expression$/ do
   click the "add-expression-button"
 end
 
+Given /^(\d+) english expressions?$/ do |amount|
+  l = Language.create code: :en, name: 'English'
+  amount.to_i.times do |n|
+    FactoryGirl.create :expression, language: l
+  end
+end
 
 
   # save_and_open_page
@@ -46,7 +56,7 @@ end
 
 Given /^(\d+) (.*) expressions have been added$/ do |amount, language|
   amount.to_i.times do |n|
-    FactoryGirl.create(:expression, :language => Language.find_by_code(language[0..1].downcase) )
+    FactoryGirl.create(:expression, language: Language.find_by_code(language[0..1].downcase) )
   end
 end
 
@@ -54,7 +64,7 @@ Then /^I should see a link list with (\d+) expressions in (.*)$/ do |amount, lan
   code = language.downcase[0..1]
   find('ul.expressions').should have_selector(
     "li.expression[lang='#{code}'] a[href^='/#{code}/expressions/']",
-    :count => amount
+    count: amount
   )
   all("li.expression").first['id'].scan(/\d/).join().to_i.should > all("li.expression").last['id'].scan(/\d/).join().to_i
 end
@@ -70,10 +80,10 @@ Then /^I should see the expression page with details and (.*) as author$/ do |au
 end
 
 Given /^(\d+) (.*) expressions? by (.*)$/ do |qty, language, user|
-    l = Language.find_by_code(language.downcase[0..1]) || FactoryGirl.create(:language, :name => language.downcase.strip, :code => language.downcase[0..1])
-    u = User.find_by_name(user) || FactoryGirl.create(:user, :name => user)
+    l = Language.find_by_code(language.downcase[0..1]) || FactoryGirl.create(:language, name: language.downcase.strip, code: language.downcase[0..1])
+    u = User.find_by_name(user) || FactoryGirl.create(:user, name: user)
     qty.to_i.times do |n|
-      FactoryGirl.create(:expression, :language => l, :author => u)
+      FactoryGirl.create(:expression, language: l, author: u)
     end
 end
 
@@ -103,17 +113,17 @@ end
 
 Given /^an expression in (.*) by (.*) with body "(.*?)"$/ do |language,author,body|
   code = language[0..1].downcase
-  author = User.find_by_name(author) || FactoryGirl.create(:user, :name => author)
-  FactoryGirl.create(:expression, :body => body, :language => Language.find_by_code(code), :author => author)
+  author = User.find_by_name(author) || FactoryGirl.create(:user, name: author)
+  FactoryGirl.create(:expression, body: body, language: Language.find_by_code(code), author: author)
 end
 
 Given /^an expression in ([a-zA-Z]*) with body "(.*?)"$/ do |language,body|
   code = language[0..1].downcase
-  FactoryGirl.create(:expression, :body => body, :language => Language.find_by_code(code))
+  FactoryGirl.create(:expression, body: body, language: Language.find_by_code(code))
 end
 
 When /^I go to the last expression page$/ do
 #   pending # express the regexp above with the code you wish you had
   e=Expression.find(:last)
-  visit expression_path(e, :locale => :en)
+  visit expression_path(e, locale: :en)
 end

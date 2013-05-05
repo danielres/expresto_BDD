@@ -1,32 +1,26 @@
 Feature: add comments
 
-  As a registered user of expresto
+  As a registered user
   I want to add comments to expressions
-  In order to interact with other registered users
+  In order to interact with other users
 
   Background:
-    Given language English is available
-    Given 1 english expressions by John
+    Given 1 english expression
 
-  Scenario: Add a comment to an expression as a logged user, and see it on the expression page, the homepage and the user's page
+  Scenario: Add a comment to an expression then see it on the expression page, homepage and user's page
 
-    Given I am logged in as 'Talky'
-    When  I go to the homepage
-    And   I set language to english
-    And   I click on the first recent expression
-    And   I click on the "add_comment" link
-    And   I fill in "comment_body" with "Supa cool !!"
-    And   I click on "Add"
-    Then  I should see "Supa cool !!"
+    Given I am logged in
+
+    When  I add a comment to the expression
+    Then  I should see my comment
 
     When  I go to the homepage
-    Then  I should see "Supa cool !!"
-    And   I should see "Added by Talky less than a minute ago"
-    And   I should see "1 comment"
-    When  I click on "Talky"
-    Then  I should see "Supa cool !!"
+    Then  I should see my comment
 
-  Scenario: Attempt to add a comment to an expression as an anonymous user
-    When  I go to the homepage
-    And   I click on the first recent expression
-    Then  I should see "You have to sign in first to add your comments"
+
+  Scenario: Attempt to add a comment to an expression when not logged in
+
+    Given I am not logged in
+
+    When  I visit the expression
+    Then  I should see an suggestion to login to comment
