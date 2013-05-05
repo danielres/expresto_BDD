@@ -1,118 +1,99 @@
 require 'spec_helper'
 
 describe User do
-
-  before :each do
-    @attr = {
-      name:                  "Example User",
-      email:                 "user@example.com",
-      password:              "foobar",
-      password_confirmation: "foobar",
-      role:                  "admin"
+  let( :user         ) { User.new valid_attributes }
+  let( :another_user ) { User.new valid_attributes }
+  let( :valid_attributes ) {
+    {
+      name:                  'Jacky',
+      email:                 'jacky@tuning.com',
+      password:              'nofear',
+      password_confirmation: 'nofear',
+      role:                  'admin',
     }
+  }
+
+
+  describe '#new' do
+    it( 'creates a new instance given valid attributes' ){ user.should be_valid   }
   end
 
-  it "should create a new instance given a valid attribute" do
-    User.create! @attr
-  end
 
-  it "should have many translations" do
-    user        = FactoryGirl.create :user
-    translation = FactoryGirl.create :translation, author: user
-    user.translations.should include translation
-  end
+  describe 'validations' do
 
-  it "should require an email address" do
-    no_email_user = User.new @attr.merge( email: '' )
-    no_email_user.should_not be_valid
-  end
+    it( 'requires email'    ){ user.tap{ |e| e.email     = '' }.should_not be_valid }
+    it( 'requires name'     ){ user.tap{ |e| e.name      = '' }.should_not be_valid }
+    it( 'requires password' ){ user.tap{ |e| e.password  = '' }.should_not be_valid }
+    it( 'requires password_confirmation' ){ user.tap{ |e| e.password_confirmation  = '' }.should_not be_valid }
 
-  it "should accept valid email addresses" do
-    addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
-    addresses.each do |address|
-      valid_email_user = User.new @attr.merge( email: address )
-      valid_email_user.should be_valid
-    end
-  end
 
-  it "should reject invalid email addresses" do
-    addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
-    addresses.each do |address|
-      invalid_email_user = User.new @attr.merge( email: address )
-      invalid_email_user.should_not be_valid
-    end
-  end
+    describe 'unique values' do
+      before(:each){ user.save }
 
-  it "should reject duplicate email addresses" do
-    User.create! @attr
-    user_with_duplicate_email = User.new @attr
-    user_with_duplicate_email.should_not be_valid
-  end
+      it( 'has unique email' ){ User.new( valid_attributes ).should have(1).error_on :email }
+      it( 'has unique name'  ){ User.new( valid_attributes ).should have(1).error_on :name  }
+      it( 'has case-insensitive unique email' ) do
+        User.new( valid_attributes ).tap{ |u| u.email.upcase! }.should have(1).error_on :email
+      end
 
-  it "should require a name" do
-    User.new( @attr.merge name: "" ).should_not be_valid
-  end
-
-  it "should reject duplicate name attribute" do
-    u1 = FactoryGirl.create :user
-    u2 = FactoryGirl.build  :user, name: u1.name
-    u2.should_not be_valid
-  end
-
-  it "should reject email addresses identical up to case" do
-    upcased_email = @attr[:email].upcase
-    User.create!( @attr.merge email: upcased_email )
-    user_with_duplicate_email = User.new @attr
-    user_with_duplicate_email.should_not be_valid
-  end
-
-  describe "passwords" do
-
-    before :each do
-      @user = User.new @attr
     end
 
-    it "should have a password attribute" do
-      @user.should respond_to :password
-    end
 
-    it "should have a password confirmation attribute" do
-      @user.should respond_to :password_confirmation
-    end
-  end
+    describe 'password' do
 
-  describe "password validations" do
+      it( 'sets an encrypted password' ){ user.encrypted_password.should_not be_blank }
 
-    it "should require a password" do
-      User.new( @attr.merge password: "", password_confirmation: "" ).should_not be_valid
-    end
+      it( 'requires password_confirmation to match' )do
+        user.tap{ |u| u.password_confirmation = 'invalid' }.should have(1).error_on :password
+      end
 
-    it "should require a matching password confirmation" do
-      User.new( @attr.merge password_confirmation: "invalid" ).should_not be_valid
-    end
+      it( 'rejects password < 6 characters') do
+        user.tap{ |u|
+          u.password              = 'abcde'
+          u.password_confirmation = 'abcde'
+        }.should have(1).error_on :password
+      end
 
-    it "should reject short passwords" do
-      short = 'a' * 5
-      hash = @attr.merge( password: short, password_confirmation: short )
-      User.new( hash ).should_not be_valid
+      it( 'accepts password > 5 characters') do
+        user.tap{ |u|
+          u.password              = 'abcdef'
+          u.password_confirmation = 'abcdef'
+        }.should be_valid
+      end
+
     end
 
   end
 
-  describe "password encryption" do
 
-    before :each do
-      @user = User.create! @attr
-    end
+  describe 'associations' do
 
-    it "should have an encrypted password attribute" do
-      @user.should respond_to :encrypted_password
-    end
+    describe '#translations' do
+      let( :translation1 ){ mock_model 'Translation'       }
+      let( :translation2 ){ mock_model 'Translation'       }
+      let( :translations ){ [ translation1, translation2 ] }
 
-    it "should set the encrypted password attribute" do
-      @user.encrypted_password.should_not be_blank
+      it 'returns translations by this user' do
+        user.translations        << translation1
+        user.translations        << translation2
+        user.translations.should =~ translations
+      end
+
     end
 
   end
+
+
+  describe 'upon save' do
+
+    describe '#email' do
+      let( :valid   ){ %w( user@foo.com THE_USER@foo.bar.org first.last@foo.jp ) }
+      let( :invalid ){ %w( user@foo,com user_at_foo.org example.user@foo.      ) }
+      it( 'accepts valid'   ){   valid.each { |email| user.tap{ |u| u.email = email }.should     be_valid } }
+      it( 'rejects invalid' ){ invalid.each { |email| user.tap{ |u| u.email = email }.should_not be_valid } }
+    end
+
+  end
+
 
 end
