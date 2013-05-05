@@ -1,3 +1,10 @@
+Then(/^I should see (\d+) (.*?) expressions$/) do |count, language|
+  lang = language[0..1]
+  page.should have_css ".expression[lang=#{lang}]", count: count
+end
+
+
+
 When(/^I change the expression "(.*?)" to "(.*?)"$/) do |original, updated|
   e = Expression.find_by_body original
   visit expression_path e, locale: Language.last.code

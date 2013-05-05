@@ -1,33 +1,14 @@
-Feature: display an authors expressions
+Feature: browse expressions by an author
 
-  In order to see expressions added by an user
   As a visitor
-  I want to see a list of expressions on their author's page
+  I want to see a list of expressions by an author on his public profile
+  In order to discover more expressions by this author
 
   Background:
-    Given 27 english expressions by John
-    And   5 french  expressions by John
+    Given 2 english expressions by John
+    And   3 french  expressions by John
 
-  Scenario: See the author's page of an expression with pagination, most recent first
-    When I go to the homepage
-    And  I click on author link within an expression added by John
-    Then I should see the page of John
-    And  I should see 10 english expressions added by John
-    And  I should see 5 french  expressions added by John
-    And  I should see 1 paginator
-    And I should see the last created expression
-    And I should not see the first created expression
-
-  Scenario: See an authors expressions on his page, grouped by language and paginated, most recent first
+  Scenario: Visit an author's public profile
     When I go to John's page
-
-    When I set language to english
-    Then I should see "27 expressions added by John in english"
-    Then I should see "5 expressions added by John in french"
-
-    And I should see the last created expression
-    And I should not see the first created expression
-
-    When I set language to french
-    Then I should see "27 expressions en Anglais ajoutées par John"
-    Then I should see "5 expressions en Français ajoutées par John"
+    Then I should see 2 english expressions
+    And  I should see 3 french expressions
