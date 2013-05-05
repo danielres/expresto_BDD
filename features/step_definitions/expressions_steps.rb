@@ -1,4 +1,8 @@
 
+Given(/^I visit the expressions page$/) do
+  visit expressions_path locale: Language.last.code
+end
+
 When /^I visit the expression$/ do
   visit expression_path Expression.last, locale: Language.last.code
 end
@@ -42,10 +46,13 @@ When /^I attempt to add an expression$/ do
 end
 
 Given /^(\d+) english expressions?$/ do |amount|
-  l = Language.create code: :en, name: 'English'
-  amount.to_i.times do |n|
-    FactoryGirl.create :expression, language: l
-  end
+  l = Language.where( code: 'en', name: 'English').first_or_create
+  amount.to_i.times{ FactoryGirl.create :expression, language: l }
+end
+
+Given /^(\d+) french expressions?$/ do |amount|
+  l = Language.where( code: 'fr', name: 'French').first_or_create
+  amount.to_i.times{ FactoryGirl.create :expression, language: l }
 end
 
 Given(/^a french expression "(.*?)"$/) do |body|

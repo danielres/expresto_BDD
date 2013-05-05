@@ -3,18 +3,19 @@ Feature: browse expressions by language
 
   As a simple visitor
   I want to browse expressions in different languages
-  In order to discover cool expressions
+  In order to discover cool expressions from various cultures
 
   Background:
-    Given available languages: French, English
-    And 1 english expression by John
-    And 2 english expressions by Jane
-    And 4 french expressions by Françoise
+    Given languages: French, English
+    And 2 english expression
+    And 3 french expressions
+    And I visit the expressions page
 
   Scenario: browse to the english expressions page
+    And  I set language to English
+    Then show me the page
+    Then I should see "2 expressions in english"
 
-    When I visit the english homepage
-    Then I should see "Most recent expressions in english"
-
-    When I click the "expressions-index" link
-    Then I should see "3 expressions in english"
+  Scenario: browse to the french expressions page
+    And  I set language to French
+    Then I should see "3 expressions en français"
