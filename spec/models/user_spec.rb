@@ -49,15 +49,13 @@ describe User do
 
       it( 'rejects password < 6 characters') do
         user.tap{ |u|
-          u.password              = 'abcde'
-          u.password_confirmation = 'abcde'
+          u.password = u.password_confirmation = 'abcde'
         }.should have(1).error_on :password
       end
 
       it( 'accepts password > 5 characters') do
         user.tap{ |u|
-          u.password              = 'abcdef'
-          u.password_confirmation = 'abcdef'
+          u.password = u.password_confirmation = 'abcdef'
         }.should be_valid
       end
 
