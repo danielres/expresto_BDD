@@ -1,3 +1,11 @@
+Given /^languages?: (.*)$/ do |languages|
+  languages.split(', ').each do |l|
+      Language.create code: l[0..1].downcase, name: l.strip
+  end
+end
+
+
+# old steps:
 Given /^language English is available$/ do
   languages = %w( Engllish )
   languages.each do |l|

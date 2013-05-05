@@ -27,7 +27,7 @@
       = render 'expressions/show/author_expressions'
       %hr
   .span4
-    .translations=  render 'expressions/show/translations', :parent => @expression
+    .translations{ data: { purpose: 'translations-list' }}=  render 'expressions/show/translations', :parent => @expression
   .span4
     .comments=      render 'expressions/show/comments'
 

@@ -48,6 +48,13 @@ Given /^(\d+) english expressions?$/ do |amount|
   end
 end
 
+Given(/^a french expression "(.*?)"$/) do |body|
+  l = Language.where( code: :fr, name: 'French' ).first_or_initialize
+  FactoryGirl.create :expression, language: l, body: body
+end
+
+
+
 
   # save_and_open_page
 

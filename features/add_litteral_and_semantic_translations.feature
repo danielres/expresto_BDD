@@ -1,32 +1,21 @@
-@translations @wip
 Feature: Add litteral and semantic translations
 
-  In order allow people to learn about idiomatic expressions in various languages
-  As a member of expresto
+  As a registered user
   I want to add litteral and semantic translations to an expression
+  In order to allow people to discover these expressions through their translations
 
   Background:
-    Given languages English, French are available
-    Given an expression in french with body "C'est le bouquet"
-    Given I am logged in as 'Jack'
+    Given languages: French, English
+    And   a french expression "C'est le bouquet"
+    And   I am logged in
+    And   I set language to english
+    And   I visit the expression
 
-  Scenario: Add litteral and semantic translations in english for a french expression
-    When  I go to the last expression page
-    Then  I should see "C'est le bouquet"
+  Scenario: Visit the original expression
+    Then I should see "C'est le bouquet"
 
-    When  I set language to english
-    And   I click on "Add your translation"
-    And   I fill in "Litteral translation" with "That's the bouquet"
-    And   I fill in "Semantic translation" with "That's the limit"
-    And   I select "English" from "Language"
-    And   I click on "Create Translation"
-
+  Scenario: Add a translation
+    When I add my english translation "That's the bouquet" that means "I can't stand it anymore"
     Then I should see "C'est le bouquet"
     And  I should see "That's the bouquet"
-    And  I should see "That's the limit"
-
-
-
-
-
-
+    And  I should see "I can't stand it anymore"
