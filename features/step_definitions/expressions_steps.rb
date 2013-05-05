@@ -1,3 +1,19 @@
+When(/^I change the expression "(.*?)" to "(.*?)"$/) do |original, updated|
+  e = Expression.find_by_body original
+  visit expression_path e, locale: Language.last.code
+  page.should have_content original
+  find('a.update-expression').click
+  within the 'add-expression-form' do
+    fill_in 'expression_body', with: updated
+    click the 'submit-button'
+  end
+end
+
+Given(/^my expressions are:$/) do |table|
+  table.hashes.each do |attributes|
+    FactoryGirl.create( :expression, body: attributes[:text], author: logged_user, language: Language.last)
+  end
+end
 
 Given(/^I visit the expressions page$/) do
   visit expressions_path locale: Language.last.code
