@@ -6,16 +6,14 @@ Feature: browse expressions by language
   In order to discover cool expressions from various cultures
 
   Background:
-    Given languages: French, English
-    And 2 english expression
-    And 3 french expressions
-    And I visit the expressions page
+    Given 2 english expression
+    And   3 french expressions
+    And   I visit the expressions page
 
-  Scenario: browse to the english expressions page
-    And  I set language to English
-    Then show me the page
+  Scenario: set language to English and see english expressions
+    When I set language to English
     Then I should see "2 expressions in english"
 
-  Scenario: browse to the french expressions page
-    And  I set language to French
+  Scenario: set language to French and see french expressions
+    When I set language to French
     Then I should see "3 expressions en français"
