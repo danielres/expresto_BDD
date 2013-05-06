@@ -5,7 +5,7 @@ Feature: add an expression
   In order to share it with the world
 
   Background:
-    Given language English is available
+    Given language: English
 
 
   Scenario: Add an expression as a logged user
