@@ -5,15 +5,11 @@ Feature: recent expressions on homepage
   In order to discover the latest expressions
 
   Background:
-    Given languages: French, English
-    And   2 english expressions by Mike
+    Given 2 english expressions by Mike
     And   3 french expressions by Mike
     And   I go to the homepage
 
   Scenario: See most recent expressions on homepage
-
-    Given I set language to english
-
     Then I should see "Most recent expressions in"
     And  I should see a link list with 2 expressions in English
 
