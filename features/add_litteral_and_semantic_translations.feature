@@ -8,7 +8,6 @@ Feature: Add litteral and semantic translations
     Given languages: French, English
     And   a french expression "C'est le bouquet"
     And   I am logged in
-    And   I set language to english
     And   I visit the expression
 
   Scenario: Visit the original expression
