@@ -5,8 +5,7 @@ Feature: Correct own expressions
   In order to correct my errors myself
 
   Background:
-    Given language: English
-    And   I am logged in
+    Given I am logged in
     And   my expressions are:
       | text          |
       | Correct one.  |

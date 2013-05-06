@@ -61,3 +61,11 @@ require 'rubygems'
   # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
   Cucumber::Rails::Database.javascript_strategy = :truncation
 
+
+Before do
+  ensure_language_presence
+end
+
+def ensure_language_presence
+  Language.where( code: 'en', name: 'English' ).first_or_create unless Language.any?
+end
