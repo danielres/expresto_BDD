@@ -13,7 +13,7 @@ Feature: manage expressions
     Given an expression in english with body "Inappropriate expression."
     Given an expression in english with body "Experssion with a typo."
 
-    When  I go to the homepage
+    When  I visit the homepage
     And   I set language to english
 
     Then  I should see "Appropriate expression."
@@ -24,7 +24,7 @@ Feature: manage expressions
     And   I should not see a "update-expression" link
 
     Given I am logged in as an administrator
-    When  I go to the homepage
+    When  I visit the homepage
     And   I click on "Inappropriate expression."
     And   I click on the "destroy-expression" link
     Then  I should see "Appropriate expression."

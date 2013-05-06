@@ -11,7 +11,7 @@ Feature: Correct own expressions
       | Correct one.  |
       | Wrong one.    |
       | With a typpo. |
-    And   I go to the homepage
+    And   I visit the homepage
 
   Scenario: Remove own expression
     When I click on "Wrong one."

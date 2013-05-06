@@ -7,7 +7,7 @@ Then /^I should see (\d+) (.*) expressions added by (.*)/ do |qty, language, aut
   find('div.user').should have_selector("ul.expressions>li.expression[lang='#{code}']", :count => qty)
 end
 
-When /^I go to (.*)'s page$/ do |name|
+When /^I visit (.*)'s page$/ do |name|
   visit user_path(User.find_by_name(name), :locale => Language.first.code)
 end
 
@@ -35,7 +35,7 @@ Given /^I am logged in as an administrator$/ do
   find('.userbox').should have_content(name)
 end
 
-When /^I go to my user page$/ do
+When /^I visit my user page$/ do
   within ".userbox" do
     find("a[@href^='/en/users/']").click
   end

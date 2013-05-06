@@ -7,7 +7,7 @@ Feature: recent expressions on homepage
   Background:
     Given 2 english expressions by Mike
     And   3 french expressions by Mike
-    And   I go to the homepage
+    And   I visit the homepage
 
   Scenario: See most recent expressions on homepage
     Then I should see "Most recent expressions in"

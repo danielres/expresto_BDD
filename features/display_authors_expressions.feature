@@ -9,6 +9,6 @@ Feature: browse expressions by an author
     And   3 french  expressions by John
 
   Scenario: Visit an author's public profile
-    When I go to John's page
+    When I visit John's page
     Then I should see 2 english expressions
     And  I should see 3 french expressions

@@ -5,15 +5,16 @@ Feature: add comments
   In order to interact with other users
 
   Background:
-    Given 1 english expression
+    Given 1 expression
     Given I am logged in
     When  I add a comment to the expression
 
   Scenario: See my comment along the expression
+    When  I visit the expression
     Then  I should see my comment
 
   Scenario: See my comment on homepage
-    When  I go to the homepage
+    When  I visit the homepage
     Then  I should see my comment
 
   Scenario: See my comment on my public profile

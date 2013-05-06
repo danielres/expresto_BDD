@@ -68,6 +68,10 @@ When /^I attempt to add an expression$/ do
   click the "add-expression-button"
 end
 
+Given /^(\d+) expressions?$/ do |amount|
+  amount.to_i.times{ FactoryGirl.create :expression }
+end
+
 Given /^(\d+) english expressions?$/ do |amount|
   l = Language.where( code: 'en', name: 'English').first_or_create
   amount.to_i.times{ FactoryGirl.create :expression, language: l }
@@ -159,7 +163,7 @@ Given /^an expression in ([a-zA-Z]*) with body "(.*?)"$/ do |language,body|
   FactoryGirl.create(:expression, body: body, language: Language.find_by_code(code))
 end
 
-When /^I go to the last expression page$/ do
+When /^I visit the last expression page$/ do
 #   pending # express the regexp above with the code you wish you had
   e=Expression.find(:last)
   visit expression_path(e, locale: :en)

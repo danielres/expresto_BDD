@@ -14,7 +14,7 @@ Feature: display recent expressions
 
   Scenario: See most recent news on homepage
 
-    When I go to the homepage
+    When I visit the homepage
     And  I set language to english
     Then I should see "Yeah, Expresto is online !"
     And  I should see "Just added the news system !"
@@ -23,7 +23,7 @@ Feature: display recent expressions
     And  I should not see "Unpublished"
     And  I should not see "Pas encore publié"
 
-    When I go to the homepage
+    When I visit the homepage
     And  I set language to french
     Then I should see "Yeah, Expresto est en ligne !"
     And  I should see "Système de news tout juste ajouté !"
