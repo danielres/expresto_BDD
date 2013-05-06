@@ -1,34 +1,47 @@
-Feature: display recent expressions
+Feature: display recent news
 
   In order to know what's new on expresto
   As a visitor
   I want to visit the homepage and read the recent news
 
   Background:
-    Given languages French, English are available
-    Given 1 english expressions by Mike
-    And   1 french  expressions by Mike
-    And   a published news by Daniel with english body "Yeah, Expresto is online !" and french body "Yeah, Expresto est en ligne !"
-    And   a published news by Daniel with english body "Just added the news system !" and french body "Système de news tout juste ajouté !"
-    And  an unpublished news by Daniel with english body "Unpublished" and french body "Pas encore publié"
+    Given languages: English, French
+    And   these news:
+      | author | status      | english_body               | french_body                         |
+      | Daniel | published   | Expresto is online         | Expresto est en ligne               |
+      | Daniel | published   | Added the news system      | Système de news ajouté              |
+      | Daniel | unpublished | Unpublished                | Pas encore publié                   |
 
-  Scenario: See most recent news on homepage
+    And  I visit the homepage
 
-    When I visit the homepage
-    And  I set language to english
-    Then I should see "Yeah, Expresto is online !"
-    And  I should see "Just added the news system !"
-    But  I should not see "Yeah, Expresto est en ligne !"
-    And  I should not see "Système de news tout juste ajouté !"
-    And  I should not see "Unpublished"
-    And  I should not see "Pas encore publié"
 
-    When I visit the homepage
-    And  I set language to french
-    Then I should see "Yeah, Expresto est en ligne !"
-    And  I should see "Système de news tout juste ajouté !"
-    But  I should not see "Yeah, Expresto is online !"
-    And  I should not see "Just added the news system !"
-    And  I should not see "Unpublished"
-    And  I should not see "Pas encore publié"
+  Scenario: See english published news on homepage
+    When I set language to english
 
+    Then I should see these contents:
+      | content                             |
+      | Expresto is online                  |
+      | Added the news system               |
+
+    And  I should not see these contents:
+      | content                             |
+      | Expresto est en ligne               |
+      | Système de news ajouté              |
+      | Unpublished                         |
+      | Pas encore publié                   |
+
+
+  Scenario: See french published news on homepage
+    When I set language to french
+
+    Then I should see these contents:
+      | content                             |
+      | Expresto est en ligne               |
+      | Système de news ajouté              |
+
+    And  I should not see these contents:
+      | content                             |
+      | Expresto is online                  |
+      | Added the news system               |
+      | Unpublished                         |
+      | Pas encore publié                   |
