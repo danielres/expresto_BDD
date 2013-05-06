@@ -29,8 +29,10 @@ Given /^I am logged in as an administrator$/ do
   u = FactoryGirl.create(:user, :name => name, :email => email, :password => password, :role => 'admin' )
   visit new_user_session_path
   click_link 'en'
-  fill_in("Email", :with => email )
-  fill_in("user_password", :with => password )
+  within 'form#new_user_session' do
+    fill_in("Email", :with => email )
+    fill_in("user_password", :with => password )
+  end
   click_button("Sign in")
   find('.userbox').should have_content(name)
 end

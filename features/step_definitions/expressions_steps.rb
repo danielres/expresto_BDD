@@ -16,6 +16,12 @@ When(/^I change the expression "(.*?)" to "(.*?)"$/) do |original, updated|
   end
 end
 
+Given(/^these expressions:$/) do |table|
+  table.hashes.each do |attributes|
+    FactoryGirl.create :expression, body: attributes[:text], language: Language.first
+  end
+end
+
 Given(/^my expressions are:$/) do |table|
   table.hashes.each do |attributes|
     FactoryGirl.create( :expression, body: attributes[:text], author: logged_user, language: Language.last)
@@ -87,10 +93,14 @@ Given(/^a french expression "(.*?)"$/) do |body|
   FactoryGirl.create :expression, language: l, body: body
 end
 
+Given(/^1 english expression "(.*?)"$/) do |body|
+  l = Language.where( code: :en, name: 'English' ).first_or_initialize
+  FactoryGirl.create :expression, language: l, body: body
+end
 
 
 
-  # save_and_open_page
+
 
 
 ############## old steps:

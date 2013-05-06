@@ -8,7 +8,6 @@ When /^I visit the homepage$/ do
 end
 
 Then(/^I should( not)? see these contents:$/) do |negate, table|
-  save_and_open_page
   table.hashes.each do |attributes|
     negate ? page.should_not(have_content(attributes[:content])) : page.should(have_content(attributes[:content]))
   end

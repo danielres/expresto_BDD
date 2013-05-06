@@ -1,38 +1,47 @@
 Feature: manage expressions
 
-  In order to manage the expressions added by different authors
   As an administrator
   I want to be able to edit and remove expressions
+  In order to fix errors and remove unappropriate content
 
   Background:
-    Given language English is available
+    Given these expressions:
+      | text                       |
+      | Unappropriate expression.  |
+      | Expression with typpo.     |
+    And   I visit the homepage
 
-  Scenario: Edit and remove an expression as an administrator
 
-    Given an expression in english with body "Appropriate expression."
-    Given an expression in english with body "Inappropriate expression."
-    Given an expression in english with body "Experssion with a typo."
+  Scenario: Remove an expression as an administrator
+    Given I am logged in as an administrator
+    Then  I should see these contents:
+      | content                    |
+      | Unappropriate expression.  |
+      | Expression with typpo.     |
 
-    When  I visit the homepage
-    And   I set language to english
+    When  I click on "Unappropriate expression."
+    And   I click on the "destroy-expression" link
+    Then  I should not see "Unappropriate expression."
 
-    Then  I should see "Appropriate expression."
-    And   I should see "Inappropriate expression."
-    And   I should see "Experssion with a typo."
-    When  I click on "Inappropriate expression."
+
+  Scenario: Edit an expression as an administrator
+    Given I am logged in as an administrator
+    Then  I should see these contents:
+      | content                    |
+      | Unappropriate expression.  |
+      | Expression with typpo.     |
+
+    When  I click on "Expression with typpo."
+    And   I click on the "update-expression" link
+    And   I fill in "expression_body" with "Expression without typo."
+    And   I click on "Update Expression"
+    Then  I should see these contents:
+      | content                    |
+      | Unappropriate expression.  |
+      | Expression without a typo. |
+
+
+  Scenario: Attempt to edit and remove an expression while not an administrator
+    When  I click on "Unappropriate expression."
     Then  I should not see a "destroy-expression" link
     And   I should not see a "update-expression" link
-
-    Given I am logged in as an administrator
-    When  I visit the homepage
-    And   I click on "Inappropriate expression."
-    And   I click on the "destroy-expression" link
-    Then  I should see "Appropriate expression."
-    And   I should see "Experssion with a typo."
-    But   I should not see "Inappropriate expression."
-
-    When  I click on "Experssion with a typo."
-    And   I click on the "update-expression" link
-    And   I fill in "expression_body" with "Expression with a typo, corrected."
-    And   I click on "Update Expression"
-    Then  I should see "Expression with a typo, corrected."
