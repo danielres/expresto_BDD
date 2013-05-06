@@ -35,10 +35,7 @@ Feature: manage expressions
     And   I click on the "update-expression" link
     And   I fill in "expression_body" with "Expression without typo."
     And   I click on "Update Expression"
-    Then  I should see these contents:
-      | content                    |
-      | Unappropriate expression.  |
-      | Expression without a typo. |
+    Then  I should see "Expression without typo."
 
 
   Scenario: Attempt to edit and remove an expression while not an administrator
