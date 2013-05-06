@@ -4,20 +4,19 @@ Feature: add an expression
   I want to add an idiomatic expression
   In order to share it with the world
 
-  Scenario: Add an expression as a logged user
-
+  Background:
     Given I am logged in
+    And   I added my expression
 
-    When  I add my expression
+  Scenario: See my expression and its details
     Then  I should see my expression and its details
-    And   I should see a link to my public profile
 
+  Scenario: See a link to my expression on my public profile
     When  I visit my public profile
     Then  I should see a link to my expression
 
 
   Scenario: Attempt to add an expression when not logged in
-
     Given I am not logged in
     Then  I should see how to log in
 

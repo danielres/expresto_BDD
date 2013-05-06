@@ -30,7 +30,7 @@ When /^I visit the expression$/ do
   visit expression_path Expression.last, locale: Language.last.code
 end
 
-When /^I add my expression$/ do
+When /^I add(?:ed) my expression$/ do
 
   click the "add-expression-button"
 
