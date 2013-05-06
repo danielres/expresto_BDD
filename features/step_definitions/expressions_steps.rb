@@ -1,3 +1,8 @@
+When(/^I click on the first expression$/) do
+  all('.expression a').first.click
+end
+
+
 Then(/^I should see (\d+) (.*?) expressions$/) do |count, language|
   lang = language[0..1]
   page.should have_css ".expression[lang=#{lang}]", count: count

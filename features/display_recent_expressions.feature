@@ -18,7 +18,7 @@ Feature: recent expressions on homepage
     And  I should see a link list with 3 expressions in French
 
   Scenario: Display expressions details
-    When I click on the first expression by Mike
+    When I click on the first expression
     Then I should see the expression page with details and Mike as author
 
 
