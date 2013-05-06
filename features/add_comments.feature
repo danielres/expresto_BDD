@@ -23,4 +23,4 @@ Feature: add comments
     Given I am not logged in
 
     When  I visit the expression
-    Then  I should see an suggestion to login to comment
+    Then  I should see a suggestion to login to comment
