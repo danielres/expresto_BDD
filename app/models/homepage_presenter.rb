@@ -1,73 +1,63 @@
-class HomepagePresenter
-
-  def initialize context
-    @context            = context
-    @news_title         = @context.t( 'pages.home.news.title', default: 'Latest news'               )
-    @comments_title     = @context.t( '.comments',             default: 'Recent comments'           )
-    @expressions_title  = @context.t( :recent_expressions_in,
-                                      language: @context.t( locale_name, default: locale_name ),
-                                      default:  "Recent expressions in #{locale_name}"             ).capitalize
-  end
+class HomepagePresenter < Presenter
 
   def to_html
     row do
-      column( @expressions_title, 5 ){ expressions } +
-      column( @news_title       , 4 ){ news        } +
-      column( @comments_title   , 3 ){ comments    }
+      column( expressions_title, 5 ){ expressions_panel } +
+      column( news_title       , 4 ){ news_panel        } +
+      column( comments_title   , 3 ){ comments_panel    }
     end
   end
 
   private
 
-    def locale           ; @context.params[:locale]               end
-    def locale_name      ; Language.find_by_code( locale ).name   end
+    def expressions ; Expression.in( locale ).recent 10  end
+    def news        ; News.published                     end
+    def comments    ; Comment.recent 10                  end
 
-    def news_items       ; News.published                         end
-    def comment_items    ; Comment.recent 10                      end
-    def expression_items ; Expression.in( locale ).recent 10      end
 
-    def expressions
+    def expressions_title
+     t( 'recent_expressions_in',
+        language: t(locale_name),
+        default: "Recent expressions in #{locale_name}"
+      ).capitalize
+    end
+
+    def news_title
+      t 'pages.home.news.title',
+        default: 'Latest news'
+    end
+
+    def comments_title
+      t '.comments',
+        default: 'Recent comments'
+    end
+
+    def expressions_panel
       ul class: 'expressions' do
-        render( expression_items, state: :list_item ) +
+        render( expressions, state: :list_item ) +
         li { expressions_link }
       end
     end
 
-    def news
+    def news_panel
       ul class: 'unstyled' do
-        render collection: news_items, partial: 'homepage_presenter/news_item'
+        render collection: news, partial: 'homepage_presenter/news_item'
       end
-
     end
 
-    def comments
+    def comments_panel
       ul class: %w( unstyled secundary-text )  do
-        render comment_items, state: :list_item
+        render comments, state: :list_item
       end
     end
 
     def expressions_link
-      @context.link_to  @context.icon(:search)+@context.t(:all_expressions_in, language: @context.t( locale_name )),
-                    @context.expressions_path,
-                    class: 'btn btn-primary expressions_index',
-                    data: { purpose: 'expressions-index' }
-    end
-
-
-    def render *args
-      @context.render *args
-    end
-    def ul *args, &block
-      @context.content_tag :ul, yield, *args
-    end
-    def li *args, &block
-      @context.content_tag :li, yield, *args
-    end
-    def row &block
-      @context.content_tag :div, yield, class: 'row'
-    end
-    def column title, width, &block
-      render partial: 'column', locals: { title: title, width: width, content: yield }
+      path      = @context.expressions_path
+      css_class = 'btn btn-primary'
+      text      = t(:all_expressions_in, language: t( locale_name ))
+      @context.link_to path, class: css_class, data: { purpose: 'expressions-index' } do
+        search_icon + text
+      end
     end
 
 end
