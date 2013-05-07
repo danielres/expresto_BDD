@@ -1,42 +1,6 @@
+= HomepagePresenter.new( self ).to_html
 
-.row
-  .span5
-    %h3= t(:recent_expressions_in, :language => t(l=Language.find_by_code(locale).name, :default => l),
-      :default => "Recent expressions in #{Language.find_by_code(locale).name}",
-      ).capitalize
-
-    %ul.expressions
-      = render @expressions, :state => :list_item
-      %li= link_to  icon(:search)+t(:all_expressions_in, :language => t(l=Language.find_by_code(locale).name,
-                    :default => l)),
-                    expressions_path,
-                    :class => 'btn btn-primary expressions_index',
-                    data: { purpose: 'expressions-index' }
-
-  .span4
-    - if @news.any?
-      .news
-        %h3= t('pages.home.news.title', :default => "Latest news")
-        %ul.unstyled
-          - @news.each do |n|
-            %li.new
-              %small
-                %span.published_ago.muted=raw t('news.published_ago', :time => time_ago_in_words(n.published_at))
-              .body.secundary-text{ :class => ('rest-in-place' if can?(:update, n)),'data-url'=> news_path(n), 'data-object' => :news, 'data-attribute' => "body_#{locale}", 'data-formtype' => 'textarea'}
-                = raw n.body(locale)
-              %hr
-        = javascript_include_tag 'rest_in_place' if can?(:update, :news)
-  .span3
-    .comments
-      %h3= t('.comments', :user => @user, :default => "Recent comments")
-      %ul.unstyled.secundary-text= render @comments, :state => :list_item
-
-    = todo do
-      .tag-cloud
-        %h3 Tag cloud
-        %p [TAG CLOUD]
-
-
-
-
-
+= todo do
+  .tag-cloud
+    %h3 Tag cloud
+    %p [TAG CLOUD]
