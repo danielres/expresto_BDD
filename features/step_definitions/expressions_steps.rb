@@ -61,9 +61,9 @@ Then /^I should see my expression and its details$/ do
   details.each{ |detail| page.should have_content detail }
 end
 
-Then /^I should see a link to my public profile$/ do
-  page.should have_css "a", text: my_expression.author.name
-end
+# Then /^I should see a link to my public profile$/ do
+#   page.should have_css "a", text: my_expression.author.name
+# end
 
 def dom_id object
   "#{object.class.name.underscore}_#{object.id}"
@@ -103,19 +103,6 @@ Given(/^1 english expression "(.*?)"$/) do |body|
   FactoryGirl.create :expression, language: l, body: body
 end
 
-
-
-
-
-
-############## old steps:
-
-Given /^(\d+) (.*) expressions have been added$/ do |amount, language|
-  amount.to_i.times do |n|
-    FactoryGirl.create(:expression, language: Language.find_by_code(language[0..1].downcase) )
-  end
-end
-
 Then /^I should see a link list with (\d+) expressions in (.*)$/ do |amount, language|
   code = language.downcase[0..1]
   find('ul.expressions').should have_selector(
@@ -123,16 +110,6 @@ Then /^I should see a link list with (\d+) expressions in (.*)$/ do |amount, lan
     count: amount
   )
   all("li.expression").first['id'].scan(/\d/).join().to_i.should > all("li.expression").last['id'].scan(/\d/).join().to_i
-end
-
-When /^I click on the first recent expression$/ do
-  find('ul.expressions').all('a')[0].click
-end
-
-Then /^I should see the expression page with details and (.*) as author$/ do |author|
-  find('div.expression').should have_selector('.body')
-  page.should have_selector('.meaning')
-  find('div.expression .author').should have_content(author)
 end
 
 Given /^(\d+) (.*) expressions? by (.*)$/ do |qty, language, user|
@@ -143,43 +120,9 @@ Given /^(\d+) (.*) expressions? by (.*)$/ do |qty, language, user|
     end
 end
 
-When /^I click on author link within an expression added by (.*)$/ do |author|
-  within ('.expression .author') do
-    click_link(author.to_s)
-  end
+Then /^I should see the expression page with details and (.*) as author$/ do |author|
+  find('div.expression').should have_selector('.body')
+  page.should have_selector('.meaning')
+  find('div.expression .author').should have_content(author)
 end
 
-When /^I click on the link to add an expression$/ do
-  click_link('Add an expression')
-end
-
-Then /^I should see the created expression page$/ do
-  page.should have_content("Expression was successfully created.")
-  page.should have_selector(".expression .body")
-  page.should have_selector(".expression .author")
-end
-
-Then /^I should see the last created expression$/ do
-  page.should have_selector("#expression_#{Expression.unscoped.find(:last).id}")
-end
-
-Then /^I should not see the first created expression$/ do
-  page.should_not have_selector("#expression_#{Expression.unscoped.find(:first).id}")
-end
-
-Given /^an expression in (.*) by (.*) with body "(.*?)"$/ do |language,author,body|
-  code = language[0..1].downcase
-  author = User.find_by_name(author) || FactoryGirl.create(:user, name: author)
-  FactoryGirl.create(:expression, body: body, language: Language.find_by_code(code), author: author)
-end
-
-Given /^an expression in ([a-zA-Z]*) with body "(.*?)"$/ do |language,body|
-  code = language[0..1].downcase
-  FactoryGirl.create(:expression, body: body, language: Language.find_by_code(code))
-end
-
-When /^I visit the last expression page$/ do
-#   pending # express the regexp above with the code you wish you had
-  e=Expression.find(:last)
-  visit expression_path(e, locale: :en)
-end
