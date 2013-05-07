@@ -1,17 +1,12 @@
-:ruby
-  pages = {
-    home: root_path(locale: locale),
-    expressions: expressions_path
-  }
 !!!
-%html{lang: locale}
+%html{ lang: locale}
   %head
-    %title Expresto
+    %title= page_title
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body{class: [controller_name, action_name].join('-')}
-    .navbar.navbar-fixed-top
+  %body{ class: body_class }
+    .navbar
       .navbar-inner
         .menus
 
@@ -28,9 +23,6 @@
 
           .menu.languages
             = render 'languages/list'
-          -# unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
-
-          -# unless %w(expressions#new expressions#create).include?(page_name)  || %w(registrations passwords sessions confirmations).include?(controller_name)
           .menu.add_expression.pull-right
             %ul
               %li= link_to icon(:plus_sign)+t(:add_an_expression), new_expression_path, class: 'btn btn-large btn-success', data: { purpose: 'add-expression-button' }
@@ -56,7 +48,6 @@
     %footer
       .container
         %ul
-
           %li.about
             = link_to_unless current_page?(about_path), t('pages.about'), about_path
           %li.contact

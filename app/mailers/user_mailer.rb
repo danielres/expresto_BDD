@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
     @commenter        = comment.user
     @commentable      = comment.commentable
     @commentable_type = comment.commentable_type
-    mail(:to => comment.commentable.author.email, :subject => "New comment by #{comment.user.name}")
+    mail to: comment.commentable.author.email, subject: "New comment by #{comment.user.name}"
   end
 
 end
