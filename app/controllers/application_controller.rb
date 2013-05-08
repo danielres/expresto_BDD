@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 private
 
   def set_current_locale
-    I18n::locale = params[:locale]
+    I18n::locale = params[:locale] || :en
   end
 
   def load_available_languages
