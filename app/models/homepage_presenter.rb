@@ -47,7 +47,7 @@ class HomepagePresenter < Presenter
     end
 
     def comments_panel
-      ul class: %w( unstyled secundary-text )  do
+      ul class: %w( unstyled secundary-text ) do
         render comments, state: :list_item
       end
     end
@@ -55,7 +55,7 @@ class HomepagePresenter < Presenter
     def expressions_link
       path      = @context.expressions_path
       css_class = 'btn btn-primary'
-      text      = t(:all_expressions_in, language: t( locale_name ))
+      text      = t :all_expressions_in, language: t( locale_name )
       @context.link_to path, class: css_class, data: { purpose: 'expressions-index' } do
         search_icon + text
       end
