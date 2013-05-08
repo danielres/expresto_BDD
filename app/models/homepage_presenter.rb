@@ -33,6 +33,7 @@ class HomepagePresenter < Presenter
     end
 
     def expressions_panel
+      return "There are no expressions yet" unless expressions.any?
       ul class: 'expressions' do
         render( expressions, state: :list_item ) +
         li { expressions_link }
