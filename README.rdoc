@@ -1,14 +1,45 @@
 ==Expresto
 
 This is the source code for the Expresto project: http://www.expresto.net
+Any feedback is greatly appreciated.
 
-Please let me know if you plan to use this app for your site or your own usage.
+===Project desciption
 
-===Contributions are welcome
+Each language and each culture has wonderful, strange and funny idiomatic expressions, and each day people create new ones with their creativity or by accident.
+Expresto aims to provide a place to share them, and build a community of sharing and discovery.
 
-Just make a fork, make your changes, then send me a pull request.
+Expresto is my side-project, my preferred way to become better at ruby & rails during my free time.
+
+Though the project has been in a dormant state during a few months, I'm finding ways to to put at least a few hours per weeks into it, maybe not a lot but with with regularity.
+
+This also means that your contributions and help are warmly welcome.
+
+===Continuous integration
+
+Expresto uses Travis CI:
+
+- https://travis-ci.org/danielres/expresto_BDD
+
+
+===Project management
+
+Done with Pivotal Tracker:
+
+- https://www.pivotaltracker.com/s/projects/777205
+
+
+===Contributing
+
+Feel free to fork Expresto, make your changes, and send me a pull request.
+
+If you are limited on time, I prefer you to write specs or cucumber scenarios describing the new feature or the improvement, instead of sending me the actual implementation without tests.
+
+Feel free to take a look at the [https://www.pivotaltracker.com/s/projects/777205](project in Pivotal Tracker) to find stuff to do, or ask me by mail / skype.
+
 
 ===Todo
+
+(these todo lists will be moved to pivotal in a near future)
 
 - Improvements of current features
   - x Rules, help & advices alongside forms
