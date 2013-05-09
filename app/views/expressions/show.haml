@@ -27,7 +27,7 @@
       = render 'expressions/show/author_expressions'
       %hr
   .span4
-    .translations{ data: { purpose: 'translations-list' }}=  render 'expressions/show/translations', :parent => @expression
+    .translations{ data: { purpose: 'translations-list' }}=  render 'expressions/show/translations', parent: @expression
   .span4
     .comments=      render 'expressions/show/comments'
 
@@ -45,11 +45,11 @@
               =@expression
               blablabla.
             %small.muted
-              %span.author=raw t(:added_by, :author => link_to(User.first))
-              %span.ago= t(:time_ago, :time => time_ago_in_words(Time.now))
+              %span.author=raw t(:added_by, author: link_to(User.first))
+              %span.ago= t(:time_ago, time: time_ago_in_words(Time.now))
             %hr
 
-      =link_to '#modal-tags', :class => 'btn btn-info', :'data-toggle' => :modal do
+      =link_to '#modal-tags', class: 'btn btn-info', :'data-toggle' => :modal do
         %i.icon-plus
         contribute an example
 
@@ -65,13 +65,13 @@
         %p
           Yours:
           - 5.times do |n|
-            %span.label.label-info{:style=>'line-height: 2'}= link_to "mytag #{n}", '', :style => 'color: inherit'
+            %span.label.label-info{style: 'line-height: 2'}= link_to "mytag #{n}", '', style: 'color: inherit'
         %p
           Others:
           - 15.times do |n|
-            %span.label{:style=>'line-height: 2'}= link_to "tag #{n}", '', :style => 'color: inherit'
+            %span.label{style: 'line-height: 2'}= link_to "tag #{n}", '', style: 'color: inherit'
         %p
-          =link_to '#modal-tags', :class => 'btn btn-info', :'data-toggle' => :modal do
+          =link_to '#modal-tags', class: 'btn btn-info', :'data-toggle' => :modal do
             %i.icon-tags
             add some tags
 
@@ -81,7 +81,7 @@
 
         %ul.unstyled
           %li
-            = link_to '', :class => 'btn btn-info' do
+            = link_to '', class: 'btn btn-info' do
               %i.icon-plus
               contribute with an drawing or a picture
 
@@ -99,8 +99,8 @@
         %h3 Similar expressions
         %ul.expressions
           - Expression.limit(5).each do |e|
-            %li= render e, :state => :list_item
+            %li= render e, state: :list_item
 
-= render 'modals/add_comment', :parent => @expression
-= render 'modals/add_translation', :parent => @expression
+= render 'modals/add_comment', parent: @expression
+= render 'modals/add_translation', parent: @expression
 

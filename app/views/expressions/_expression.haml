@@ -2,26 +2,26 @@
 
 - added_by_ago = capture do
   %small
-    %span.author=raw t(:added_by, :author => link_to_unless(current_page?(user_path(a=expression.author)), a, a))
-    %span.ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
+    %span.author=raw t(:added_by, author: link_to_unless(current_page?(user_path(a=expression.author)), a, a))
+    %span.ago= t(:time_ago, time: time_ago_in_words(expression.created_at))
 - created_and_added_by_ago = capture do
   %small
-    %span.author=raw t(:created_and_added_by, :author => link_to_unless(current_page?(user_path(a=expression.author)), a, a))
-    %span.ago= t(:time_ago, :time => time_ago_in_words(expression.created_at))
+    %span.author=raw t(:created_and_added_by, author: link_to_unless(current_page?(user_path(a=expression.author)), a, a))
+    %span.ago= t(:time_ago, time: time_ago_in_words(expression.created_at))
 
 - case state
 
   - when :individual
-    = content_tag_for :div, expression, :lang => expression.language.code, :class => state do
+    = content_tag_for :div, expression, lang: expression.language.code, class: state do
       %blockquote.body
         %h2= expression.body
-        .pull-right.avatar-small= link_to(avatar_image_for(expression.author, :size => 48 ), expression.author)
+        .pull-right.avatar-small= link_to(avatar_image_for(expression.author, size: 48 ), expression.author)
         = expression.created_by_author == true ? created_and_added_by_ago : added_by_ago
 
 
 
   - when :list_item
-    = content_tag_for :li,  expression, :lang => expression.language.code, :class => state do
+    = content_tag_for :li,  expression, lang: expression.language.code, class: state do
       %blockquote
         .body
           = link_to expression.body, expression
@@ -29,4 +29,4 @@
         - if c=expression.comments.count > 0
           .muted.small
             %i.icon-comment
-            = t(:comments, :count => expression.comments.count)
+            = t(:comments, count: expression.comments.count)

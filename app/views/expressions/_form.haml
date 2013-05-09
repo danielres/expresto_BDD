@@ -1,20 +1,20 @@
 .gridSystem
   .row
-    = simple_form_for expression, :html => {:class => 'form-horizontal', data: { purpose: 'add-expression-form' } } do |f|
+    = simple_form_for expression, html: {class: 'form-horizontal', data: { purpose: 'add-expression-form' } } do |f|
 
       .row
 
         .span6
-          = f.input :body,              :as => :string
-          = f.input :meaning,           :as => :string
-          -# f.input :source_type,      :as => :radio_buttons, :collection => Expression::SOURCE_TYPES
-          = f.input :created_by_author, :as => :radio_buttons
-          = f.input :source_info, :input_html => { :rows => 6, :cols => 40 }
+          = f.input :body,              as: :string
+          = f.input :meaning,           as: :string
+          -# f.input :source_type,      as: :radio_buttons, collection: Expression::SOURCE_TYPES
+          = f.input :created_by_author, as: :radio_buttons
+          = f.input :source_info, input_html: { rows: 6, cols: 40 }
 
           - if action_name == 'new'
             .control-group
               %label.control-label= t(:choose_expression_language)
-              .custom-controls= render 'languages/list', :custom_class => 'nav-pills'
+              .custom-controls= render 'languages/list', custom_class: 'nav-pills'
 
 
         .span5.offset1
