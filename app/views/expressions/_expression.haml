@@ -12,21 +12,20 @@
 - case state
 
   - when :individual
-    = content_tag_for :div, expression, lang: expression.language.code, class: state do
+    %div[ expression ]{ lang: expression.language.code, class: state }
       %blockquote.body
-        %h2= expression.body
+        %h2= expression
         .pull-right.avatar-small= link_to(avatar_image_for(expression.author, size: 48 ), expression.author)
         = expression.created_by_author == true ? created_and_added_by_ago : added_by_ago
 
 
 
   - when :list_item
-    = content_tag_for :li,  expression, lang: expression.language.code, class: state do
+    %li[ expression ]{ lang: expression.language.code, class: state }
       %blockquote
-        .body
-          = link_to expression.body, expression
+        .body= link_to expression, expression
         = expression.created_by_author == true ? created_and_added_by_ago : added_by_ago
-        - if c=expression.comments.count > 0
+        - if expression.comments.count > 0
           .muted.small
             %i.icon-comment
             = t(:comments, count: expression.comments.count)
