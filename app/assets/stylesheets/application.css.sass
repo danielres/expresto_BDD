@@ -3,6 +3,19 @@
 
 @import compass_twitter_bootstrap_awesome
 
+@for $i from 1 through 16
+  .span#{$i}
+    float: left
+    margin-left: 20px
+
+.homepage
+  .expressions.column
+    @extend .span5
+  .news.column
+    @extend .span4
+  .comments.column
+    @extend .span3
+
 /* DEVELOPMENT HELPERS ********************/
 span.todo
   background: transparentize(#882222, 0.9)

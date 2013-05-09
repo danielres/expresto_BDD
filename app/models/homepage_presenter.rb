@@ -1,11 +1,13 @@
 class HomepagePresenter < Presenter
 
   def to_html
-    row do
-      column( expressions_title, 5 ){ expressions_panel } +
-      column( news_title       , 4 ){ news_panel        } +
-      column( comments_title   , 3 ){ comments_panel    }
-    end
+    div class: 'homepage' do
+      row do
+        column( expressions_title, 'expressions column' ){ expressions_panel } +
+        column( news_title       , 'news column'        ){ news_panel        } +
+        column( comments_title   , 'comments column'    ){ comments_panel    }
+      end
+   end
   end
 
   private

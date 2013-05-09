@@ -23,8 +23,8 @@ class Presenter
       div( class: 'row' ){ yield }
     end
 
-    def column title, width, &block
-      div class: "span#{width}" do
+    def column title, css_class, &block
+      div class: css_class do
         h3{ title } + yield
       end
     end
