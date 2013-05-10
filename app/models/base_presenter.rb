@@ -14,10 +14,12 @@ class BasePresenter
     def render      *args         ;  @context.render *args                end
     def content_tag *args, &block ;  @context.content_tag *args, &block   end
 
-    def ul          *args, &block ;  content_tag :ul,  yield, *args       end
-    def li          *args, &block ;  content_tag :li,  yield, *args       end
-    def h3          *args, &block ;  content_tag :h3,  yield, *args       end
-    def div         *args, &block ;  content_tag :div, yield, *args       end
+    def ul          *args, &block ;  content_tag :ul,   yield, *args       end
+    def li          *args, &block ;  content_tag :li,   yield, *args       end
+    def h2          *args, &block ;  content_tag :h2,   yield, *args       end
+    def h3          *args, &block ;  content_tag :h3,   yield, *args       end
+    def div         *args, &block ;  content_tag :div,  yield, *args       end
+    def span        *args, &block ;  content_tag :span, yield, *args       end
     def search_icon               ;  @context.icon :search                end
 
     def row css_class = nil, &block
@@ -32,6 +34,10 @@ class BasePresenter
 
     def todo *args, &block
       @context.todo( *args ){ yield }
+    end
+
+    def h
+      @context
     end
 
 end
