@@ -1,4 +1,4 @@
-class HomepagePresenter < Presenter
+class HomepagePresenter < BasePresenter
 
   def to_html
     div class: 'homepage' do
