@@ -8,12 +8,34 @@
     margin-left: 20px
 
 .homepage
-  .expressions.column
-    @extend .span5
-  .news.column
+  .column
+    &.expressions
+      @extend .span5
+    &.news
+      @extend .span4
+    &.comments
+      @extend .span3
+
+.expression.presenter
+  .row
+    .column
+      div + div
+        padding-top: 0
+        margin-top: 20px
+        border-top: 1px solid #eee
+  .menus
+    .manage.menu
+      @extend .pull-right
+    .share.menu
+      @extend .pull-left
+  .details
+    .column
+      &.first,
+      &.second,
+      &.third
+        @extend .span4
+  .examples, .tags, .illustrations, .similar
     @extend .span4
-  .comments.column
-    @extend .span3
 
 /* DEVELOPMENT HELPERS ********************/
 span.todo

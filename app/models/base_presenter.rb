@@ -1,7 +1,8 @@
 class BasePresenter
 
-  def initialize context
+  def initialize context, model
     @context = context
+    @model   = model
   end
 
   private
