@@ -1,6 +1,6 @@
 class BasePresenter
 
-  def initialize context, model
+  def initialize context, model = nil
     @context = context
     @model   = model
   end
@@ -20,8 +20,8 @@ class BasePresenter
     def div         *args, &block ;  content_tag :div, yield, *args       end
     def search_icon               ;  @context.icon :search                end
 
-    def row &block
-      div( class: 'row' ){ yield }
+    def row css_class = nil, &block
+      div( class: [ 'row', css_class ] ){ yield }
     end
 
     def column title, css_class, &block
@@ -29,5 +29,10 @@ class BasePresenter
         h3{ title } + yield
       end
     end
+
+    def todo *args, &block
+      @context.todo( *args ){ yield }
+    end
+
 end
 
