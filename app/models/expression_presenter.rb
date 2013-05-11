@@ -3,7 +3,7 @@ class ExpressionPresenter < BasePresenter
   def to_html state = :individual
     case state
       when :individual then individual_layout
-      when :list_item  then list_item_layout
+      when :list_item  then list_item
     end
   end
 
@@ -18,13 +18,28 @@ class ExpressionPresenter < BasePresenter
       todo{ row { similar                         } }
     end
 
+    def list_item
+      render 'expressions/show/expression',
+              tag:              :li,
+              expression:       @model,
+              lang:             lang,
+              body:             div( class: 'body' ){ h.link_to @model, @model },
+              creation_details: creation_details,
+              avatar:           nil,
+              comments_preview: comments_preview
+
+    end
+
     def individual
-      render 'expressions/show/individual',
-              expression: @model,
-              avatar:     avatar,
-              body:       div( class: 'body' ){ h2{ @model.body } },
-              lang:       lang,
-              creation_details: creation_details
+      render 'expressions/show/expression',
+              tag:              :div,
+              expression:       @model,
+              lang:             lang,
+              body:             div( class: 'body' ){ h2{ @model.body } },
+              creation_details: creation_details,
+              avatar:           avatar,
+              comments_preview: nil
+
     end
 
     def menus
@@ -74,6 +89,14 @@ class ExpressionPresenter < BasePresenter
 
     def ago
       span( class: 'ago'   ){ t(:time_ago, time: h.time_ago_in_words(@model.created_at)) }
+    end
+
+    def comments_preview
+      if @model.comments.any?
+        div( class: ['muted', 'small'] ) do
+          icon_comment + t( :comments, count: @model.comments.count )
+        end
+      end
     end
 
 end

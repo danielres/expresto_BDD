@@ -1,13 +1,1 @@
-- translation_key = expression.created_by_author == true ? :created_and_added_by : :added_by
-
-%li.list_item[ expression ]{ lang: expression.language.code }
-  %blockquote
-    .body
-      = link_to expression, expression
-    %small
-      %span.author=raw t( translation_key, author: link_to_unless(current_page?(user_path(a=expression.author)), a, a))
-      %span.ago= t(:time_ago, time: time_ago_in_words(expression.created_at))
-    - if expression.comments.any?
-      .muted.small
-        %i.icon-comment
-        = t :comments, count: expression.comments.count
+= ExpressionPresenter.new(self, expression).to_html :list_item

@@ -21,6 +21,7 @@ class BasePresenter
     def div         *args, &block ;  content_tag :div,  yield, *args       end
     def span        *args, &block ;  content_tag :span, yield, *args       end
     def search_icon               ;  @context.icon :search                end
+    def icon_comment              ;  @context.icon :comment                end
 
     def row css_class = nil, &block
       div( class: [ 'row', css_class ] ){ yield }
