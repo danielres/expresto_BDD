@@ -36,8 +36,8 @@
           %h3.expressions= t(:expressions_added_by_in, count: expressions.count, user: user.name, language: t(l=language.name.downcase, default: l))
           = paginate(expressions_paginated, param_name: "page_#{language.code}")
           .page_entries_info= raw page_entries_info expressions_paginated
-          %ul.expressions= render expressions_paginated, state: :list_item, hide: [:author]
+          %ul.expressions
+            = expressions_paginated.map{ |expression| ExpressionPresenter.new(self, expression).to_html(:list_item) }.join.html_safe
       - else
         %p.muted=t('.user_has_not_added_expressions_yet', user: user, default: "This user hasn't contributed any expression yet." )
-
 

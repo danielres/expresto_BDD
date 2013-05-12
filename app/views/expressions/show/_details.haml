@@ -4,7 +4,7 @@
   .source
     = render 'expressions/show/source'
   .author_expressions
-    = render 'expressions/show/author_expressions'
+    = render 'expressions/show/author_expressions', expressions: author_expressions
 
 .second.column
   .translations{ data: { purpose: 'translations-list' } }

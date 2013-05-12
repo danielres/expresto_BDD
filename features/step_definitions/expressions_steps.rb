@@ -109,7 +109,6 @@ Then /^I should see a link list with (\d+) expressions in (.*)$/ do |amount, lan
     "li.expression[lang='#{code}'] a[href^='/#{code}/expressions/']",
     count: amount
   )
-  all("li.expression").first['id'].scan(/\d/).join().to_i.should > all("li.expression").last['id'].scan(/\d/).join().to_i
 end
 
 Given /^(\d+) (.*) expressions? by (.*)$/ do |qty, language, user|
@@ -121,8 +120,10 @@ Given /^(\d+) (.*) expressions? by (.*)$/ do |qty, language, user|
 end
 
 Then /^I should see the expression page with details and (.*) as author$/ do |author|
-  find('div.expression').should have_selector('.body')
-  page.should have_selector('.meaning')
-  find('div.expression .author').should have_content(author)
+  within '.expression.presenter' do
+    page.should have_selector('.body')
+    page.should have_selector('.meaning')
+    find('div.expression .author').should have_content(author)
+  end
 end
 

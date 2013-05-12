@@ -47,7 +47,13 @@ class ExpressionPresenter < BasePresenter
     end
 
     def details
-      render 'expressions/show/details',       expression: @model
+      render 'expressions/show/details',       expression: @model, author_expressions: author_expressions
+    end
+
+    def author_expressions
+      Expression.where(author_id: @model.author.id).limit(5).map do |e|
+        li{ ExpressionPresenter.new( @context, e ).to_html(:list_item) }
+      end.join.html_safe
     end
 
     def examples

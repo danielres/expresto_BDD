@@ -10,7 +10,10 @@ class ExpressionsController < InheritedResources::Base
     end
     redirect_to new_user_session_path, msg
   end
-
+  def show
+    expression = Expression.find params[:id]
+    @expression = ExpressionPresenter.new( view_context, expression ).to_html :individual
+  end
   def create
     @expression = Expression.new(params[:expression])
     @expression.author = current_user
@@ -19,6 +22,6 @@ class ExpressionsController < InheritedResources::Base
   end
   def index
     @expressions_count = Expression.in(params[:locale]).recent().count
-    @expressions = Expression.in(params[:locale]).recent().page(params[:page]).per(20)
+    @expressions       = Expression.in(params[:locale]).recent().page(params[:page]).per(10)
   end
 end

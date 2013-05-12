@@ -37,8 +37,9 @@ class HomepagePresenter < BasePresenter
     def expressions_panel
       return "There are no expressions yet" unless expressions.any?
       ul class: 'expressions' do
-        render( expressions, state: :list_item ) +
-        li { expressions_link }
+        expressions.map do |expression|
+          ExpressionPresenter.new( @context, expression ).to_html :list_item
+        end.join.html_safe + li { expressions_link }
       end
     end
 

@@ -1,5 +1,4 @@
 %h3= t(:recently_added_by, author: link_to(a=@expression.author,a), default: "Recently added by #{link_to(a=@expression.author,a)}").html_safe
 %ul.expressions
-  - Expression.where(author_id: @expression.author.id).limit(5).each do |e|
-    %li= render e, state: :list_item
+  = expressions
   %li= link_to icon(:search)+t(:all_expressions_by, author: @expression.author), @expression.author, class: 'btn'

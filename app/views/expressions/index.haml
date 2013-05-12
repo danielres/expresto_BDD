@@ -1,4 +1,5 @@
 %h3= t(:qty_expressions_in, qty: @expressions_count, language: t(l=Language.find_by_code(locale).name.downcase, default: l)).capitalize
 %ul.expressions
-  = render @expressions, state: :list_item
+  - @expressions.each do |expression|
+    = ExpressionPresenter.new( self, expression ).to_html :list_item
 = paginate @expressions
