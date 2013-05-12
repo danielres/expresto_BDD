@@ -18,6 +18,8 @@ This also means that your contributions and help are warmly welcome.
 
 Expresto uses Travis CI:
 
+[![Build Status](http://travis-ci.org/danielres/expresto_BDD.png)](http://travis-ci.org/danielres/expresto_BDD)
+
 - https://travis-ci.org/danielres/expresto_BDD
 
 
