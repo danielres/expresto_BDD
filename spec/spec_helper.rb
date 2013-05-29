@@ -1,5 +1,8 @@
+
 require 'rubygems'
 
+require 'simplecov'
+SimpleCov.start
 
 
 
