@@ -1,9 +1,10 @@
 class ExpressionPresenter < BasePresenter
 
-  def to_html state = :individual
+  def to_html state
     case state
       when :individual then individual_layout
       when :list_item  then list_item
+      else individual_layout
     end
   end
 
