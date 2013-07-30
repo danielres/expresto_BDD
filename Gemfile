@@ -1,11 +1,12 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.13'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer', platforms: :ruby
 end
 
 gem 'jquery-rails'
