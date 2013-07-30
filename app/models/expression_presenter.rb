@@ -1,9 +1,10 @@
 class ExpressionPresenter < BasePresenter
 
-  def to_html state = :individual
+  def to_html state
     case state
-      when :individual then individual_layout
-      when :list_item  then list_item
+    when :individual then individual_layout
+    when :list_item  then list_item
+    else individual_layout
     end
   end
 
@@ -11,11 +12,12 @@ class ExpressionPresenter < BasePresenter
   private
 
     def individual_layout
-      row( 'menus'      ){ menus      } +
-      row( 'expression' ){ individual } +
-      row( 'details'    ){ details    } +
-      todo{ row { examples + tags + illustrations } } +
-      todo{ row { similar                         } }
+      str = ""
+      str << row( 'menus'      ){ menus      }
+      str << row( 'expression' ){ individual }
+      str << row( 'details'    ){ details    }
+      str << todo{ row { examples + tags + illustrations } }
+      str << todo{ row { similar                         } }
     end
 
     def list_item
@@ -73,9 +75,12 @@ class ExpressionPresenter < BasePresenter
     end
 
     def avatar
-      div( class: 'avatar-small pull-right' ){
-        h.link_to h.avatar_image_for( @model.author, size: 48 ), @model.author
-      }
+      div( class: 'avatar-small pull-right' ) do
+        h.link_to(
+          h.avatar_image_for( @model.author, size: 48 ),
+          @model.author
+        )
+      end
     end
 
     def lang
@@ -90,7 +95,17 @@ class ExpressionPresenter < BasePresenter
 
     def author
       translation_key = @model.created_by_author == true ? :created_and_added_by : :added_by
-      span( class: 'author'){ t( translation_key, author: h.link_to_unless(h.current_page?(h.user_path(a=@model.author)), a, a)).html_safe }
+      span( class: 'author' ) do
+        author = @model.author
+        t(
+          translation_key,
+          author: h.link_to_unless(
+            h.current_page?( h.user_path author ),
+            author,
+            author
+          )
+        ).html_safe
+      end
     end
 
     def ago
