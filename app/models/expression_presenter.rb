@@ -12,11 +12,12 @@ class ExpressionPresenter < BasePresenter
   private
 
     def individual_layout
-      row( 'menus'      ){ menus      } +
-      row( 'expression' ){ individual } +
-      row( 'details'    ){ details    } +
-      todo{ row { examples + tags + illustrations } } +
-      todo{ row { similar                         } }
+      str = ""
+      str << row( 'menus'      ){ menus      }
+      str << row( 'expression' ){ individual }
+      str << row( 'details'    ){ details    }
+      str << todo{ row { examples + tags + illustrations } }
+      str << todo{ row { similar                         } }
     end
 
     def list_item
